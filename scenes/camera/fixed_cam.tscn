@@ -1,0 +1,7 @@
+[gd_scene format=3 uid="uid://b2tkhlonce14e"]
+
+[ext_resource type="Script" uid="uid://cwebd2j4tt8c8" path="res://scenes/camera/fixed_cam.gd" id="1_7g5ml"]
+
+[node name="FixedCam" type="Camera3D" unique_id=432870943]
+fov = 55.0
+script = ExtResource("1_7g5ml")

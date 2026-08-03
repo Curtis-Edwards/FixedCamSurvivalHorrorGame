@@ -1,0 +1,65 @@
+[gd_scene format=3 uid="uid://03gfg7cvcqnv"]
+
+[ext_resource type="PackedScene" uid="uid://dd68ka1cr6pmj" path="res://scenes/interactable/intractable_template/interactable_template.tscn" id="1_h424q"]
+[ext_resource type="Script" uid="uid://bu2rcs84kallr" path="res://scenes/interactable/doors/interactable_door.gd" id="2_xtudt"]
+[ext_resource type="Texture2D" uid="uid://c077xvoy6ea0j" path="res://assets/textures/texture_07.png" id="3_bmbt5"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_mu5rm"]
+size = Vector3(2, 3, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_44ph4"]
+size = Vector3(1.5, 3, 0.4)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_mu5rm"]
+albedo_color = Color(0.67, 0.4242217, 0.19430003, 1)
+albedo_texture = ExtResource("3_bmbt5")
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_mu5rm"]
+data = PackedVector3Array(-0.75, 1.5, 0.19999999, 0.75, 1.5, 0.19999999, -0.75, -1.5, 0.19999999, 0.75, 1.5, 0.19999999, 0.75, -1.5, 0.19999999, -0.75, -1.5, 0.19999999, 0.75, 1.5, -0.19999999, -0.75, 1.5, -0.19999999, 0.75, -1.5, -0.19999999, -0.75, 1.5, -0.19999999, -0.75, -1.5, -0.19999999, 0.75, -1.5, -0.19999999, 0.75, 1.5, 0.19999999, 0.75, 1.5, -0.19999999, 0.75, -1.5, 0.19999999, 0.75, 1.5, -0.19999999, 0.75, -1.5, -0.19999999, 0.75, -1.5, 0.19999999, -0.75, 1.5, -0.19999999, -0.75, 1.5, 0.19999999, -0.75, -1.5, -0.19999999, -0.75, 1.5, 0.19999999, -0.75, -1.5, 0.19999999, -0.75, -1.5, -0.19999999, 0.75, 1.5, 0.19999999, -0.75, 1.5, 0.19999999, 0.75, 1.5, -0.19999999, -0.75, 1.5, 0.19999999, -0.75, 1.5, -0.19999999, 0.75, 1.5, -0.19999999, -0.75, -1.5, 0.19999999, 0.75, -1.5, 0.19999999, -0.75, -1.5, -0.19999999, 0.75, -1.5, 0.19999999, 0.75, -1.5, -0.19999999, -0.75, -1.5, -0.19999999)
+
+[node name="Door1" unique_id=1451751561 instance=ExtResource("1_h424q")]
+script = ExtResource("2_xtudt")
+room_a = null
+room_b = null
+lock_type = 3
+required_key = null
+locked_key_hint = ""
+
+[node name="InteractableCollision" parent="." index="0" unique_id=773940465]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
+shape = SubResource("BoxShape3D_mu5rm")
+
+[node name="DoorMesh" type="MeshInstance3D" parent="." index="1" unique_id=1950836336]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
+mesh = SubResource("BoxMesh_44ph4")
+surface_material_override/0 = SubResource("StandardMaterial3D_mu5rm")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="DoorMesh" index="0" unique_id=834366884]
+collision_layer = 64
+collision_mask = 15
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="DoorMesh/StaticBody3D" index="0" unique_id=1980798878]
+shape = SubResource("ConcavePolygonShape3D_mu5rm")
+
+[node name="RoomAPoint" type="Marker3D" parent="." index="2" unique_id=1094372428]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0, 1.5)
+
+[node name="RoomBPoint" type="Marker3D" parent="." index="3" unique_id=1312606428]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1.5)
+
+[node name="Labels" type="Node3D" parent="." index="4" unique_id=328543584]
+visible = false
+
+[node name="SideALabel" type="Label3D" parent="Labels" index="0" unique_id=1489854145]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 1.5)
+billboard = 1
+text = "Side A"
+font_size = 64
+outline_size = 16
+
+[node name="SideBLabel" type="Label3D" parent="Labels" index="1" unique_id=2098071777]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, -1.5)
+billboard = 1
+text = "Side B"
+font_size = 64
+outline_size = 16

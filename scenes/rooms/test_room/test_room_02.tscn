@@ -1,0 +1,112 @@
+[gd_scene format=3 uid="uid://cqhf3pfndcljj"]
+
+[ext_resource type="PackedScene" uid="uid://1imavx2tumky" path="res://scenes/rooms/room_template/room_template.tscn" id="1_ogjoc"]
+[ext_resource type="PackedScene" uid="uid://f0ngrug7ekw5" path="res://assets/3d_objects/tstRoom02.glb" id="2_cip6p"]
+[ext_resource type="Texture2D" uid="uid://bvhwfcv7jtgr" path="res://assets/prerendered_bgs/test_room/02Cam001.png" id="4_gow8d"]
+[ext_resource type="Texture2D" uid="uid://55aoat8l4rgy" path="res://assets/prerendered_bgs/test_room/02Cam002.png" id="5_wggla"]
+[ext_resource type="PackedScene" uid="uid://dff83q5333mis" path="res://scenes/camera/fixed_cam_trigger.tscn" id="6_luoe7"]
+[ext_resource type="Texture2D" uid="uid://btpwmxptrm30p" path="res://assets/prerendered_bgs/test_room/02Cam003.png" id="6_qm3hg"]
+[ext_resource type="Texture2D" uid="uid://230p7q3tryut" path="res://assets/prerendered_bgs/test_room/02Cam004.png" id="7_8l0w2"]
+[ext_resource type="Texture2D" uid="uid://bsn40b26jltsr" path="res://assets/prerendered_bgs/test_room/02Cam005.png" id="8_7c6la"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ogmer"]
+size = Vector3(5, 4, 6)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_k7u8y"]
+size = Vector3(4, 4, 14)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_w34mw"]
+size = Vector3(4, 4, 8)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_3rolj"]
+size = Vector3(9, 4, 12)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_k8iqa"]
+size = Vector3(6, 4, 12)
+
+[node name="TestRoom02" unique_id=1177210895 instance=ExtResource("1_ogjoc")]
+
+[node name="tstRoom02" parent="BoxedOutRoom" parent_id_path=PackedInt32Array(612534032) index="0" unique_id=1189271004 instance=ExtResource("2_cip6p")]
+
+[node name="02Camera_001" parent="BoxedOutRoom/tstRoom02" index="1" unique_id=1395072967]
+visible = false
+
+[node name="02Camera_002" parent="BoxedOutRoom/tstRoom02" index="2" unique_id=403450775]
+visible = false
+
+[node name="02Camera_003" parent="BoxedOutRoom/tstRoom02" index="3" unique_id=1553229055]
+visible = false
+
+[node name="02Camera_004" parent="BoxedOutRoom/tstRoom02" index="4" unique_id=407073461]
+visible = false
+
+[node name="02Camera_005" parent="BoxedOutRoom/tstRoom02" index="5" unique_id=679386034]
+visible = false
+
+[node name="FixedCamTrigger_001" parent="FixedCamTriggers" parent_id_path=PackedInt32Array(1043019142) index="0" unique_id=793731124 instance=ExtResource("6_luoe7")]
+bg_img = ExtResource("4_gow8d")
+
+[node name="CamTrigger" parent="FixedCamTriggers/FixedCamTrigger_001" index="0" unique_id=719714386]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.5, 2, -8)
+
+[node name="CollisionShape3D" parent="FixedCamTriggers/FixedCamTrigger_001/CamTrigger" index="0" unique_id=1615397601]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+shape = SubResource("BoxShape3D_ogmer")
+
+[node name="CamPos" parent="FixedCamTriggers/FixedCamTrigger_001" index="1" unique_id=880205140]
+transform = Transform3D(-0.14263056, 0.031087687, -0.9892877, 1.5459955e-07, 0.99950653, 0.03140879, 0.98977596, 0.0044797002, -0.1425602, -15.160666, 2.1936193, -10.662479)
+
+[node name="FixedCamTrigger_002" parent="FixedCamTriggers" parent_id_path=PackedInt32Array(1043019142) index="1" unique_id=1862236051 instance=ExtResource("6_luoe7")]
+bg_img = ExtResource("5_wggla")
+
+[node name="CamTrigger" parent="FixedCamTriggers/FixedCamTrigger_002" index="0" unique_id=719714386]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 2, -18)
+
+[node name="CollisionShape3D" parent="FixedCamTriggers/FixedCamTrigger_002/CamTrigger" index="0" unique_id=1615397601]
+shape = SubResource("BoxShape3D_k7u8y")
+
+[node name="CamPos" parent="FixedCamTriggers/FixedCamTrigger_002" index="1" unique_id=880205140]
+transform = Transform3D(-0.9995065, 0, 0.03141235, 0, 1, 0, -0.03141235, 0, -0.9995065, -9.744527, 1.8085377, -27.220423)
+
+[node name="FixedCamTrigger_003" parent="FixedCamTriggers" parent_id_path=PackedInt32Array(1043019142) index="2" unique_id=1100749877 instance=ExtResource("6_luoe7")]
+bg_img = ExtResource("6_qm3hg")
+
+[node name="CamTrigger" parent="FixedCamTriggers/FixedCamTrigger_003" index="0" unique_id=719714386]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14, 2, -17)
+
+[node name="CollisionShape3D" parent="FixedCamTriggers/FixedCamTrigger_003/CamTrigger" index="0" unique_id=1615397601]
+shape = SubResource("BoxShape3D_w34mw")
+
+[node name="CamPos" parent="FixedCamTriggers/FixedCamTrigger_003" index="1" unique_id=880205140]
+transform = Transform3D(-0.01047412, 0.20448512, -0.97881365, -8.7171793e-07, 0.97886735, 0.20449635, 0.99994516, 0.0021427725, -0.010252596, -19.252157, 2.7897098, -17.070742)
+
+[node name="FixedCamTrigger_004" parent="FixedCamTriggers" parent_id_path=PackedInt32Array(1043019142) index="3" unique_id=951537547 instance=ExtResource("6_luoe7")]
+bg_img = ExtResource("7_8l0w2")
+
+[node name="CamTrigger" parent="FixedCamTriggers/FixedCamTrigger_004" index="0" unique_id=719714386]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.5, 2, -19)
+
+[node name="CollisionShape3D" parent="FixedCamTriggers/FixedCamTrigger_004/CamTrigger" index="0" unique_id=1615397601]
+shape = SubResource("BoxShape3D_3rolj")
+
+[node name="CamPos" parent="FixedCamTriggers/FixedCamTrigger_004" index="1" unique_id=880205140]
+transform = Transform3D(-0.5792802, -0.2974213, 0.75892997, 0, 0.9310558, 0.36487663, -0.8151283, 0.21136583, -0.5393422, 6.1259623, 5.1768346, -24.231445)
+
+[node name="FixedCamTrigger_005" parent="FixedCamTriggers" parent_id_path=PackedInt32Array(1043019142) index="4" unique_id=1203258981 instance=ExtResource("6_luoe7")]
+bg_img = ExtResource("8_7c6la")
+
+[node name="CamTrigger" parent="FixedCamTriggers/FixedCamTrigger_005" index="0" unique_id=719714386]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 2, -19)
+
+[node name="CollisionShape3D" parent="FixedCamTriggers/FixedCamTrigger_005/CamTrigger" index="0" unique_id=1615397601]
+shape = SubResource("BoxShape3D_k8iqa")
+
+[node name="CamPos" parent="FixedCamTriggers/FixedCamTrigger_005" index="1" unique_id=880205140]
+transform = Transform3D(0.024430715, 0.07321675, -0.9970167, -8.5681677e-07, 0.99731445, 0.07323859, 0.99970144, -0.0017884169, 0.02436517, -5.065096, 1.9579487, -19.533304)
+
+[editable path="BoxedOutRoom/tstRoom02"]
+[editable path="FixedCamTriggers/FixedCamTrigger_001"]
+[editable path="FixedCamTriggers/FixedCamTrigger_002"]
+[editable path="FixedCamTriggers/FixedCamTrigger_003"]
+[editable path="FixedCamTriggers/FixedCamTrigger_004"]
+[editable path="FixedCamTriggers/FixedCamTrigger_005"]

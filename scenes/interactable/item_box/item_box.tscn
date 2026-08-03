@@ -1,0 +1,37 @@
+[gd_scene format=3 uid="uid://ckmucpd1ph3km"]
+
+[ext_resource type="PackedScene" uid="uid://dd68ka1cr6pmj" path="res://scenes/interactable/intractable_template/interactable_template.tscn" id="1_i30c5"]
+[ext_resource type="Texture2D" uid="uid://c077xvoy6ea0j" path="res://assets/textures/texture_07.png" id="2_fd7h5"]
+[ext_resource type="Script" uid="uid://w5twaskgfe54" path="res://scenes/interactable/item_box/item_box.gd" id="2_rxgay"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_fd7h5"]
+size = Vector3(2, 2, 4)
+
+[sub_resource type="BoxMesh" id="BoxMesh_rxgay"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vieg0"]
+albedo_color = Color(0.31, 0.13950002, 0, 1)
+albedo_texture = ExtResource("2_fd7h5")
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_rxgay"]
+data = PackedVector3Array(-0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, -0.5, -0.5, -0.5, -0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, 0.5, -0.5, 0.5, 0.5, 0.5, -0.5, 0.5, -0.5, -0.5, 0.5, -0.5, 0.5, -0.5, 0.5, -0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, -0.5, 0.5, 0.5, -0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, 0.5, 0.5, -0.5, 0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, 0.5, -0.5, 0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, 0.5, 0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, -0.5, -0.5)
+
+[node name="ItemBox" unique_id=1451751561 instance=ExtResource("1_i30c5")]
+script = ExtResource("2_rxgay")
+
+[node name="InteractableCollision" parent="." index="0" unique_id=773940465]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, 1, -0.5)
+shape = SubResource("BoxShape3D_fd7h5")
+debug_color = Color(0.36166668, 0.62, 0, 1)
+
+[node name="ItemBoxMeshInstance" type="MeshInstance3D" parent="." index="1" unique_id=1785924193]
+transform = Transform3D(-4.371139e-08, 0, 3, 0, 1, 0, -1, 0, -1.3113416e-07, 0, 0.5, 0)
+mesh = SubResource("BoxMesh_rxgay")
+surface_material_override/0 = SubResource("StandardMaterial3D_vieg0")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="ItemBoxMeshInstance" index="0" unique_id=133455068]
+collision_layer = 64
+collision_mask = 15
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="ItemBoxMeshInstance/StaticBody3D" index="0" unique_id=884037309]
+shape = SubResource("ConcavePolygonShape3D_rxgay")

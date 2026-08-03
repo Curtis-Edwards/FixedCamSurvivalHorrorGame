@@ -1,0 +1,46 @@
+[gd_scene format=3 uid="uid://ccksy6fm65ttn"]
+
+[ext_resource type="Texture2D" uid="uid://dbwo1dtaudxra" path="res://assets/textures/empty.tres" id="1_8fwgd"]
+[ext_resource type="Script" uid="uid://tj5pa8edphum" path="res://scenes/ui/inventory/slots/inventory_slot.gd" id="2_2pwvc"]
+
+[node name="InventorySlot" type="TextureButton" unique_id=885528144]
+custom_minimum_size = Vector2(316, 215)
+offset_right = 113.0
+offset_bottom = 73.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+focus_neighbor_top = NodePath(".")
+focus_neighbor_bottom = NodePath(".")
+texture_normal = ExtResource("1_8fwgd")
+stretch_mode = 6
+script = ExtResource("2_2pwvc")
+
+[node name="Amount" type="Label" parent="." unique_id=962219857]
+layout_mode = 1
+offset_right = 59.3
+offset_bottom = 45.0
+theme_override_font_sizes/font_size = 32
+text = "000"
+horizontal_alignment = 2
+
+[node name="Index" type="Label" parent="." unique_id=1830159591]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -57.0
+offset_top = -54.28
+offset_right = -2.0
+offset_bottom = -9.279968
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_font_sizes/font_size = 32
+text = "0"
+horizontal_alignment = 2
+
+[connection signal="focus_entered" from="." to="." method="_on_focus_entered"]
+[connection signal="focus_exited" from="." to="." method="_on_focus_exited"]
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
+[connection signal="pressed" from="." to="." method="_on_pressed"]

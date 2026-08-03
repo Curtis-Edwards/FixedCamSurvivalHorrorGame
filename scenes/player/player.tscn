@@ -1,0 +1,72 @@
+[gd_scene format=3 uid="uid://g6vdvf12ss25"]
+
+[ext_resource type="Material" uid="uid://8ynppmv1i5u8" path="res://assets/textures/grey_grid_001.tres" id="1_8afob"]
+[ext_resource type="Script" uid="uid://dl4scqve1rmau" path="res://scenes/player/player.gd" id="1_dovo2"]
+[ext_resource type="PackedScene" uid="uid://dkj4ivdjmo1i3" path="res://scenes/ui/examination_text/interaction_prompt.tscn" id="3_gmlin"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_ypl5r"]
+height = 1.6
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_7dm28"]
+height = 1.6
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_uqdc8"]
+top_radius = 0.2
+bottom_radius = 0.2
+height = 1.0
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_w4qpt"]
+height = 1.6
+radius = 0.001
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_dovo2"]
+points = PackedVector3Array(0, 0, -0.3, -0.5, 0, -1.5, 0.5, 0, -1.5, 0, 1.6, -0.3, -0.5, 1.6, -1.5, 0.5, 1.6, -1.5)
+
+[node name="Player" type="CharacterBody3D" unique_id=662147544]
+collision_mask = 76
+script = ExtResource("1_dovo2")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1558072215]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.8, 0)
+shape = SubResource("CylinderShape3D_ypl5r")
+
+[node name="BodyMesh" type="MeshInstance3D" parent="." unique_id=1418413834]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.8, 0)
+layers = 2
+mesh = SubResource("CylinderMesh_7dm28")
+surface_material_override/0 = ExtResource("1_8afob")
+
+[node name="EyesMesh" type="MeshInstance3D" parent="." unique_id=556175140]
+transform = Transform3D(-4.371139e-08, -1, -4.371139e-08, 0, -4.371139e-08, 1, -1, 4.371139e-08, 1.9106855e-15, 0, 1.26257, -0.4)
+layers = 2
+mesh = SubResource("CylinderMesh_uqdc8")
+surface_material_override/0 = ExtResource("1_8afob")
+
+[node name="QuickTurnDuration" type="Timer" parent="." unique_id=1671766073]
+wait_time = 0.15
+
+[node name="CamTriggerArea" type="Area3D" parent="." unique_id=1752617538]
+collision_layer = 256
+collision_mask = 32
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CamTriggerArea" unique_id=2073159486]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.8, 0)
+shape = SubResource("CylinderShape3D_w4qpt")
+debug_color = Color(0.75908166, 0.43992636, 0.3075765, 0.41960785)
+
+[node name="InteractionStuff" type="Node3D" parent="." unique_id=1802435845]
+
+[node name="InteractionPrompt" parent="InteractionStuff" unique_id=226436693 instance=ExtResource("3_gmlin")]
+visible = false
+
+[node name="InteractionArea" type="Area3D" parent="InteractionStuff" unique_id=987143809]
+collision_layer = 32
+collision_mask = 16
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="InteractionStuff/InteractionArea" unique_id=1919086584]
+shape = SubResource("ConvexPolygonShape3D_dovo2")
+debug_color = Color(0.6482781, 0.5093867, 0.31239182, 0.41960785)
+
+[connection signal="timeout" from="QuickTurnDuration" to="." method="_on_quick_turn_duration_timeout"]
+[connection signal="area_entered" from="InteractionStuff/InteractionArea" to="." method="_on_interaction_area_area_entered"]
+[connection signal="area_exited" from="InteractionStuff/InteractionArea" to="." method="_on_interaction_area_area_exited"]

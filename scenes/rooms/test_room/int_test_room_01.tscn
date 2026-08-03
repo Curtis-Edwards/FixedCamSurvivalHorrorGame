@@ -1,0 +1,126 @@
+[gd_scene format=4 uid="uid://ktu1a07g4bou"]
+
+[ext_resource type="PackedScene" uid="uid://1imavx2tumky" path="res://scenes/rooms/room_template/room_template.tscn" id="1_84yrt"]
+[ext_resource type="PackedScene" uid="uid://dib5jx12m052n" path="res://scenes/interactable/item_pickup/item_pickup.tscn" id="2_jsah5"]
+[ext_resource type="PackedScene" uid="uid://dff83q5333mis" path="res://scenes/camera/fixed_cam_trigger.tscn" id="2_kblid"]
+[ext_resource type="Texture2D" uid="uid://k5qs1r3ndo3l" path="res://assets/prerendered_bgs/int_test_room/room_01/room01_cam001.png" id="3_jhm7g"]
+[ext_resource type="Resource" uid="uid://bgnc5v4nsiifw" path="res://scenes/items/item_resources/1xx_weapons/00_pistol/pistol.tres" id="3_tivdq"]
+[ext_resource type="Texture2D" uid="uid://cotva37k33rge" path="res://assets/prerendered_bgs/int_test_room/room_01/room01_cam002.png" id="4_8oubo"]
+[ext_resource type="Resource" uid="uid://bt5405f74b6o7" path="res://scenes/items/item_resources/2xx_ammo/00_pistol_ammo/pistol_ammo.tres" id="4_jsah5"]
+[ext_resource type="Texture2D" uid="uid://c63lccqx7lh5i" path="res://assets/prerendered_bgs/int_test_room/room_01/room01_cam003.png" id="5_uwni5"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wcs2j"]
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_pdyua"]
+_surfaces = [{
+"aabb": AABB(-1, 0, -5, 14, 4, 6),
+"format": 34896613377,
+"index_count": 78,
+"index_data": PackedByteArray("AAABAAIAAAADAAEABAABAAMAAAAEAAMAAgABAAUABgABAAQAAQAGAAUABAAHAAYAAgAFAAgACAAAAAIACQAFAAYACQAGAAcABQAKAAgABQAJAAoACwAHAAQACwAJAAcACwAEAAAACgAJAAwACwAMAAkADQAIAAoAAAAIAA0ACgAMAA0ACwAAAA4ADgAMAAsAAAANAA4ADgANAAwA"),
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 15,
+"vertex_data": PackedByteArray("AAAAAP//AAAAAP//AAAAAAAAAAAAAAAAAAD/////AAD/f/////8AAP////8AAAAA////////AAD///8///8AAP//AAAAAAAA////P1TVAAD//wAAVNUAAP9//z///wAA/3//P1TVAAD/fwAAVNUAAP9/AAD//wAA")
+}]
+blend_shape_mode = 0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_ghh6p"]
+resource_name = "interactionTestRoom01_Cube_001"
+_surfaces = [{
+"aabb": AABB(-1, 0, -5, 14, 4, 6),
+"attribute_data": PackedByteArray("dneIiFVVVVV2d1VVVVWIiNzd//+6u4iI3N2IiLq7//93d4iImJndXZiZiIgQkd1dd3dVVRCRVVV290PE/////3b3///+/0PEh4j+/1VViIiHiIiI3V1DxN1d//9VVUPEurv+/4eIiIi6u4iIiIhDxIiI//9290PE/v+IiP7/Q8Td3UPE3d2IiHb3///d3f//3V3//1VVQ8TdXUPEVVX//yGi/3+YmYiImJn/fyGiiIg="),
+"format": 34896613399,
+"index_count": 78,
+"index_data": PackedByteArray("AAABAAIAAAADAAEABAAFAAYABAAHAAUACAAJAAoACAALAAkACwAIAAwACwAMAA0ADgAPABAADgARAA8AEgATABQAEwASABUAFQASABYAEwAVABcAGAAZABoAGQAYABsAGwAYABwAHQAeAB8AHQAgAB4AHgAgACEAHQAiACAAIAAiACMAJAAlACYAJAAnACUAKAApACoAKAArACkA"),
+"material": SubResource("StandardMaterial3D_wcs2j"),
+"primitive": 3,
+"uv_scale": Vector4(3.0000005, 3, 0, 0),
+"vertex_count": 44,
+"vertex_data": PackedByteArray("AAAAAP//VNUAAP//AABU1QAAAAAAAFTVAAD/////VNUAAAAAAAD/v/////8AAP+///8AAAAA/78AAP//AAD/v/////8AAFTV//8AAFTVVNX//wAAAABU1f///z9U1VTV////////VNX///8///9U1f9//z///1TV////P1TVVNX///8///9U1f9//z9U1VTV//8AAAAAVNUAAAAA//9U1QAAAAAAAFTV/38AAFTVVNX//wAAVNVU1f9/AAD//1TVAAD//wAAVNX///////9U1f////8AAFTV/3//////VNUAAP////9U1f9//z//////AAAAAP//////fwAA//////9/////////AAD///////////8///////////////////8AAFTV////f/8/VNX///9/AABU1f//////P1TV////fwAA//9U1f9//z9U1VTV/3//P///VNX/fwAAVNVU1aqqVFWqqlRVqqpUVaqqVFX/f/9//3//f/9//3//f/9/VFWqqlRVqqpUVaqqVFWqqlRVqqpUVaqqVNWqKlTVqipU1aoqVNWqKlTVqipU1aoqVNWqKlTVqipU1aoqVNWqKlVVVFVUVVRVVFVUVVVVVFVVVVRV/z//v/8//7//P/+//z//v/8//7//P/+//z//v/8//7//P/+//z//v/8//79UVamqVFWpqlRVqqpUVamq")
+}]
+blend_shape_mode = 0
+shadow_mesh = SubResource("ArrayMesh_pdyua")
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_mabk3"]
+data = PackedVector3Array(-1, 0, 1, -1, 4, -5, -1, 0, -5, -1, 0, 1, -1, 4, 1, -1, 4, -5, -1, 0, -5, 13, 4, -5, 13, 0, -5, -1, 0, -5, -1, 4, -5, 13, 4, -5, 13, 4, -5, 13, 0, 0, 13, 0, -5, 13, 1, 0, 13, 4, 1, 13, 1, 1, 13, 4, -5, 13, 1, 0, 13, 0, 0, 13, 1, 0, 13, 4, -5, 13, 4, 1, 6, 1, 1, 13, 1, 0, 13, 1, 1, 6, 1, 1, 6, 1, 0, 13, 1, 0, 13, 0, -5, -1, 0, 1, -1, 0, -5, -1, 0, 1, 6, 0, 0, 6, 0, 1, 6, 0, 0, 13, 0, -5, 13, 0, 0, -1, 0, 1, 13, 0, -5, 6, 0, 0, -1, 4, -5, 13, 4, 1, 13, 4, -5, 6, 4, 1, -1, 4, -5, -1, 4, 1, 13, 4, 1, -1, 4, -5, 6, 4, 1, 6, 1, 1, -1, 0, 1, 6, 0, 1, -1, 0, 1, 6, 4, 1, -1, 4, 1, 6, 4, 1, 13, 1, 1, 13, 4, 1, 6, 1, 1, 6, 4, 1, -1, 0, 1, 6, 1, 1, 13, 1, 1, 6, 4, 1, 13, 0, 0, 6, 1, 0, 6, 0, 0, 13, 0, 0, 13, 1, 0, 6, 1, 0, 6, 0, 1, 6, 1, 0, 6, 1, 1, 6, 0, 1, 6, 0, 0, 6, 1, 0)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_mkmhp"]
+size = Vector3(7, 4, 6)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_n48hl"]
+size = Vector3(7, 4, 4)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_tivdq"]
+size = Vector3(7, 4, 2)
+
+[node name="IntTestRoom01" unique_id=1177210895 instance=ExtResource("1_84yrt")]
+
+[node name="interactionTestRoom01" type="Node3D" parent="BoxedOutRoom" parent_id_path=PackedInt32Array(612534032) index="0" unique_id=1193991954]
+metadata/_edit_group_ = true
+metadata/_edit_lock_ = true
+
+[node name="Room" type="MeshInstance3D" parent="BoxedOutRoom/interactionTestRoom01" index="0" unique_id=1661668526]
+mesh = SubResource("ArrayMesh_ghh6p")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="BoxedOutRoom/interactionTestRoom01/Room" index="0" unique_id=2078156423]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="BoxedOutRoom/interactionTestRoom01/Room/StaticBody3D" index="0" unique_id=780534013]
+shape = SubResource("ConcavePolygonShape3D_mabk3")
+
+[node name="ItemPickup" parent="Interactables/Items" parent_id_path=PackedInt32Array(2020193764) index="0" unique_id=1451751561 instance=ExtResource("2_jsah5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.34070778, 0, 0.25563955)
+item_definition = ExtResource("3_tivdq")
+
+[node name="ItemPickup2" parent="Interactables/Items" parent_id_path=PackedInt32Array(2020193764) index="1" unique_id=521110356 instance=ExtResource("2_jsah5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.34070778, 0, -1.9955078)
+item_definition = ExtResource("4_jsah5")
+amount = 15
+
+[node name="ItemPickup3" parent="Interactables/Items" parent_id_path=PackedInt32Array(2020193764) index="2" unique_id=42489944 instance=ExtResource("2_jsah5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.34070778, 0, -4.2443604)
+item_definition = ExtResource("4_jsah5")
+amount = 40
+
+[node name="FixedCamTriggers" parent="." index="2" unique_id=1043019142]
+visible = false
+
+[node name="FixedCamTrigger_001" parent="FixedCamTriggers" index="0" unique_id=793731124 instance=ExtResource("2_kblid")]
+bg_img = ExtResource("3_jhm7g")
+
+[node name="CamTrigger" parent="FixedCamTriggers/FixedCamTrigger_001" index="0" unique_id=719714386]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.5, 2, -2)
+
+[node name="CollisionShape3D" parent="FixedCamTriggers/FixedCamTrigger_001/CamTrigger" index="0" unique_id=1615397601]
+shape = SubResource("BoxShape3D_mkmhp")
+
+[node name="CamPos" parent="FixedCamTriggers/FixedCamTrigger_001" index="1" unique_id=880205140]
+transform = Transform3D(-0.43836743, -0.3569593, 0.82487214, -2.3692846e-06, 0.9177529, 0.39715177, -0.8987959, 0.17409644, -0.40231383, 9.60468, 2.9648507, -4.369749)
+
+[node name="FixedCamTrigger_002" parent="FixedCamTriggers" index="1" unique_id=1238403037 instance=ExtResource("2_kblid")]
+bg_img = ExtResource("4_8oubo")
+
+[node name="CamTrigger" parent="FixedCamTriggers/FixedCamTrigger_002" index="0" unique_id=719714386]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.5, 2, -2)
+
+[node name="CollisionShape3D" parent="FixedCamTriggers/FixedCamTrigger_002/CamTrigger" index="0" unique_id=1615397601]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1)
+shape = SubResource("BoxShape3D_n48hl")
+
+[node name="CamPos" parent="FixedCamTriggers/FixedCamTrigger_002" index="1" unique_id=880205140]
+transform = Transform3D(0.58778167, 0.34191048, -0.7332189, -2.2798777e-06, 0.9063061, 0.42262173, 0.8090196, -0.2484076, 0.5327109, 1.4385269, 3.2421627, 0.27161956)
+
+[node name="FixedCamTrigger_003" parent="FixedCamTriggers" index="2" unique_id=1344481306 instance=ExtResource("2_kblid")]
+bg_img = ExtResource("5_uwni5")
+
+[node name="CamTrigger" parent="FixedCamTriggers/FixedCamTrigger_003" index="0" unique_id=719714386]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.5, 2, 0)
+
+[node name="CollisionShape3D" parent="FixedCamTriggers/FixedCamTrigger_003/CamTrigger" index="0" unique_id=1615397601]
+shape = SubResource("BoxShape3D_tivdq")
+
+[node name="CamPos" parent="FixedCamTriggers/FixedCamTrigger_003" index="1" unique_id=880205140]
+transform = Transform3D(-0.9997809, 0.010148995, -0.018313978, -2.3562461e-06, 0.874618, 0.4848128, 0.020938097, 0.48470652, -0.87442636, 10.508064, 3.6779313, -5.839855)
+
+[editable path="FixedCamTriggers/FixedCamTrigger_001"]
+[editable path="FixedCamTriggers/FixedCamTrigger_002"]
+[editable path="FixedCamTriggers/FixedCamTrigger_003"]
