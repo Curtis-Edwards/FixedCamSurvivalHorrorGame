@@ -7,7 +7,9 @@
 [ext_resource type="Resource" uid="uid://bgnc5v4nsiifw" path="res://scenes/items/item_resources/1xx_weapons/00_pistol/pistol.tres" id="3_tivdq"]
 [ext_resource type="Texture2D" uid="uid://cotva37k33rge" path="res://assets/prerendered_bgs/int_test_room/room_01/room01_cam002.png" id="4_8oubo"]
 [ext_resource type="Resource" uid="uid://bt5405f74b6o7" path="res://scenes/items/item_resources/2xx_ammo/00_pistol_ammo/pistol_ammo.tres" id="4_jsah5"]
+[ext_resource type="PackedScene" uid="uid://ckmucpd1ph3km" path="res://scenes/interactable/item_box/item_box.tscn" id="5_jsah5"]
 [ext_resource type="Texture2D" uid="uid://c63lccqx7lh5i" path="res://assets/prerendered_bgs/int_test_room/room_01/room01_cam003.png" id="5_uwni5"]
+[ext_resource type="Resource" uid="uid://bbapil6wib2o1" path="res://scenes/items/item_resources/3xx_recovery/00_green_herb/green_herb.tres" id="5_ve1ny"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wcs2j"]
 
@@ -68,18 +70,20 @@ mesh = SubResource("ArrayMesh_ghh6p")
 shape = SubResource("ConcavePolygonShape3D_mabk3")
 
 [node name="ItemPickup" parent="Interactables/Items" parent_id_path=PackedInt32Array(2020193764) index="0" unique_id=1451751561 instance=ExtResource("2_jsah5")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.34070778, 0, 0.25563955)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.16791153, 0, -4.4027567)
 item_definition = ExtResource("3_tivdq")
 
 [node name="ItemPickup2" parent="Interactables/Items" parent_id_path=PackedInt32Array(2020193764) index="1" unique_id=521110356 instance=ExtResource("2_jsah5")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.34070778, 0, -1.9955078)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.846488, 0, -4.38031)
 item_definition = ExtResource("4_jsah5")
 amount = 15
 
 [node name="ItemPickup3" parent="Interactables/Items" parent_id_path=PackedInt32Array(2020193764) index="2" unique_id=42489944 instance=ExtResource("2_jsah5")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.34070778, 0, -4.2443604)
-item_definition = ExtResource("4_jsah5")
-amount = 40
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.993598, 0, -4.4171567)
+item_definition = ExtResource("5_ve1ny")
+
+[node name="ItemBox" parent="Interactables/ItemBox" parent_id_path=PackedInt32Array(1244118018) index="0" unique_id=1090792392 instance=ExtResource("5_jsah5")]
+transform = Transform3D(1.3113416e-07, 0, -1, 0, 1, 0, 1, 0, 1.3113416e-07, -0.5, 0, -1.5)
 
 [node name="FixedCamTriggers" parent="." index="2" unique_id=1043019142]
 visible = false

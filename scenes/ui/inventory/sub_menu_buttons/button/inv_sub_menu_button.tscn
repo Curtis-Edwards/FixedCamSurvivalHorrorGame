@@ -3,12 +3,19 @@
 [ext_resource type="Script" uid="uid://bt0oji74t07o4" path="res://scenes/ui/inventory/sub_menu_buttons/button/inv_sub_menu_button.gd" id="1_m4ue0"]
 
 [node name="InvSubMenuButton" type="Button" unique_id=1563439566]
-offset_right = 8.0
-offset_bottom = 8.0
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -98.5
+offset_top = -26.5
+offset_right = 98.5
+offset_bottom = 26.5
+grow_horizontal = 2
+grow_vertical = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
-focus_neighbor_left = NodePath(".")
-focus_neighbor_right = NodePath(".")
 theme_override_font_sizes/font_size = 32
 text = "Sample Text"
 script = ExtResource("1_m4ue0")

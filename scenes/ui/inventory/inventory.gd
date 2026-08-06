@@ -16,11 +16,22 @@ func _ready() -> void:
 	add_item(1, Globals.ITEMS["shotgun_ammo"],4)
 
 func _process(_delta: float) -> void:
-	# debug filling items for testing
-	if InputManager.is_debug_key1_pressed():
-		print("Populating inventory with test set #1...")
+	# HACK: debug filling items for testing
+	if InputManager.is_debug_key7_pressed():
+		print("|  DEBUG  | Clear Inventory.")
+		clear_inventory(0)
+	
+	if InputManager.is_debug_key8_pressed():
+		print("|  DEBUG  | Clear ItemBox.")
+		clear_inventory(1)
+	
+	if InputManager.is_debug_key9_pressed():
+		print("|  DEBUG  | Clear Inventory And ItemBox.")
 		clear_inventory(0)
 		clear_inventory(1)
+	
+	if InputManager.is_debug_key1_pressed():
+		print("|  DEBUG  | Loading item set 1.")
 		add_item(1, Globals.ITEMS["shotgun"],1)
 		add_item(1, Globals.ITEMS["shotgun_ammo"],8)
 		
@@ -32,25 +43,24 @@ func _process(_delta: float) -> void:
 		add_item(0, Globals.ITEMS["spade_key"],1)
 	
 	if InputManager.is_debug_key2_pressed():
-		print("Populating inventory with test set #2...")
-		clear_inventory(0)
-		
-		add_item(0, Globals.ITEMS["pistol"],1)
-		add_item(0, Globals.ITEMS["pistol_ammo"],80)
+		print("|  DEBUG  | Loading item set 2.")
+
+		add_item(0, Globals.ITEMS["pistol_ammo"],15)
 	
 	if InputManager.is_debug_key3_pressed():
-		print("Populating inventory with test set #3...")
-		clear_inventory(0)
-		
-		add_item(0, Globals.ITEMS["pistol"],1)
-		add_item(0, Globals.ITEMS["pistol_ammo"],85)
+		print("|  DEBUG  | Loading item set 3.")
+
+		add_item(0, Globals.ITEMS["pistol_ammo"],140)
 	
-	if InputManager.is_debug_key3_pressed():
-		print("Populating inventory with test set #3...")
-		clear_inventory(0)
-		
-		add_item(0, Globals.ITEMS["pistol"],1)
-		add_item(0, Globals.ITEMS["pistol_ammo"],100)
+	if InputManager.is_debug_key4_pressed():
+		print("|  DEBUG  | Loading item set 4.")
+
+		add_item(0, Globals.ITEMS["pistol_ammo"],150)
+
+	if InputManager.is_debug_key5_pressed():
+		print("|  DEBUG  | Loading item set 5.")
+
+		add_item(0, Globals.ITEMS["pistol_ammo"],160)
 
 
 
@@ -58,12 +68,12 @@ func _process(_delta: float) -> void:
 Inventory Functions
 """
 var inventory_slots: Array[ItemInstance] = []
-const INV_SLOT_COUNT: int = 6
-@onready var inventory_slots_ui: HBoxContainer = $InventoryUI/InventoryScreen/InventorySlots
+const INV_SLOT_COUNT: int = 8
+@onready var inventory_slots_ui: GridContainer = $InventoryUI/InventoryScreen/Inventory/InventorySlots/Slots
 
 var item_box_slots: Array[ItemInstance] = []
-const BOX_SLOT_COUNT: int = 20
-@onready var item_box_slots_ui: HBoxContainer = $InventoryUI/InventoryScreen/ItemBox/ItemBoxSlots
+const BOX_SLOT_COUNT: int = 16
+@onready var item_box_slots_ui: GridContainer = $InventoryUI/InventoryScreen/Inventory/ItemBoxSlots/ScrollContainer/Slots
 
 func get_inventory_type(type: int) -> Dictionary:
 	match type:

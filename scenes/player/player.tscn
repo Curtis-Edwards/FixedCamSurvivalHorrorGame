@@ -2,7 +2,7 @@
 
 [ext_resource type="Material" uid="uid://8ynppmv1i5u8" path="res://assets/textures/grey_grid_001.tres" id="1_8afob"]
 [ext_resource type="Script" uid="uid://dl4scqve1rmau" path="res://scenes/player/player.gd" id="1_dovo2"]
-[ext_resource type="PackedScene" uid="uid://dkj4ivdjmo1i3" path="res://scenes/ui/examination_text/interaction_prompt.tscn" id="3_gmlin"]
+[ext_resource type="PackedScene" uid="uid://dkj4ivdjmo1i3" path="res://scenes/player/interaction_prompt/interaction_prompt.tscn" id="3_gmlin"]
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_ypl5r"]
 height = 1.6

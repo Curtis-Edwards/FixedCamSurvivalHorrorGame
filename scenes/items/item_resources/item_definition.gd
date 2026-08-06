@@ -8,5 +8,5 @@ class_name ItemDefinition
 @export var max_stack: int = 1
 
 @export var can_equip: bool = false
-@export var can_use: bool = false
+@export var can_consume: bool = false
 @export var can_discard: bool = false

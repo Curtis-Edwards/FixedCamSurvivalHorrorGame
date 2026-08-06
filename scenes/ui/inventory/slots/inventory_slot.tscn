@@ -4,13 +4,21 @@
 [ext_resource type="Script" uid="uid://tj5pa8edphum" path="res://scenes/ui/inventory/slots/inventory_slot.gd" id="2_2pwvc"]
 
 [node name="InventorySlot" type="TextureButton" unique_id=885528144]
-custom_minimum_size = Vector2(316, 215)
-offset_right = 113.0
-offset_bottom = 73.0
+custom_minimum_size = Vector2(210, 159)
+custom_maximum_size = Vector2(210, 159)
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -56.5
+offset_top = -25.0
+offset_right = 56.5
+offset_bottom = 25.0
+grow_horizontal = 2
+grow_vertical = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
-focus_neighbor_top = NodePath(".")
-focus_neighbor_bottom = NodePath(".")
 texture_normal = ExtResource("1_8fwgd")
 stretch_mode = 6
 script = ExtResource("2_2pwvc")

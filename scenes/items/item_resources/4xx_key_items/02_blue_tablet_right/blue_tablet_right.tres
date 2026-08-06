@@ -13,5 +13,4 @@ id = 402
 name = "Broken Tablet"
 description = "Looks incomplete"
 inventory_texture = SubResource("AtlasTexture_3srkw")
-can_use = true
 metadata/_custom_type_script = "uid://bqtff8hunhhx3"

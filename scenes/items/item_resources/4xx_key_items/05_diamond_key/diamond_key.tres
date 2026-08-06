@@ -13,5 +13,4 @@ id = 405
 name = "Diamond Key"
 description = "A key with a Diamond on it."
 inventory_texture = SubResource("AtlasTexture_3srkw")
-can_use = true
 metadata/_custom_type_script = "uid://bqtff8hunhhx3"

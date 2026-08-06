@@ -122,3 +122,21 @@ func is_debug_key2_pressed() -> bool:
 
 func is_debug_key3_pressed() -> bool:
 	return Input.is_action_just_pressed("debug3")
+
+func is_debug_key4_pressed() -> bool:
+	return Input.is_action_just_pressed("debug4")
+
+func is_debug_key5_pressed() -> bool:
+	return Input.is_action_just_pressed("debug5")
+
+func is_debug_key6_pressed() -> bool:
+	return Input.is_action_just_pressed("debug6")
+
+func is_debug_key7_pressed() -> bool:
+	return Input.is_action_just_pressed("debug7")
+
+func is_debug_key8_pressed() -> bool:
+	return Input.is_action_just_pressed("debug8")
+
+func is_debug_key9_pressed() -> bool:
+	return Input.is_action_just_pressed("debug9")

@@ -3,7 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://dd68ka1cr6pmj" path="res://scenes/interactable/intractable_template/interactable_template.tscn" id="1_u3y0r"]
 [ext_resource type="Script" uid="uid://cjwp17eu6gl4b" path="res://scenes/interactable/item_pickup/item_pickup.gd" id="2_f07lq"]
 [ext_resource type="Texture2D" uid="uid://deagnj441vopo" path="res://assets/textures/shape_a.png" id="4_gku27"]
-[ext_resource type="PackedScene" uid="uid://pv73ifebwwfh" path="res://scenes/ui/examination_text/interaction_prompt_btn.tscn" id="4_u3y0r"]
+[ext_resource type="PackedScene" uid="uid://pv73ifebwwfh" path="res://scenes/player/interaction_prompt/interaction_prompt_btn.tscn" id="4_u3y0r"]
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_uewjo"]
 radius = 1.0
@@ -22,7 +22,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 billboard = 1
 
 [node name="Amount" type="Label3D" parent="." index="2" unique_id=278144630]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.5, 2.1130497, 7)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.1130497, 0)
 billboard = 1
 font_size = 48
 

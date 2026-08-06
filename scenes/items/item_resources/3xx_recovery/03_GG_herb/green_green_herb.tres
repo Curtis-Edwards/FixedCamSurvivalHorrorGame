@@ -13,6 +13,6 @@ id = 303
 name = "Green + Red Herb"
 description = "Mmm very yummy "
 inventory_texture = SubResource("AtlasTexture_jrmod")
-can_use = true
+can_consume = true
 can_discard = true
 metadata/_custom_type_script = "uid://bqtff8hunhhx3"

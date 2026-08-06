@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://pv73ifebwwfh"]
 
-[ext_resource type="Script" uid="uid://dmiyhbfb2d8t0" path="res://scenes/ui/examination_text/interaction_prompt_btn.gd" id="1_fo8r5"]
+[ext_resource type="Script" uid="uid://dmiyhbfb2d8t0" path="res://scenes/player/interaction_prompt/interaction_prompt_btn.gd" id="1_fo8r5"]
 
 [node name="InteractionPromptBtn" type="Button" unique_id=1538059830]
 custom_maximum_size = Vector2(-1, 80)

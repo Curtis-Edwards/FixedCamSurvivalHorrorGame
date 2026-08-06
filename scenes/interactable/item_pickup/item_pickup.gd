@@ -34,6 +34,7 @@ func _update_display():
 		image.texture = null
 		label.text = ""
 
+
 func interact() -> void:
 	GameManager.player.start_interaction(self)
 	
@@ -54,7 +55,6 @@ func interact() -> void:
 	else:
 		take_btn.show()
 		if item_definition.max_stack == 1:
-			print("Max Stack is 1!")
 			increase_btn.hide()
 			decrease_btn.hide()
 			

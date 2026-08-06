@@ -42,24 +42,14 @@ func _on_pressed() -> void:
 			# COMBINING
 			CombinationManager.assign_combine_b(inventory_type, slot_index, item)
 			
-			
-			
 			if (CombinationManager.combine_index_a != CombinationManager.combine_index_b) or \
 			(CombinationManager.combine_type_a != CombinationManager.combine_type_b):
 				var combine_success = CombinationManager.combine(
 					CombinationManager.combine_item_a,
 					CombinationManager.combine_item_b
 				)
-				
-				if GameManager.ui.inv_screen.is_pickup_menu_open:
-					if combine_success:
-						GameManager.ui.inv_screen.current_pickup.take_amount(
-							GameManager.ui.inv_screen.pickup_amount
-							)
-						GameManager.ui.pop_state()
-						GameManager.ui.inv_screen.close_pickup_menu()
-					else:
-						GameManager.ui.inv_screen.open_pickup_menu()
+				if combine_success:
+					print("Combine Success.")
 			
 			CombinationManager.end_combine_state()
 			
@@ -69,9 +59,7 @@ func _on_pressed() -> void:
 
 
 func _on_focus_entered() -> void:
-	GameManager.ui.inv_screen.update_slots_neighbors()
 	if not disabled:
-		GameManager.ui.inv_screen.update_item_text_from_slot(inventory_type, slot_index)
 		GameManager.ui.inv_screen.focused_index = [inventory_type, slot_index]
 		modulate.a = 0.6
 
@@ -79,6 +67,7 @@ func _on_focus_entered() -> void:
 func _on_focus_exited() -> void:
 	if not disabled:
 		modulate.a = 1.0
+		pass
 
 
 func _on_mouse_entered() -> void:

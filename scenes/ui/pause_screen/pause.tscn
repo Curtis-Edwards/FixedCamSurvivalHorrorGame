@@ -1,6 +1,12 @@
-[gd_scene format=3 uid="uid://cwowheb4bn48u"]
+[gd_scene format=3 uid="uid://djoygsd2l6qs"]
 
-[node name="PauseScreen" type="Control" unique_id=1569017312]
+[ext_resource type="Script" uid="uid://vqwcj2s81fwy" path="res://scenes/ui/pause_screen/pause.gd" id="1_5dcoo"]
+[ext_resource type="Script" uid="uid://dob1gd3nq1pi4" path="res://scenes/ui/pause_screen/pause_ui.gd" id="2_lyriy"]
+
+[node name="Pause" type="Node" unique_id=438131269]
+script = ExtResource("1_5dcoo")
+
+[node name="PauseUI" type="Control" parent="." unique_id=1569017312]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -9,8 +15,9 @@ grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
+script = ExtResource("2_lyriy")
 
-[node name="ColorRect" type="ColorRect" parent="." unique_id=1725036398]
+[node name="ColorRect" type="ColorRect" parent="PauseUI" unique_id=1725036398]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -19,7 +26,7 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0.08866676, 0.38, 0.5254902)
 
-[node name="Label" type="Label" parent="." unique_id=1466178737]
+[node name="Label" type="Label" parent="PauseUI" unique_id=1466178737]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5

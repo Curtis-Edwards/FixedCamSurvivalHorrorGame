@@ -2,20 +2,14 @@
 
 [ext_resource type="Script" uid="uid://dylsvmrmint7j" path="res://scenes/ui/inventory/inventory.gd" id="1_4axmw"]
 [ext_resource type="PackedScene" uid="uid://ccksy6fm65ttn" path="res://scenes/ui/inventory/slots/inventory_slot.tscn" id="1_msrby"]
-[ext_resource type="Texture2D" uid="uid://d1qh3s1t6esi7" path="res://assets/textures/resi_2_sprite_sheet.png" id="2_lobmi"]
 [ext_resource type="Script" uid="uid://ca7j5truprmq1" path="res://scenes/ui/inventory/inventory_ui.gd" id="2_wi1cf"]
 [ext_resource type="PackedScene" uid="uid://beuyog2x42lfr" path="res://scenes/ui/inventory/sub_menu_buttons/button/inv_sub_menu_button.tscn" id="3_bsrov"]
 [ext_resource type="PackedScene" uid="uid://dk0kr4tfvn5dr" path="res://scenes/ui/inventory/item_examination/item_examination.tscn" id="5_8ndef"]
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_lobmi"]
-atlas = ExtResource("2_lobmi")
-region = Rect2(0, 438, 113, 73)
 
 [node name="Inventory" type="Node" unique_id=827783153]
 script = ExtResource("1_4axmw")
 
 [node name="InventoryUI" type="Control" parent="." unique_id=1809274956]
-visible = false
 layout_mode = 3
 anchor_top = 0.1
 anchor_right = 1.0
@@ -27,7 +21,6 @@ size_flags_vertical = 3
 script = ExtResource("2_wi1cf")
 
 [node name="Background" type="ColorRect" parent="InventoryUI" unique_id=2007262760]
-visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -36,9 +29,9 @@ offset_top = -1.0
 offset_bottom = -1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0, 0.14509805, 0.61960787, 1)
+color = Color(0, 0.14466682, 0.62, 0.20392157)
 
-[node name="InventoryScreen" type="VBoxContainer" parent="InventoryUI" unique_id=1729468554]
+[node name="InventoryScreen" type="HBoxContainer" parent="InventoryUI" unique_id=1281077017]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -46,195 +39,47 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="ItemBox" type="ScrollContainer" parent="InventoryUI/InventoryScreen" unique_id=1342152093]
-visible = false
-layout_mode = 2
-size_flags_vertical = 3
-follow_focus = true
-scroll_horizontal_custom_step = 1000.0
-horizontal_scroll_mode = 3
-vertical_scroll_mode = 0
-
-[node name="ItemBoxSlots" type="HBoxContainer" parent="InventoryUI/InventoryScreen/ItemBox" unique_id=771174381]
+[node name="ItemViewer" type="VBoxContainer" parent="InventoryUI/InventoryScreen" unique_id=561962327]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
-[node name="ItemBoxSlot0" parent="InventoryUI/InventoryScreen/ItemBox/ItemBoxSlots" unique_id=885528144 instance=ExtResource("1_msrby")]
-layout_mode = 2
-inventory_type = 1
-
-[node name="ItemBoxSlot1" parent="InventoryUI/InventoryScreen/ItemBox/ItemBoxSlots" unique_id=1844988356 instance=ExtResource("1_msrby")]
-layout_mode = 2
-slot_index = 1
-inventory_type = 1
-
-[node name="ItemBoxSlot2" parent="InventoryUI/InventoryScreen/ItemBox/ItemBoxSlots" unique_id=2133070710 instance=ExtResource("1_msrby")]
-layout_mode = 2
-slot_index = 2
-inventory_type = 1
-
-[node name="ItemBoxSlot3" parent="InventoryUI/InventoryScreen/ItemBox/ItemBoxSlots" unique_id=644561615 instance=ExtResource("1_msrby")]
-layout_mode = 2
-slot_index = 3
-inventory_type = 1
-
-[node name="ItemBoxSlot4" parent="InventoryUI/InventoryScreen/ItemBox/ItemBoxSlots" unique_id=953799056 instance=ExtResource("1_msrby")]
-layout_mode = 2
-slot_index = 4
-inventory_type = 1
-
-[node name="ItemBoxSlot5" parent="InventoryUI/InventoryScreen/ItemBox/ItemBoxSlots" unique_id=1925231527 instance=ExtResource("1_msrby")]
-layout_mode = 2
-slot_index = 5
-inventory_type = 1
-
-[node name="ItemBoxSlot6" parent="InventoryUI/InventoryScreen/ItemBox/ItemBoxSlots" unique_id=744478082 instance=ExtResource("1_msrby")]
-layout_mode = 2
-slot_index = 6
-inventory_type = 1
-
-[node name="ItemBoxSlot7" parent="InventoryUI/InventoryScreen/ItemBox/ItemBoxSlots" unique_id=103510060 instance=ExtResource("1_msrby")]
-layout_mode = 2
-slot_index = 7
-inventory_type = 1
-
-[node name="ItemBoxSlot8" parent="InventoryUI/InventoryScreen/ItemBox/ItemBoxSlots" unique_id=929923474 instance=ExtResource("1_msrby")]
-layout_mode = 2
-slot_index = 8
-inventory_type = 1
-
-[node name="ItemBoxSlot9" parent="InventoryUI/InventoryScreen/ItemBox/ItemBoxSlots" unique_id=1157178442 instance=ExtResource("1_msrby")]
-layout_mode = 2
-slot_index = 9
-inventory_type = 1
-
-[node name="ItemBoxSlot10" parent="InventoryUI/InventoryScreen/ItemBox/ItemBoxSlots" unique_id=1407864154 instance=ExtResource("1_msrby")]
-layout_mode = 2
-slot_index = 10
-inventory_type = 1
-
-[node name="ItemBoxSlot11" parent="InventoryUI/InventoryScreen/ItemBox/ItemBoxSlots" unique_id=987952174 instance=ExtResource("1_msrby")]
-layout_mode = 2
-slot_index = 11
-inventory_type = 1
-
-[node name="ItemBoxSlot12" parent="InventoryUI/InventoryScreen/ItemBox/ItemBoxSlots" unique_id=7462089 instance=ExtResource("1_msrby")]
-layout_mode = 2
-slot_index = 12
-inventory_type = 1
-
-[node name="ItemBoxSlot13" parent="InventoryUI/InventoryScreen/ItemBox/ItemBoxSlots" unique_id=608072523 instance=ExtResource("1_msrby")]
-layout_mode = 2
-slot_index = 13
-inventory_type = 1
-
-[node name="ItemBoxSlot14" parent="InventoryUI/InventoryScreen/ItemBox/ItemBoxSlots" unique_id=581067542 instance=ExtResource("1_msrby")]
-layout_mode = 2
-slot_index = 14
-inventory_type = 1
-
-[node name="ItemBoxSlot15" parent="InventoryUI/InventoryScreen/ItemBox/ItemBoxSlots" unique_id=327650407 instance=ExtResource("1_msrby")]
-layout_mode = 2
-slot_index = 15
-inventory_type = 1
-
-[node name="ItemBoxSlot16" parent="InventoryUI/InventoryScreen/ItemBox/ItemBoxSlots" unique_id=1851378079 instance=ExtResource("1_msrby")]
-layout_mode = 2
-slot_index = 16
-inventory_type = 1
-
-[node name="ItemBoxSlot17" parent="InventoryUI/InventoryScreen/ItemBox/ItemBoxSlots" unique_id=535903291 instance=ExtResource("1_msrby")]
-layout_mode = 2
-slot_index = 17
-inventory_type = 1
-
-[node name="ItemBoxSlot18" parent="InventoryUI/InventoryScreen/ItemBox/ItemBoxSlots" unique_id=586394868 instance=ExtResource("1_msrby")]
-layout_mode = 2
-slot_index = 18
-inventory_type = 1
-
-[node name="ItemBoxSlot19" parent="InventoryUI/InventoryScreen/ItemBox/ItemBoxSlots" unique_id=1655465900 instance=ExtResource("1_msrby")]
-layout_mode = 2
-slot_index = 19
-inventory_type = 1
-
-[node name="ItemInspector" type="HBoxContainer" parent="InventoryUI/InventoryScreen" unique_id=1080658076]
-clip_contents = true
+[node name="PlayerStats" type="Control" parent="InventoryUI/InventoryScreen/ItemViewer" unique_id=851249990]
 layout_mode = 2
 size_flags_vertical = 3
-size_flags_stretch_ratio = 3.0
 
-[node name="SubMenu" type="VBoxContainer" parent="InventoryUI/InventoryScreen/ItemInspector" unique_id=2039109495]
-visible = false
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-size_flags_stretch_ratio = 0.5
-
-[node name="EquipButton" parent="InventoryUI/InventoryScreen/ItemInspector/SubMenu" unique_id=1073158423 instance=ExtResource("3_bsrov")]
-visible = false
-layout_mode = 2
-focus_neighbor_left = NodePath("../DiscardButton")
-text = "Equip"
-
-[node name="UseButton" parent="InventoryUI/InventoryScreen/ItemInspector/SubMenu" unique_id=390440294 instance=ExtResource("3_bsrov")]
-visible = false
-layout_mode = 2
-text = "Use"
-
-[node name="ExamineButton" parent="InventoryUI/InventoryScreen/ItemInspector/SubMenu" unique_id=83345133 instance=ExtResource("3_bsrov")]
-visible = false
-layout_mode = 2
-text = "Examine"
-
-[node name="CombineButton" parent="InventoryUI/InventoryScreen/ItemInspector/SubMenu" unique_id=38430327 instance=ExtResource("3_bsrov")]
-visible = false
-layout_mode = 2
-text = "Combine
-"
-
-[node name="TransferButton" parent="InventoryUI/InventoryScreen/ItemInspector/SubMenu" unique_id=1115732726 instance=ExtResource("3_bsrov")]
-visible = false
-layout_mode = 2
-focus_neighbor_right = NodePath("../EquipButton")
-text = "Transfer"
-
-[node name="DiscardButton" parent="InventoryUI/InventoryScreen/ItemInspector/SubMenu" unique_id=647282190 instance=ExtResource("3_bsrov")]
-visible = false
-layout_mode = 2
-focus_neighbor_right = NodePath("../EquipButton")
-text = "Discard"
-
-[node name="CloseButton" parent="InventoryUI/InventoryScreen/ItemInspector/SubMenu" unique_id=1563439566 instance=ExtResource("3_bsrov")]
-visible = false
-layout_mode = 2
-focus_neighbor_left = NodePath("../DiscardButton")
-text = "Close"
-
-[node name="ItemViewer" type="Panel" parent="InventoryUI/InventoryScreen/ItemInspector" unique_id=1466884341]
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_stretch_ratio = 1.5
-
-[node name="ItemTexture" type="TextureRect" parent="InventoryUI/InventoryScreen/ItemInspector/ItemViewer" unique_id=1164492235]
-visible = false
+[node name="Background" type="ColorRect" parent="InventoryUI/InventoryScreen/ItemViewer/PlayerStats" unique_id=883718160]
 layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.3
-anchor_right = 0.7
+anchors_preset = 15
+anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -56.5
-offset_top = -36.5
-offset_right = 56.5
-offset_bottom = 36.5
 grow_horizontal = 2
 grow_vertical = 2
-pivot_offset_ratio = Vector2(0.5, 0.5)
-texture = SubResource("AtlasTexture_lobmi")
-stretch_mode = 5
+color = Color(0, 0.14509805, 0.61960787, 1)
 
-[node name="SubViewportContainer" type="SubViewportContainer" parent="InventoryUI/InventoryScreen/ItemInspector/ItemViewer" unique_id=1073326713]
+[node name="Label" type="Label" parent="InventoryUI/InventoryScreen/ItemViewer/PlayerStats" unique_id=491503129]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -11.5
+offset_right = 20.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 43
+text = "Player Stats"
+
+[node name="ItemViewer" type="Control" parent="InventoryUI/InventoryScreen/ItemViewer" unique_id=1380813761]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 2.0
+
+[node name="SubViewportContainer" type="SubViewportContainer" parent="InventoryUI/InventoryScreen/ItemViewer/ItemViewer" unique_id=265154778]
+visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -243,93 +88,272 @@ grow_horizontal = 2
 grow_vertical = 2
 stretch = true
 
-[node name="SubViewport" type="SubViewport" parent="InventoryUI/InventoryScreen/ItemInspector/ItemViewer/SubViewportContainer" unique_id=523546075]
+[node name="SubViewport" type="SubViewport" parent="InventoryUI/InventoryScreen/ItemViewer/ItemViewer/SubViewportContainer" unique_id=304362389]
 own_world_3d = true
-transparent_bg = true
 handle_input_locally = false
-size = Vector2i(1149, 726)
+size = Vector2i(1064, 646)
 render_target_update_mode = 0
 
-[node name="ItemExamination" parent="InventoryUI/InventoryScreen/ItemInspector/ItemViewer/SubViewportContainer/SubViewport" unique_id=597306632 instance=ExtResource("5_8ndef")]
+[node name="ItemExamination" parent="InventoryUI/InventoryScreen/ItemViewer/ItemViewer/SubViewportContainer/SubViewport" unique_id=162566845 instance=ExtResource("5_8ndef")]
 
-[node name="ItemInfo" type="Panel" parent="InventoryUI/InventoryScreen/ItemInspector" unique_id=2009652562]
+[node name="Inventory" type="VBoxContainer" parent="InventoryUI/InventoryScreen" unique_id=1403096004]
 layout_mode = 2
 size_flags_horizontal = 3
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.8
 
-[node name="ItemText" type="VBoxContainer" parent="InventoryUI/InventoryScreen/ItemInspector/ItemInfo" unique_id=1798821944]
+[node name="InventorySlots" type="Control" parent="InventoryUI/InventoryScreen/Inventory" unique_id=1237889633]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Background" type="ColorRect" parent="InventoryUI/InventoryScreen/Inventory/InventorySlots" unique_id=1788744602]
 layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.05
-anchor_top = 0.05
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0.14509805, 0.61960787, 1)
+
+[node name="Slots" type="GridContainer" parent="InventoryUI/InventoryScreen/Inventory/InventorySlots" unique_id=1308141508]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 3
+columns = 4
+
+[node name="InventorySlot0" parent="InventoryUI/InventoryScreen/Inventory/InventorySlots/Slots" unique_id=885528144 instance=ExtResource("1_msrby")]
+layout_mode = 2
+
+[node name="InventorySlot1" parent="InventoryUI/InventoryScreen/Inventory/InventorySlots/Slots" unique_id=71566618 instance=ExtResource("1_msrby")]
+layout_mode = 2
+slot_index = 1
+
+[node name="InventorySlot2" parent="InventoryUI/InventoryScreen/Inventory/InventorySlots/Slots" unique_id=1677828293 instance=ExtResource("1_msrby")]
+layout_mode = 2
+slot_index = 2
+
+[node name="InventorySlot3" parent="InventoryUI/InventoryScreen/Inventory/InventorySlots/Slots" unique_id=1107654902 instance=ExtResource("1_msrby")]
+layout_mode = 2
+slot_index = 3
+
+[node name="InventorySlot4" parent="InventoryUI/InventoryScreen/Inventory/InventorySlots/Slots" unique_id=1960181738 instance=ExtResource("1_msrby")]
+layout_mode = 2
+slot_index = 4
+
+[node name="InventorySlot5" parent="InventoryUI/InventoryScreen/Inventory/InventorySlots/Slots" unique_id=1790673147 instance=ExtResource("1_msrby")]
+layout_mode = 2
+slot_index = 5
+
+[node name="InventorySlot6" parent="InventoryUI/InventoryScreen/Inventory/InventorySlots/Slots" unique_id=1566653898 instance=ExtResource("1_msrby")]
+layout_mode = 2
+slot_index = 6
+
+[node name="InventorySlot7" parent="InventoryUI/InventoryScreen/Inventory/InventorySlots/Slots" unique_id=459460193 instance=ExtResource("1_msrby")]
+layout_mode = 2
+slot_index = 7
+
+[node name="ActionMenu" type="Control" parent="InventoryUI/InventoryScreen/Inventory" unique_id=1357871249]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Background" type="ColorRect" parent="InventoryUI/InventoryScreen/Inventory/ActionMenu" unique_id=2136424029]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0.14509805, 0.61960787, 1)
+
+[node name="Menus" type="VBoxContainer" parent="InventoryUI/InventoryScreen/Inventory/ActionMenu" unique_id=962544595]
+layout_mode = 1
+anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Name" type="Label" parent="InventoryUI/InventoryScreen/ItemInspector/ItemInfo/ItemText" unique_id=298414774]
+[node name="ActionMenu" type="GridContainer" parent="InventoryUI/InventoryScreen/Inventory/ActionMenu/Menus" unique_id=1557332607]
 layout_mode = 2
-theme_override_font_sizes/font_size = 48
-text = "\"Name\""
-visible_characters = 0
-visible_ratio = 0.0
+size_flags_vertical = 3
+size_flags_stretch_ratio = 2.0
+columns = 3
 
-[node name="Description" type="Label" parent="InventoryUI/InventoryScreen/ItemInspector/ItemInfo/ItemText" unique_id=690031949]
+[node name="UseBtn" parent="InventoryUI/InventoryScreen/Inventory/ActionMenu/Menus/ActionMenu" unique_id=393091105 instance=ExtResource("3_bsrov")]
 layout_mode = 2
-theme_override_colors/font_color = Color(0.73, 0.73, 0.73, 1)
-theme_override_font_sizes/font_size = 32
-text = "Description
-...
-..."
-visible_characters = 0
-visible_ratio = 0.0
+focus_neighbor_top = NodePath(".")
+focus_neighbor_right = NodePath("../EquipBtn")
+text = "Use"
 
-[node name="InventorySlots" type="HBoxContainer" parent="InventoryUI/InventoryScreen" unique_id=1934034686]
+[node name="EquipBtn" parent="InventoryUI/InventoryScreen/Inventory/ActionMenu/Menus/ActionMenu" unique_id=1752571161 instance=ExtResource("3_bsrov")]
+layout_mode = 2
+focus_neighbor_left = NodePath("../UseBtn")
+focus_neighbor_top = NodePath(".")
+focus_neighbor_right = NodePath("../DiscardBtn")
+text = "Equip"
+
+[node name="DiscardBtn" parent="InventoryUI/InventoryScreen/Inventory/ActionMenu/Menus/ActionMenu" unique_id=888065948 instance=ExtResource("3_bsrov")]
+layout_mode = 2
+focus_neighbor_left = NodePath("../EquipBtn")
+focus_neighbor_top = NodePath(".")
+text = "Discard"
+
+[node name="ConsumeBtn" parent="InventoryUI/InventoryScreen/Inventory/ActionMenu/Menus/ActionMenu" unique_id=2036102556 instance=ExtResource("3_bsrov")]
+layout_mode = 2
+text = "Consume"
+
+[node name="CombineBtn" parent="InventoryUI/InventoryScreen/Inventory/ActionMenu/Menus/ActionMenu" unique_id=1773412671 instance=ExtResource("3_bsrov")]
+layout_mode = 2
+text = "Combine"
+
+[node name="CloseBtn" parent="InventoryUI/InventoryScreen/Inventory/ActionMenu/Menus/ActionMenu" unique_id=278705645 instance=ExtResource("3_bsrov")]
+layout_mode = 2
+text = "Close"
+
+[node name="TransferMenu" type="GridContainer" parent="InventoryUI/InventoryScreen/Inventory/ActionMenu/Menus" unique_id=1286670080]
+layout_mode = 2
+size_flags_vertical = 3
+columns = 3
+
+[node name="DecreaseBtn" parent="InventoryUI/InventoryScreen/Inventory/ActionMenu/Menus/TransferMenu" unique_id=1563439566 instance=ExtResource("3_bsrov")]
+layout_mode = 2
+focus_neighbor_right = NodePath("../TransferBtn")
+focus_neighbor_bottom = NodePath(".")
+text = "-"
+
+[node name="TransferBtn" parent="InventoryUI/InventoryScreen/Inventory/ActionMenu/Menus/TransferMenu" unique_id=1506014382 instance=ExtResource("3_bsrov")]
+layout_mode = 2
+focus_neighbor_left = NodePath("../DecreaseBtn")
+focus_neighbor_right = NodePath("../IncreaseBtn")
+focus_neighbor_bottom = NodePath(".")
+text = "Transfer"
+
+[node name="IncreaseBtn" parent="InventoryUI/InventoryScreen/Inventory/ActionMenu/Menus/TransferMenu" unique_id=2079348578 instance=ExtResource("3_bsrov")]
+layout_mode = 2
+focus_neighbor_left = NodePath("../TransferBtn")
+focus_neighbor_bottom = NodePath(".")
+text = "+"
+
+[node name="ItemBoxSlots" type="Control" parent="InventoryUI/InventoryScreen/Inventory" unique_id=1531701411]
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="InventorySlot0" parent="InventoryUI/InventoryScreen/InventorySlots" unique_id=1319944331 instance=ExtResource("1_msrby")]
-layout_mode = 2
-focus_neighbor_left = NodePath("../InventorySlot5")
-focus_neighbor_top = NodePath("../../ItemBox/ItemBoxSlots/ItemBoxSlot0")
-focus_neighbor_bottom = NodePath("../../ItemBox/ItemBoxSlots/ItemBoxSlot0")
+[node name="Background" type="ColorRect" parent="InventoryUI/InventoryScreen/Inventory/ItemBoxSlots" unique_id=714907322]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0.14509805, 0.61960787, 1)
 
-[node name="InventorySlot1" parent="InventoryUI/InventoryScreen/InventorySlots" unique_id=376252541 instance=ExtResource("1_msrby")]
+[node name="ScrollContainer" type="ScrollContainer" parent="InventoryUI/InventoryScreen/Inventory/ItemBoxSlots" unique_id=1314504389]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+follow_focus = true
+scroll_vertical_custom_step = 500.0
+horizontal_scroll_mode = 0
+vertical_scroll_mode = 3
+
+[node name="Slots" type="GridContainer" parent="InventoryUI/InventoryScreen/Inventory/ItemBoxSlots/ScrollContainer" unique_id=136108922]
 layout_mode = 2
-focus_neighbor_top = NodePath("../../ItemBox/ItemBoxSlots/ItemBoxSlot1")
-focus_neighbor_bottom = NodePath("../../ItemBox/ItemBoxSlots/ItemBoxSlot1")
+size_flags_horizontal = 3
+size_flags_vertical = 3
+columns = 4
+
+[node name="ItemBoxSlot0" parent="InventoryUI/InventoryScreen/Inventory/ItemBoxSlots/ScrollContainer/Slots" unique_id=594365164 instance=ExtResource("1_msrby")]
+layout_mode = 2
+inventory_type = 1
+
+[node name="ItemBoxSlot1" parent="InventoryUI/InventoryScreen/Inventory/ItemBoxSlots/ScrollContainer/Slots" unique_id=1684562527 instance=ExtResource("1_msrby")]
+layout_mode = 2
 slot_index = 1
+inventory_type = 1
 
-[node name="InventorySlot2" parent="InventoryUI/InventoryScreen/InventorySlots" unique_id=1516545039 instance=ExtResource("1_msrby")]
+[node name="ItemBoxSlot2" parent="InventoryUI/InventoryScreen/Inventory/ItemBoxSlots/ScrollContainer/Slots" unique_id=551762720 instance=ExtResource("1_msrby")]
 layout_mode = 2
-focus_neighbor_top = NodePath("../../ItemBox/ItemBoxSlots/ItemBoxSlot2")
-focus_neighbor_bottom = NodePath("../../ItemBox/ItemBoxSlots/ItemBoxSlot2")
 slot_index = 2
+inventory_type = 1
 
-[node name="InventorySlot3" parent="InventoryUI/InventoryScreen/InventorySlots" unique_id=2004201131 instance=ExtResource("1_msrby")]
+[node name="ItemBoxSlot3" parent="InventoryUI/InventoryScreen/Inventory/ItemBoxSlots/ScrollContainer/Slots" unique_id=392289748 instance=ExtResource("1_msrby")]
 layout_mode = 2
-focus_neighbor_top = NodePath("../../ItemBox/ItemBoxSlots/ItemBoxSlot3")
-focus_neighbor_bottom = NodePath("../../ItemBox/ItemBoxSlots/ItemBoxSlot3")
 slot_index = 3
+inventory_type = 1
 
-[node name="InventorySlot4" parent="InventoryUI/InventoryScreen/InventorySlots" unique_id=306585580 instance=ExtResource("1_msrby")]
+[node name="ItemBoxSlot4" parent="InventoryUI/InventoryScreen/Inventory/ItemBoxSlots/ScrollContainer/Slots" unique_id=1935764828 instance=ExtResource("1_msrby")]
 layout_mode = 2
-focus_neighbor_top = NodePath("../../ItemBox/ItemBoxSlots/ItemBoxSlot4")
-focus_neighbor_bottom = NodePath("../../ItemBox/ItemBoxSlots/ItemBoxSlot4")
 slot_index = 4
+inventory_type = 1
 
-[node name="InventorySlot5" parent="InventoryUI/InventoryScreen/InventorySlots" unique_id=529580582 instance=ExtResource("1_msrby")]
+[node name="ItemBoxSlot5" parent="InventoryUI/InventoryScreen/Inventory/ItemBoxSlots/ScrollContainer/Slots" unique_id=1290005312 instance=ExtResource("1_msrby")]
 layout_mode = 2
-focus_neighbor_top = NodePath("../../ItemBox/ItemBoxSlots/ItemBoxSlot5")
-focus_neighbor_right = NodePath("../InventorySlot0")
-focus_neighbor_bottom = NodePath("../../ItemBox/ItemBoxSlots/ItemBoxSlot5")
 slot_index = 5
+inventory_type = 1
 
-[connection signal="gui_input" from="InventoryUI/InventoryScreen/ItemBox" to="InventoryUI" method="_on_item_box_gui_input"]
-[connection signal="pressed" from="InventoryUI/InventoryScreen/ItemInspector/SubMenu/EquipButton" to="InventoryUI" method="_on_equip_button_pressed"]
-[connection signal="pressed" from="InventoryUI/InventoryScreen/ItemInspector/SubMenu/UseButton" to="InventoryUI" method="_on_use_button_pressed"]
-[connection signal="pressed" from="InventoryUI/InventoryScreen/ItemInspector/SubMenu/ExamineButton" to="InventoryUI" method="_on_examine_button_pressed"]
-[connection signal="pressed" from="InventoryUI/InventoryScreen/ItemInspector/SubMenu/CombineButton" to="InventoryUI" method="_on_combine_button_pressed"]
-[connection signal="gui_input" from="InventoryUI/InventoryScreen/ItemInspector/SubMenu/TransferButton" to="InventoryUI" method="_on_transfer_button_gui_input"]
-[connection signal="pressed" from="InventoryUI/InventoryScreen/ItemInspector/SubMenu/TransferButton" to="InventoryUI" method="_on_transfer_button_pressed"]
-[connection signal="pressed" from="InventoryUI/InventoryScreen/ItemInspector/SubMenu/DiscardButton" to="InventoryUI" method="_on_discard_button_pressed"]
-[connection signal="pressed" from="InventoryUI/InventoryScreen/ItemInspector/SubMenu/CloseButton" to="InventoryUI" method="_on_close_button_pressed"]
+[node name="ItemBoxSlot6" parent="InventoryUI/InventoryScreen/Inventory/ItemBoxSlots/ScrollContainer/Slots" unique_id=647807495 instance=ExtResource("1_msrby")]
+layout_mode = 2
+slot_index = 6
+inventory_type = 1
+
+[node name="ItemBoxSlot7" parent="InventoryUI/InventoryScreen/Inventory/ItemBoxSlots/ScrollContainer/Slots" unique_id=1675235297 instance=ExtResource("1_msrby")]
+layout_mode = 2
+slot_index = 7
+inventory_type = 1
+
+[node name="ItemBoxSlot8" parent="InventoryUI/InventoryScreen/Inventory/ItemBoxSlots/ScrollContainer/Slots" unique_id=1732484231 instance=ExtResource("1_msrby")]
+layout_mode = 2
+slot_index = 8
+inventory_type = 1
+
+[node name="ItemBoxSlot9" parent="InventoryUI/InventoryScreen/Inventory/ItemBoxSlots/ScrollContainer/Slots" unique_id=1566227195 instance=ExtResource("1_msrby")]
+layout_mode = 2
+slot_index = 9
+inventory_type = 1
+
+[node name="ItemBoxSlot10" parent="InventoryUI/InventoryScreen/Inventory/ItemBoxSlots/ScrollContainer/Slots" unique_id=729997778 instance=ExtResource("1_msrby")]
+layout_mode = 2
+slot_index = 10
+inventory_type = 1
+
+[node name="ItemBoxSlot11" parent="InventoryUI/InventoryScreen/Inventory/ItemBoxSlots/ScrollContainer/Slots" unique_id=2055064491 instance=ExtResource("1_msrby")]
+layout_mode = 2
+slot_index = 11
+inventory_type = 1
+
+[node name="ItemBoxSlot12" parent="InventoryUI/InventoryScreen/Inventory/ItemBoxSlots/ScrollContainer/Slots" unique_id=1043533426 instance=ExtResource("1_msrby")]
+layout_mode = 2
+slot_index = 12
+inventory_type = 1
+
+[node name="ItemBoxSlot13" parent="InventoryUI/InventoryScreen/Inventory/ItemBoxSlots/ScrollContainer/Slots" unique_id=1586158481 instance=ExtResource("1_msrby")]
+layout_mode = 2
+slot_index = 13
+inventory_type = 1
+
+[node name="ItemBoxSlot14" parent="InventoryUI/InventoryScreen/Inventory/ItemBoxSlots/ScrollContainer/Slots" unique_id=1541311366 instance=ExtResource("1_msrby")]
+layout_mode = 2
+slot_index = 14
+inventory_type = 1
+
+[node name="ItemBoxSlot15" parent="InventoryUI/InventoryScreen/Inventory/ItemBoxSlots/ScrollContainer/Slots" unique_id=702514306 instance=ExtResource("1_msrby")]
+layout_mode = 2
+slot_index = 15
+inventory_type = 1
+
+[connection signal="pressed" from="InventoryUI/InventoryScreen/Inventory/ActionMenu/Menus/ActionMenu/UseBtn" to="InventoryUI" method="_on_use_btn_pressed"]
+[connection signal="pressed" from="InventoryUI/InventoryScreen/Inventory/ActionMenu/Menus/ActionMenu/EquipBtn" to="InventoryUI" method="_on_equip_btn_pressed"]
+[connection signal="pressed" from="InventoryUI/InventoryScreen/Inventory/ActionMenu/Menus/ActionMenu/DiscardBtn" to="InventoryUI" method="_on_discard_btn_pressed"]
+[connection signal="pressed" from="InventoryUI/InventoryScreen/Inventory/ActionMenu/Menus/ActionMenu/ConsumeBtn" to="InventoryUI" method="_on_consume_btn_pressed"]
+[connection signal="pressed" from="InventoryUI/InventoryScreen/Inventory/ActionMenu/Menus/ActionMenu/CombineBtn" to="InventoryUI" method="_on_combine_btn_pressed"]
+[connection signal="pressed" from="InventoryUI/InventoryScreen/Inventory/ActionMenu/Menus/ActionMenu/CloseBtn" to="InventoryUI" method="_on_close_btn_pressed"]
+[connection signal="pressed" from="InventoryUI/InventoryScreen/Inventory/ActionMenu/Menus/TransferMenu/DecreaseBtn" to="InventoryUI" method="_on_decrease_btn_pressed"]
+[connection signal="pressed" from="InventoryUI/InventoryScreen/Inventory/ActionMenu/Menus/TransferMenu/TransferBtn" to="InventoryUI" method="_on_transfer_btn_pressed"]
+[connection signal="pressed" from="InventoryUI/InventoryScreen/Inventory/ActionMenu/Menus/TransferMenu/IncreaseBtn" to="InventoryUI" method="_on_increase_btn_pressed"]
