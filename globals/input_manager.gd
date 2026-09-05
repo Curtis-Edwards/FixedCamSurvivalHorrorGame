@@ -3,117 +3,135 @@ extends Node
 func _ready():
 	process_mode = Node.PROCESS_MODE_ALWAYS
 
-"""
-Player Inputs
-"""
+#region Player Inputs
+# Movement
 func get_player_move_axis() -> float:
-	if GameManager.player.lock_player_input:
-		return 0.0
+	#if not GameManager.ui.is_cur_state_closed():
+		#return 0.0
+	#
+	#if not (GameManager.player.is_state_normal() or GameManager.player.is_state_aiming()):
+		#return 0.0
 	
-	return float(Input.is_action_pressed("ui_up")) - float(Input.is_action_pressed("ui_down"))
+	return float(Input.is_action_pressed("tank_forward")) - float(Input.is_action_pressed("tank_backward"))
 
 func get_player_rotation_axis() -> float:
-	if GameManager.player.lock_player_input:
-		return 0.0
+	#if not GameManager.ui.is_cur_state_closed():
+		#return 0.0
+	#
+	#if not (GameManager.player.is_state_normal() or GameManager.player.is_state_aiming()):
+		#return 0.0
 	
-	return float(Input.is_action_pressed("ui_right")) - float(Input.is_action_pressed("ui_left"))
+	return float(Input.is_action_pressed("tank_right")) - float(Input.is_action_pressed("tank_left"))
 
-func get_quick_turn()  -> bool:
-	if GameManager.player.lock_player_input:
-		return false
-	else:
-		return Input.is_action_pressed("ui_down") and Input.is_action_just_pressed("sprint")
-
+func is_quick_turn_inputed()  -> bool:
+	#if not GameManager.ui.is_cur_state_closed():
+		#return false
+	#
+	#if not GameManager.player.is_state_normal():
+		#return false
+	
+	#return Input.is_action_pressed("ui_down") and Input.is_action_just_pressed("sprint")
+	
+	return (
+		(GameManager.player.get_player_state() == "Walk Backward") and \
+		Input.is_action_just_pressed("sprint")
+	)
 
 func is_sprint_pressed() -> bool:
-	if GameManager.player.lock_player_input:
-		return false
-	else:
-		return not Input.is_action_pressed("ui_down") and Input.is_action_just_pressed("sprint")
+	#if not GameManager.ui.is_cur_state_closed():
+		#return false
+	#
+	#if not GameManager.player.is_state_normal():
+		#return false
+	
+	return not Input.is_action_pressed("ui_down") and Input.is_action_just_pressed("sprint")
 
 func is_sprint_held() -> bool:
-	if GameManager.player.lock_player_input:
-		return false
-	else:
-		return Input.is_action_pressed("sprint")
+	#if not GameManager.ui.is_cur_state_closed():
+		#return false
+	#
+	#if not GameManager.player.is_state_normal():
+		#return false
+	
+	return not Input.is_action_pressed("ui_down") and Input.is_action_pressed("sprint")
 
-
+# Other
 func is_interact_pressed() -> bool:
-	if GameManager.player.lock_player_input:
-		return false
-	else:
-		return Input.is_action_just_pressed("ui_accept")
-
-func is_shoot_pressed() -> bool:
-	if GameManager.player.lock_player_input:
-		return false
-	else:
-		return Input.is_action_just_pressed("player_shoot")
+	#if not GameManager.ui.is_cur_state_closed():
+		#return false
+	#
+	#if not GameManager.player.is_state_normal():
+		#return false
+	
+	return Input.is_action_just_pressed("interact")
 
 func is_shoot_held() -> bool:
-	if GameManager.player.lock_player_input:
-		return false
-	else:
-		return Input.is_action_pressed("player_shoot")
+	#if not GameManager.ui.is_cur_state_closed():
+		#return false
+	#
+	#if not GameManager.player.is_state_aiming():
+		#return false
+	
+	return Input.is_action_pressed("player_shoot")
 
 func is_aim_pressed() -> bool:
-	if GameManager.player.lock_player_input:
-		return false
-	else:
-		return Input.is_action_just_pressed("player_aim")
+	#if not GameManager.ui.is_cur_state_closed():
+		#return false
+	#
+	#if not GameManager.player.is_state_normal():
+		#return false
+	
+	return Input.is_action_just_pressed("player_aim")
 
 func is_aim_held() -> bool:
-	if GameManager.player.lock_player_input:
-		return false
-	else:
-		return Input.is_action_pressed("player_aim")
+	#if not GameManager.ui.is_cur_state_closed():
+		#return false
+	#
+	#if not (GameManager.player.is_state_normal() or GameManager.player.is_state_aiming()):
+		#return false
+	
+	return Input.is_action_pressed("player_aim")
+#endregion
 
 
-"""
-UI Inputs
-"""
-func get_vertical_axis() -> float:
-	return Input.get_axis("ui_down", "ui_up")
-
-func get_horizontal_axis() -> float:
-	return Input.get_axis("ui_left", "ui_right")
-
-func get_zoom_axis() -> float:
-	return Input.get_axis("zoom_out", "zoom_in")
-
-
+#region UI Inputs
 func is_accept_pressed() -> bool:
+	if GameManager.ui.is_cur_state_closed():
+		return false
+	
 	return Input.is_action_just_pressed("ui_accept")
 
 func is_cancel_pressed() -> bool:
+	if GameManager.ui.is_cur_state_closed():
+		return false
+	
 	return Input.is_action_just_pressed("ui_cancel")
 
 
 func is_inventory_pressed() -> bool:
-	if GameManager.player.lock_menu_input:
+	if GameManager.ui.is_cur_state_paused():
 		return false
-	else:
-		return Input.is_action_just_pressed("open_inventory")
+	
+	return Input.is_action_just_pressed("open_inventory")
 
 func is_map_pressed() -> bool:
-	if GameManager.player.lock_menu_input:
+	if GameManager.ui.is_cur_state_paused():
 		return false
-	else:
-		return Input.is_action_just_pressed("open_map")
+	
+	return Input.is_action_just_pressed("open_map")
 
 func is_notes_pressed() -> bool:
-	if GameManager.player.lock_menu_input:
+	if GameManager.ui.is_cur_state_paused():
 		return false
-	else:
-		return Input.is_action_just_pressed("open_notes")
+	
+	return Input.is_action_just_pressed("open_notes")
 
 func is_paused_pressed() -> bool:
 	return Input.is_action_just_pressed("open_pause")
+#endregion
 
 
-"""
-Debug Inputs
-"""
+#region Debug Inputs
 func is_debug_key1_pressed() -> bool:
 	return Input.is_action_just_pressed("debug1")
 
@@ -140,3 +158,4 @@ func is_debug_key8_pressed() -> bool:
 
 func is_debug_key9_pressed() -> bool:
 	return Input.is_action_just_pressed("debug9")
+#endregion

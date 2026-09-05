@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://brewwo7a1rh06" path="res://scenes/ui/map/map.tscn" id="4_pfayw"]
 [ext_resource type="PackedScene" uid="uid://ba5ll2nnvjtuj" path="res://scenes/ui/notes/notes.tscn" id="5_7vp6q"]
 [ext_resource type="PackedScene" uid="uid://djoygsd2l6qs" path="res://scenes/ui/pause_screen/pause.tscn" id="6_pfayw"]
+[ext_resource type="PackedScene" uid="uid://bwxo8t4gybr0r" path="res://scenes/ui/dev_panel/dev_panel.tscn" id="7_7vp6q"]
 
 [node name="UI" type="CanvasLayer" unique_id=257678840]
 process_mode = 3
@@ -23,6 +24,8 @@ anchor_bottom = 0.1
 [node name="Notes" parent="." unique_id=2051857582 instance=ExtResource("5_7vp6q")]
 
 [node name="Pause" parent="." unique_id=438131269 instance=ExtResource("6_pfayw")]
+
+[node name="DevPanel" parent="." unique_id=520112781 instance=ExtResource("7_7vp6q")]
 
 [editable path="MenuNavBar"]
 [editable path="Inventory"]

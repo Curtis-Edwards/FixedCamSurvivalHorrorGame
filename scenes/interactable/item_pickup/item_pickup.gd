@@ -35,8 +35,8 @@ func _update_display():
 		label.text = ""
 
 
-func interact() -> void:
-	GameManager.player.start_interaction(self)
+func do_interaction() -> void:
+	#GameManager.player.start_interaction(self)
 	
 	var amount_str = " (" + str(amount) + ")" if item_definition.max_stack > 1 else ""
 	
@@ -52,6 +52,8 @@ func interact() -> void:
 			"Inventory full. Cannot pick up the " +
 			str(item_definition.name) + amount_str
 		)
+		GameManager.player.inteaction_prompt.focused_btn = GameManager.player.inteaction_prompt.exit_btn
+		GameManager.player.inteaction_prompt.focus_focused_btn()
 	else:
 		take_btn.show()
 		if item_definition.max_stack == 1:
@@ -70,6 +72,10 @@ func interact() -> void:
 			"Will you take the " +
 			str(item_definition.name) + amount_str + "?"
 		)
+		GameManager.player.inteaction_prompt.focused_btn = take_btn
+		GameManager.player.inteaction_prompt.focus_focused_btn()
+
+
 
 func update_take_btn_text(not_statckable: bool) -> void:
 	if not_statckable:

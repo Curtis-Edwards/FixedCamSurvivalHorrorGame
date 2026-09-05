@@ -4,7 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://ccksy6fm65ttn" path="res://scenes/ui/inventory/slots/inventory_slot.tscn" id="1_msrby"]
 [ext_resource type="Script" uid="uid://ca7j5truprmq1" path="res://scenes/ui/inventory/inventory_ui.gd" id="2_wi1cf"]
 [ext_resource type="PackedScene" uid="uid://beuyog2x42lfr" path="res://scenes/ui/inventory/sub_menu_buttons/button/inv_sub_menu_button.tscn" id="3_bsrov"]
-[ext_resource type="PackedScene" uid="uid://dk0kr4tfvn5dr" path="res://scenes/ui/inventory/item_examination/item_examination.tscn" id="5_8ndef"]
+[ext_resource type="PackedScene" uid="uid://bihtmajhoxygv" path="res://scenes/ui/inventory/item_viewer/item_viewer.tscn" id="4_wi1cf"]
 
 [node name="Inventory" type="Node" unique_id=827783153]
 script = ExtResource("1_4axmw")
@@ -39,16 +39,16 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="ItemViewer" type="VBoxContainer" parent="InventoryUI/InventoryScreen" unique_id=561962327]
+[node name="PlayerStats" type="VBoxContainer" parent="InventoryUI/InventoryScreen" unique_id=2145828593]
 layout_mode = 2
 size_flags_horizontal = 3
-size_flags_vertical = 3
+size_flags_stretch_ratio = 0.2
 
-[node name="PlayerStats" type="Control" parent="InventoryUI/InventoryScreen/ItemViewer" unique_id=851249990]
+[node name="HealthDisplay" type="Control" parent="InventoryUI/InventoryScreen/PlayerStats" unique_id=851249990]
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="Background" type="ColorRect" parent="InventoryUI/InventoryScreen/ItemViewer/PlayerStats" unique_id=883718160]
+[node name="Background" type="ColorRect" parent="InventoryUI/InventoryScreen/PlayerStats/HealthDisplay" unique_id=883718160]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -57,29 +57,69 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0.14509805, 0.61960787, 1)
 
-[node name="Label" type="Label" parent="InventoryUI/InventoryScreen/ItemViewer/PlayerStats" unique_id=491503129]
+[node name="PlayerHealth" type="Label" parent="InventoryUI/InventoryScreen/PlayerStats/HealthDisplay" unique_id=1264449553]
 layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -20.0
-offset_top = -11.5
-offset_right = 20.0
-offset_bottom = 11.5
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_font_sizes/font_size = 43
-text = "Player Stats"
+theme_override_font_sizes/font_size = 54
+text = "6 / 6"
+horizontal_alignment = 1
+vertical_alignment = 1
 
-[node name="ItemViewer" type="Control" parent="InventoryUI/InventoryScreen/ItemViewer" unique_id=1380813761]
+[node name="SaveCount" type="Control" parent="InventoryUI/InventoryScreen/PlayerStats" unique_id=943480185]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Background" type="ColorRect" parent="InventoryUI/InventoryScreen/PlayerStats/SaveCount" unique_id=722478216]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0.14509805, 0.61960787, 1)
+
+[node name="PlayerHealth2" type="Label" parent="InventoryUI/InventoryScreen/PlayerStats/SaveCount" unique_id=1964274797]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 48
+text = "Saves:
+0"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="IDK" type="Control" parent="InventoryUI/InventoryScreen/PlayerStats" unique_id=1735462870]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 4.0
+
+[node name="Background" type="ColorRect" parent="InventoryUI/InventoryScreen/PlayerStats/IDK" unique_id=1893997642]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0.14509805, 0.61960787, 1)
+
+[node name="ItemDisplay" type="VBoxContainer" parent="InventoryUI/InventoryScreen" unique_id=561962327]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="ItemViewer" type="Control" parent="InventoryUI/InventoryScreen/ItemDisplay" unique_id=216059088]
 layout_mode = 2
 size_flags_vertical = 3
 size_flags_stretch_ratio = 2.0
 
-[node name="SubViewportContainer" type="SubViewportContainer" parent="InventoryUI/InventoryScreen/ItemViewer/ItemViewer" unique_id=265154778]
-visible = false
+[node name="SubViewportContainer" type="SubViewportContainer" parent="InventoryUI/InventoryScreen/ItemDisplay/ItemViewer" unique_id=2070217847]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -88,19 +128,62 @@ grow_horizontal = 2
 grow_vertical = 2
 stretch = true
 
-[node name="SubViewport" type="SubViewport" parent="InventoryUI/InventoryScreen/ItemViewer/ItemViewer/SubViewportContainer" unique_id=304362389]
+[node name="SubViewport" type="SubViewport" parent="InventoryUI/InventoryScreen/ItemDisplay/ItemViewer/SubViewportContainer" unique_id=2000864998]
 own_world_3d = true
+transparent_bg = true
 handle_input_locally = false
-size = Vector2i(1064, 646)
-render_target_update_mode = 0
+size = Vector2i(765, 645)
+render_target_update_mode = 4
 
-[node name="ItemExamination" parent="InventoryUI/InventoryScreen/ItemViewer/ItemViewer/SubViewportContainer/SubViewport" unique_id=162566845 instance=ExtResource("5_8ndef")]
+[node name="ItemViewer" parent="InventoryUI/InventoryScreen/ItemDisplay/ItemViewer/SubViewportContainer/SubViewport" unique_id=1396397147 instance=ExtResource("4_wi1cf")]
+
+[node name="ItemDetails" type="Control" parent="InventoryUI/InventoryScreen/ItemDisplay" unique_id=1497018584]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Background" type="ColorRect" parent="InventoryUI/InventoryScreen/ItemDisplay/ItemDetails" unique_id=704229303]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0.14509805, 0.61960787, 1)
+
+[node name="Panel" type="Panel" parent="InventoryUI/InventoryScreen/ItemDisplay/ItemDetails" unique_id=730803804]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Labels" type="VBoxContainer" parent="InventoryUI/InventoryScreen/ItemDisplay/ItemDetails/Panel" unique_id=2043682814]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MainLabel" type="Label" parent="InventoryUI/InventoryScreen/ItemDisplay/ItemDetails/Panel/Labels" unique_id=2116750809]
+layout_mode = 2
+theme_override_constants/outline_size = 12
+theme_override_font_sizes/font_size = 48
+text = "Item Name Here"
+
+[node name="SubLabel" type="Label" parent="InventoryUI/InventoryScreen/ItemDisplay/ItemDetails/Panel/Labels" unique_id=400659927]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.69, 0.69, 0.69, 1)
+theme_override_constants/outline_size = 12
+theme_override_font_sizes/font_size = 48
+text = "Item Description Here"
 
 [node name="Inventory" type="VBoxContainer" parent="InventoryUI/InventoryScreen" unique_id=1403096004]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
-size_flags_stretch_ratio = 0.8
+size_flags_stretch_ratio = 1.3
 
 [node name="InventorySlots" type="Control" parent="InventoryUI/InventoryScreen/Inventory" unique_id=1237889633]
 layout_mode = 2

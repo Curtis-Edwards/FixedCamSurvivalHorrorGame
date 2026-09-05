@@ -1,7 +1,0 @@
-[gd_resource type="ShaderMaterial" format=3 uid="uid://h51e7a3ph0dn"]
-
-[ext_resource type="Shader" uid="uid://cto6u0h6lbm7" path="res://assets/shaders/projection.gdshader" id="1_j2s8d"]
-
-[resource]
-render_priority = 0
-shader = ExtResource("1_j2s8d")

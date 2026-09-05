@@ -1,5 +1,6 @@
+@icon ("res://addons/at-icons/node3d/chest.svg")
 extends Interactable
+class_name ItemBox
 
 func interact() -> void:
-	if not GameManager.player.lock_menu_input:
-		GameManager.ui.push_state(GameManager.ui.UIState.ITEM_BOX)
+	GameManager.ui.push_state(GameManager.ui.UIState.ITEM_BOX)

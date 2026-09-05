@@ -5,6 +5,9 @@ class_name Interactable
 
 
 func interact() -> void:
+	GameManager.player.start_interaction(self)
+
+func do_interaction() -> void:
 	pass
 
 

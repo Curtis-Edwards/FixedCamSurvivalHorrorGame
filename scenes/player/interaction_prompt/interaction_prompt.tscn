@@ -63,4 +63,5 @@ wait_time = 0.02
 one_shot = true
 
 [connection signal="pressed" from="HBoxContainer/Buttons/ExitBtn" to="." method="_on_exit_btn_pressed"]
+[connection signal="focus_entered" from="HBoxContainer/Buttons/OtherButtons" to="." method="_on_other_buttons_focus_entered"]
 [connection signal="timeout" from="IncrementCharTimer" to="." method="_on_increment_char_timer_timeout"]

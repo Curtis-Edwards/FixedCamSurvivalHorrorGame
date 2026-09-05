@@ -4,8 +4,8 @@
 [ext_resource type="Script" uid="uid://tj5pa8edphum" path="res://scenes/ui/inventory/slots/inventory_slot.gd" id="2_2pwvc"]
 
 [node name="InventorySlot" type="TextureButton" unique_id=885528144]
-custom_minimum_size = Vector2(210, 159)
-custom_maximum_size = Vector2(210, 159)
+custom_minimum_size = Vector2(245, 153)
+propagate_maximum_size = true
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -20,33 +20,34 @@ grow_vertical = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 texture_normal = ExtResource("1_8fwgd")
-stretch_mode = 6
+stretch_mode = 5
 script = ExtResource("2_2pwvc")
 
 [node name="Amount" type="Label" parent="." unique_id=962219857]
 layout_mode = 1
-offset_right = 59.3
+anchors_preset = 10
+anchor_right = 1.0
 offset_bottom = 45.0
+grow_horizontal = 2
+theme_override_constants/outline_size = 8
 theme_override_font_sizes/font_size = 32
-text = "000"
-horizontal_alignment = 2
+text = "0"
+horizontal_alignment = 1
 
 [node name="Index" type="Label" parent="." unique_id=1830159591]
 layout_mode = 1
-anchors_preset = 3
-anchor_left = 1.0
+anchors_preset = 12
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -57.0
-offset_top = -54.28
-offset_right = -2.0
-offset_bottom = -9.279968
-grow_horizontal = 0
+offset_top = -45.0
+grow_horizontal = 2
 grow_vertical = 0
+theme_override_colors/font_color = Color(0.5, 0.5, 0.5, 1)
+theme_override_constants/outline_size = 8
 theme_override_font_sizes/font_size = 32
 text = "0"
-horizontal_alignment = 2
+horizontal_alignment = 1
 
 [connection signal="focus_entered" from="." to="." method="_on_focus_entered"]
 [connection signal="focus_exited" from="." to="." method="_on_focus_exited"]

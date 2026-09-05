@@ -1,0 +1,52 @@
+[gd_scene format=3 uid="uid://03gfg7cvcqnv"]
+
+[ext_resource type="PackedScene" uid="uid://dd68ka1cr6pmj" path="res://scenes/interactable/intractable_template/interactable_template.tscn" id="1_xs3dx"]
+[ext_resource type="Script" uid="uid://bu2rcs84kallr" path="res://scenes/interactable/door/door_scene/interactable_door.gd" id="2_axxj1"]
+[ext_resource type="PackedScene" uid="uid://c7bbomomhvk1m" path="res://assets/3d_objects/door/SmallDoor.glb" id="3_sf8pn"]
+[ext_resource type="Texture2D" uid="uid://b65ijnmhccx2r" path="res://assets/textures/placeholder_grid3.png" id="4_0w5xc"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_mu5rm"]
+size = Vector3(2, 3, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8wuc8"]
+diffuse_mode = 3
+albedo_color = Color(0.50980395, 0.33333334, 0.2, 1)
+albedo_texture = ExtResource("4_0w5xc")
+texture_filter = 0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_bnqo3"]
+diffuse_mode = 3
+albedo_color = Color(0.3882353, 0.09411765, 0.08235294, 1)
+albedo_texture = ExtResource("4_0w5xc")
+texture_filter = 0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qv4ps"]
+diffuse_mode = 3
+albedo_color = Color(1, 0.908, 0.31, 1)
+albedo_texture = ExtResource("4_0w5xc")
+texture_filter = 0
+
+[node name="Door1" unique_id=1451751561 instance=ExtResource("1_xs3dx")]
+script = ExtResource("2_axxj1")
+door_instance = null
+is_this_room_1 = false
+
+[node name="InteractableCollision" parent="." index="0" unique_id=773940465]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
+shape = SubResource("BoxShape3D_mu5rm")
+
+[node name="SmallDoor" parent="." index="1" unique_id=143734340 instance=ExtResource("3_sf8pn")]
+
+[node name="Door" parent="SmallDoor" index="0" unique_id=1467487591]
+surface_material_override/0 = SubResource("StandardMaterial3D_8wuc8")
+
+[node name="DoorFrame" parent="SmallDoor" index="1" unique_id=477794508]
+surface_material_override/0 = SubResource("StandardMaterial3D_bnqo3")
+
+[node name="Handle" parent="SmallDoor" index="2" unique_id=1091923585]
+surface_material_override/0 = SubResource("StandardMaterial3D_qv4ps")
+
+[node name="RoomDestinationPoint" type="Marker3D" parent="." index="2" unique_id=1312606428]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1.5)
+
+[editable path="SmallDoor"]

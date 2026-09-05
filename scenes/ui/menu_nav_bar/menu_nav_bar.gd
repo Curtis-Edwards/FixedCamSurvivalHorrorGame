@@ -5,10 +5,7 @@ class_name MenuNavBar
 @onready var map_btn: Button = $HBoxContainer/MapButton
 @onready var notes_btn: Button = $HBoxContainer/NotesButton
 
-"""
-Nav Bar Functions
-"""
-
+#region Nav Bar Functions
 func open_nav_bar() -> void:
 	self.show()
 
@@ -41,11 +38,10 @@ func in_notes() -> void:
 	
 	inventory_btn.disabled = false
 	map_btn.disabled = false
+#endregion
 
-"""
-Buttons Pressed Functions
-"""
 
+#region Buttons Pressed Functions
 func _on_inventory_button_pressed() -> void:
 	if GameManager.ui.inv_screen.item_box_slots_ui.visible:
 		GameManager.ui.change_state(GameManager.ui.UIState.ITEM_BOX)
@@ -63,3 +59,4 @@ func _on_notes_button_pressed() -> void:
 
 func _on_close_button_pressed() -> void:
 	GameManager.ui.pop_state()
+#endregion

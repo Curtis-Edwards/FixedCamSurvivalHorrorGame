@@ -1,0 +1,8 @@
+[gd_scene format=3 uid="uid://by64o50nsh3fs"]
+
+[ext_resource type="Texture2D" uid="uid://bwn557ohbv1kt" path="res://icon.svg" id="1_pht4w"]
+[ext_resource type="Script" uid="uid://6hix2wrye2sh" path="res://testing/spiny_thing.gd" id="2_tumgj"]
+
+[node name="SpinyThing" type="Sprite3D" unique_id=133166869]
+texture = ExtResource("1_pht4w")
+script = ExtResource("2_tumgj")

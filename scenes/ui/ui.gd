@@ -13,6 +13,8 @@ func _ready() -> void:
 	GameManager.ui = self
 
 func _process(_delta: float) -> void:
+	#update_debug_labels()
+	
 	
 	if InputManager.is_inventory_pressed():
 		inventory_input_pressed()
@@ -29,14 +31,11 @@ func _process(_delta: float) -> void:
 	if InputManager.is_cancel_pressed():
 		cancel_input_pressed()
 
-"""
-Input Pressed Functions
-"""
+
+#region Input Pressed Functions
 
 func inventory_input_pressed() -> void:
-	if get_current_state() == UIState.PAUSED:
-		pass
-	elif get_current_state() == UIState.INVENTORY or get_current_state() == UIState.ITEM_BOX:
+	if get_current_state() == UIState.INVENTORY or get_current_state() == UIState.ITEM_BOX:
 		pop_state()
 	elif is_inventory_level_state(get_current_state()):
 		change_state(UIState.INVENTORY)
@@ -44,9 +43,7 @@ func inventory_input_pressed() -> void:
 		push_state(UIState.INVENTORY)
 
 func map_input_pressed() -> void:
-	if get_current_state() == UIState.PAUSED:
-		pass
-	elif get_current_state() == UIState.MAP:
+	if get_current_state() == UIState.MAP:
 		pop_state()
 	elif is_inventory_level_state(get_current_state()):
 		change_state(UIState.MAP)
@@ -54,9 +51,7 @@ func map_input_pressed() -> void:
 		push_state(UIState.MAP)
 
 func notes_input_pressed() -> void:
-	if get_current_state() == UIState.PAUSED:
-		pass
-	elif get_current_state() == UIState.NOTES:
+	if get_current_state() == UIState.NOTES:
 		pop_state()
 	elif is_inventory_level_state(get_current_state()):
 		change_state(UIState.NOTES)
@@ -70,19 +65,16 @@ func pause_input_pressed() -> void:
 		push_state(UIState.PAUSED)
 
 func cancel_input_pressed() -> void:
-	#if (get_current_state() == UIState.INVENTORY or get_current_state() == UIState.ITEM_BOX) \
-	#and inv_screen.is_action_menu_open:
 	if inv_screen.is_action_menu_open:
 		inv_screen.close_action_menu()
 	elif get_current_state() == UIState.INTERACTING:
 		GameManager.player.stop_interaction()
 	else:
 		pop_state()
+#endregion
 
 
-"""
-State Stack Functions
-"""
+#region State Stack Functions
 enum UIState {
 	CLOSED,
 	INTERACTING,
@@ -94,8 +86,28 @@ enum UIState {
 }
 var state_stack: Array[UIState] = [UIState.CLOSED]
 
+func ui_state_to_str(state: UIState) -> String:
+	match state:
+		UIState.CLOSED:
+			return "0 (Closed)"
+		UIState.INTERACTING:
+			return "1 (INTERACTING)"
+		UIState.INVENTORY:
+			return "2 (INVENTORY)"
+		UIState.ITEM_BOX:
+			return "3 (ITEM_BOX)"
+		UIState.MAP:
+			return "4 (MAP)"
+		UIState.NOTES:
+			return "5 (NOTES)"
+		UIState.PAUSED:
+			return "6 (PAUSED)"
+		_:
+			return "9999 (UNKNOWN)"
+
 func get_current_state() -> UIState:
 	return state_stack[-1]
+
 
 func is_interacting() -> bool:
 	if state_stack.size() > 1:
@@ -128,10 +140,12 @@ func change_state(new_state: UIState) -> void:
 	state_stack.append(new_state)
 	transition_to(old_state, new_state)
 
+
 func transition_to(from: UIState, to: UIState) -> void:
 	match from:
 		UIState.CLOSED:
 			update_pause_state()
+			#GameManager.player.GameManager.player.lock_player_input = true
 			
 		UIState.INTERACTING:
 			GameManager.player.inteaction_prompt.hide()
@@ -156,12 +170,14 @@ func transition_to(from: UIState, to: UIState) -> void:
 	match to:
 		UIState.CLOSED:
 			nav_bar.close_nav_bar()
+			
 			update_pause_state()
 		
 		UIState.INTERACTING:
 			nav_bar.close_nav_bar()
+			GameManager.player.active_interactable.do_interaction()
 			GameManager.player.inteaction_prompt.show()
-			GameManager.player.inteaction_prompt.exit_btn.grab_focus() # TODO: Focus on last btn, not exit btn
+			GameManager.player.inteaction_prompt.focus_focused_btn()
 			
 			update_pause_state()
 		
@@ -190,11 +206,10 @@ func transition_to(from: UIState, to: UIState) -> void:
 			nav_bar.close_nav_bar()
 			pause_screen.open_pause()
 		
-	print(state_stack)
+#endregion
 
-"""
-Helper Functions
-"""
+
+#region Helper Functions
 func update_pause_state() -> void:
 	var should_pause: bool = not (get_current_state() == UIState.CLOSED or get_current_state() == UIState.INTERACTING)
 	get_tree().paused = should_pause
@@ -204,3 +219,30 @@ func update_pause_state() -> void:
 		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 	else:
 		Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+
+
+func is_cur_state_closed() -> bool:
+	return get_current_state() == UIState.CLOSED
+
+func is_cur_state_interacting() -> bool:
+	return get_current_state() == UIState.INTERACTING
+
+func is_cur_state_inventory() -> bool:
+	return get_current_state() == UIState.INVENTORY
+
+func is_cur_state_item_box() -> bool:
+	return get_current_state() == UIState.ITEM_BOX
+
+func is_cur_state_map() -> bool:
+	return get_current_state() == UIState.MAP
+
+func is_cur_state_notes() -> bool:
+	return get_current_state() == UIState.NOTES
+
+func is_cur_state_paused() -> bool:
+	return get_current_state() == UIState.PAUSED
+
+
+
+
+#endregion

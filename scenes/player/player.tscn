@@ -1,16 +1,19 @@
 [gd_scene format=3 uid="uid://g6vdvf12ss25"]
 
-[ext_resource type="Material" uid="uid://8ynppmv1i5u8" path="res://assets/textures/grey_grid_001.tres" id="1_8afob"]
 [ext_resource type="Script" uid="uid://dl4scqve1rmau" path="res://scenes/player/player.gd" id="1_dovo2"]
+[ext_resource type="Material" uid="uid://ph3n7o3uhrnv" path="res://assets/materials/place_holder_grid_material.tres" id="2_lvxji"]
 [ext_resource type="PackedScene" uid="uid://dkj4ivdjmo1i3" path="res://scenes/player/interaction_prompt/interaction_prompt.tscn" id="3_gmlin"]
+[ext_resource type="Texture2D" uid="uid://xxr4td3f35l1" path="res://assets/textures/red_cross_hair-1.png" id="4_lvxji"]
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_ypl5r"]
 height = 1.6
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_7dm28"]
+material = ExtResource("2_lvxji")
 height = 1.6
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_uqdc8"]
+material = ExtResource("2_lvxji")
 top_radius = 0.2
 bottom_radius = 0.2
 height = 1.0
@@ -24,6 +27,7 @@ points = PackedVector3Array(0, 0, -0.3, -0.5, 0, -1.5, 0.5, 0, -1.5, 0, 1.6, -0.
 
 [node name="Player" type="CharacterBody3D" unique_id=662147544]
 collision_mask = 76
+floor_snap_length = 1.0
 script = ExtResource("1_dovo2")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1558072215]
@@ -34,16 +38,15 @@ shape = SubResource("CylinderShape3D_ypl5r")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.8, 0)
 layers = 2
 mesh = SubResource("CylinderMesh_7dm28")
-surface_material_override/0 = ExtResource("1_8afob")
 
 [node name="EyesMesh" type="MeshInstance3D" parent="." unique_id=556175140]
 transform = Transform3D(-4.371139e-08, -1, -4.371139e-08, 0, -4.371139e-08, 1, -1, 4.371139e-08, 1.9106855e-15, 0, 1.26257, -0.4)
 layers = 2
 mesh = SubResource("CylinderMesh_uqdc8")
-surface_material_override/0 = ExtResource("1_8afob")
 
 [node name="QuickTurnDuration" type="Timer" parent="." unique_id=1671766073]
 wait_time = 0.15
+one_shot = true
 
 [node name="CamTriggerArea" type="Area3D" parent="." unique_id=1752617538]
 collision_layer = 256
@@ -55,6 +58,7 @@ shape = SubResource("CylinderShape3D_w4qpt")
 debug_color = Color(0.75908166, 0.43992636, 0.3075765, 0.41960785)
 
 [node name="InteractionStuff" type="Node3D" parent="." unique_id=1802435845]
+visible = false
 
 [node name="InteractionPrompt" parent="InteractionStuff" unique_id=226436693 instance=ExtResource("3_gmlin")]
 visible = false
@@ -66,6 +70,26 @@ collision_mask = 16
 [node name="CollisionShape3D" type="CollisionShape3D" parent="InteractionStuff/InteractionArea" unique_id=1919086584]
 shape = SubResource("ConvexPolygonShape3D_dovo2")
 debug_color = Color(0.6482781, 0.5093867, 0.31239182, 0.41960785)
+
+[node name="WeaponAim" type="Node3D" parent="." unique_id=1696293094]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+
+[node name="ProjectileStart" type="Marker3D" parent="WeaponAim" unique_id=2039002744]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1)
+
+[node name="SpringArm3D" type="SpringArm3D" parent="WeaponAim" unique_id=2089156285]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0, -1)
+collision_mask = 76
+spring_length = 30.0
+
+[node name="Decal" type="Decal" parent="WeaponAim/SpringArm3D" unique_id=90579465]
+transform = Transform3D(0.385, 0, 0, 0, -1.6828885e-08, -0.385, 0, 0.385, -1.6828885e-08, 0, 0, 0)
+visible = false
+size = Vector3(8, 2.36, 8)
+texture_albedo = ExtResource("4_lvxji")
+texture_emission = ExtResource("4_lvxji")
+upper_fade = 0.7135244
+lower_fade = 1.044663
 
 [connection signal="timeout" from="QuickTurnDuration" to="." method="_on_quick_turn_duration_timeout"]
 [connection signal="area_entered" from="InteractionStuff/InteractionArea" to="." method="_on_interaction_area_area_entered"]

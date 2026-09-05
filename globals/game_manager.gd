@@ -1,6 +1,8 @@
 # game_manager.gd
 extends Node
 
+var dev_panel: DevPanel
+
 var main_scene: MainScene
 
 var game_world: GameWorld

@@ -15,4 +15,5 @@ theme_override_font_sizes/font_size = 32
 text = "Text Here"
 script = ExtResource("1_fo8r5")
 
+[connection signal="focus_entered" from="." to="." method="_on_focus_entered"]
 [connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]

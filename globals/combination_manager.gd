@@ -2,10 +2,6 @@ extends Node
 
 var combinations: Dictionary = {}
 
-#@onready var gg_herb = preload("res://scenes/items/item_resources/3xx_recovery/03_GG_herb/green_green_herb.tres")
-#@onready var gr_herb = preload("res://scenes/items/item_resources/3xx_recovery/02_GR_herb/green_red_herb.tres")
-#@onready var blue_tablet = preload("res://scenes/items/item_resources/4xx_key_items/03_blue_tablet/blue_tablet.tres")
-
 var combine_state: bool = false
 
 var combine_type_a: int
@@ -17,10 +13,7 @@ var combine_index_b: int
 var combine_item_b: ItemInstance
 
 
-
-"""
-Combine Setup
-"""
+#region Combine Setup
 func _ready() -> void:
 	register_recipe(
 		Globals.ITEMS["g_herb"],
@@ -63,12 +56,10 @@ func combine(item_a: ItemInstance, item_b: ItemInstance) -> bool:
 	recipe.result.call()
 
 	return true
+#endregion
 
 
-
-"""
-Combine State
-"""
+#region Combine State
 func start_combine_state(_combine_type_a: int, _combine_index_a: int, _combine_item_a: ItemInstance) -> void:
 	combine_state = true
 	assign_combine_a(_combine_type_a, _combine_index_a, _combine_item_a)
@@ -104,10 +95,10 @@ func print_combine_state():
 	print("index b: " + str(combine_index_b))
 	print("item b: " + str(combine_item_b))
 	print("- - -")
+#endregion
 
-"""
-Combine Types
-"""
+
+#region Combine Types
 func basic_two_item_combo(item_c: ItemDefinition, amount: int):
 	GameManager.inventory.reduce_item(combine_type_a, combine_item_a.item_def, 1, false)
 	GameManager.inventory.reduce_item(combine_type_b, combine_item_b.item_def, 1, false)
@@ -118,3 +109,4 @@ func basic_two_item_combo(item_c: ItemDefinition, amount: int):
 	
 	GameManager.inventory.inv_ui.update_slots_ui()
 	GameManager.inventory.inv_ui.focus_slot([combine_type_b, combine_index_b])
+#endregion

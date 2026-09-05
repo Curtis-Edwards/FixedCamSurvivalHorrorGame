@@ -8,65 +8,20 @@ func _ready() -> void:
 	inventory_slots.resize(INV_SLOT_COUNT)
 	item_box_slots.resize(BOX_SLOT_COUNT)
 	
-	# Adding starting items for testing
 	add_item(0, Globals.ITEMS["pistol"],1)
-	add_item(0, Globals.ITEMS["pistol_ammo"],10)
-	
+	add_item(0, Globals.ITEMS["pistol_ammo"],20)
 	add_item(1, Globals.ITEMS["shotgun"],1)
-	add_item(1, Globals.ITEMS["shotgun_ammo"],4)
+	add_item(1, Globals.ITEMS["shotgun_ammo"],8)
+	add_item(1, Globals.ITEMS["g_herb"],1)
+	add_item(1, Globals.ITEMS["r_herb"],1)
+	add_item(1, Globals.ITEMS["diamond_key"],1)
+	add_item(1, Globals.ITEMS["spade_key"],1)
 
 func _process(_delta: float) -> void:
-	# HACK: debug filling items for testing
-	if InputManager.is_debug_key7_pressed():
-		print("|  DEBUG  | Clear Inventory.")
-		clear_inventory(0)
-	
-	if InputManager.is_debug_key8_pressed():
-		print("|  DEBUG  | Clear ItemBox.")
-		clear_inventory(1)
-	
-	if InputManager.is_debug_key9_pressed():
-		print("|  DEBUG  | Clear Inventory And ItemBox.")
-		clear_inventory(0)
-		clear_inventory(1)
-	
-	if InputManager.is_debug_key1_pressed():
-		print("|  DEBUG  | Loading item set 1.")
-		add_item(1, Globals.ITEMS["shotgun"],1)
-		add_item(1, Globals.ITEMS["shotgun_ammo"],8)
-		
-		add_item(0, Globals.ITEMS["pistol"],1)
-		add_item(0, Globals.ITEMS["pistol_ammo"],18)
-		add_item(0, Globals.ITEMS["g_herb"],1)
-		add_item(0, Globals.ITEMS["r_herb"],1)
-		add_item(0, Globals.ITEMS["diamond_key"],1)
-		add_item(0, Globals.ITEMS["spade_key"],1)
-	
-	if InputManager.is_debug_key2_pressed():
-		print("|  DEBUG  | Loading item set 2.")
-
-		add_item(0, Globals.ITEMS["pistol_ammo"],15)
-	
-	if InputManager.is_debug_key3_pressed():
-		print("|  DEBUG  | Loading item set 3.")
-
-		add_item(0, Globals.ITEMS["pistol_ammo"],140)
-	
-	if InputManager.is_debug_key4_pressed():
-		print("|  DEBUG  | Loading item set 4.")
-
-		add_item(0, Globals.ITEMS["pistol_ammo"],150)
-
-	if InputManager.is_debug_key5_pressed():
-		print("|  DEBUG  | Loading item set 5.")
-
-		add_item(0, Globals.ITEMS["pistol_ammo"],160)
+	pass
 
 
-
-"""
-Inventory Functions
-"""
+#region Inventory Functions
 var inventory_slots: Array[ItemInstance] = []
 const INV_SLOT_COUNT: int = 8
 @onready var inventory_slots_ui: GridContainer = $InventoryUI/InventoryScreen/Inventory/InventorySlots/Slots
@@ -264,3 +219,4 @@ func print_inventory(type: int) -> void:
 		else:
 			print("[ " + str(slot.item_def.name) + ": " + str(slot.item_amount) + "/" + str(slot.item_def.max_stack) + " ]")
 	print("-----")
+#endregion

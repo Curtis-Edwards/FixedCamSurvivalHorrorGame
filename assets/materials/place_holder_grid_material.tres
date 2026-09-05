@@ -1,0 +1,8 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://ph3n7o3uhrnv"]
+
+[ext_resource type="Texture2D" uid="uid://b65ijnmhccx2r" path="res://assets/textures/placeholder_grid3.png" id="1_b7sg7"]
+
+[resource]
+diffuse_mode = 3
+albedo_texture = ExtResource("1_b7sg7")
+texture_filter = 0

@@ -1,12 +1,8 @@
 [gd_scene format=3 uid="uid://bp260futyx5dr"]
 
 [ext_resource type="Script" uid="uid://byy008hhcmxsm" path="res://scenes/rooms/game_world/game_world.gd" id="1_k763n"]
-[ext_resource type="PackedScene" uid="uid://ktu1a07g4bou" path="res://scenes/rooms/test_room/int_test_room_01.tscn" id="2_vfu5l"]
-[ext_resource type="PackedScene" uid="uid://g6vdvf12ss25" path="res://scenes/player/player.tscn" id="3_0d06c"]
-[ext_resource type="PackedScene" uid="uid://03gfg7cvcqnv" path="res://scenes/interactable/doors/interactable_door.tscn" id="3_g6e0f"]
 [ext_resource type="PackedScene" uid="uid://dryl1h48fk84f" path="res://scenes/ui/ui.tscn" id="4_jpnh6"]
-[ext_resource type="PackedScene" uid="uid://8fn554ls0hor" path="res://scenes/rooms/test_room/int_test_room_02.tscn" id="4_w34mw"]
-[ext_resource type="Resource" uid="uid://beessxblicciu" path="res://scenes/items/item_resources/4xx_key_items/05_diamond_key/diamond_key.tres" id="5_s75vf"]
+[ext_resource type="PackedScene" uid="uid://b08wv40xj3vi8" path="res://scenes/player/new_player.tscn" id="4_vfu5l"]
 [ext_resource type="PackedScene" uid="uid://b2tkhlonce14e" path="res://scenes/camera/fixed_cam.tscn" id="7_w34mw"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_ag62x"]
@@ -24,6 +20,7 @@ glow_enabled = true
 
 [node name="GameWorld" type="Node3D" unique_id=1994771557]
 script = ExtResource("1_k763n")
+starting_room = &"EastWing"
 metadata/_edit_lock_ = true
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=730185761]
@@ -31,38 +28,18 @@ environment = SubResource("Environment_symxd")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=654448067]
 transform = Transform3D(-0.8660254, -0.43301278, 0.25, 0, 0.49999997, 0.86602545, -0.50000006, 0.75, -0.43301266, 0, 0, 0)
+visible = false
 shadow_enabled = true
 sky_mode = 2
 
 [node name="Rooms" type="Node3D" parent="." unique_id=2080548484]
 
-[node name="IntTestRoom01" parent="Rooms" unique_id=1177210895 instance=ExtResource("2_vfu5l")]
-
 [node name="Doors" type="Node3D" parent="." unique_id=1939218934]
-
-[node name="Door1" parent="Doors" unique_id=1001995649 instance=ExtResource("3_g6e0f")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 0, -5)
-room_a = ExtResource("2_vfu5l")
-room_b = ExtResource("4_w34mw")
-lock_type = 0
-
-[node name="Door3" parent="Doors" unique_id=1596188218 instance=ExtResource("3_g6e0f")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9, 0, -5)
-room_a = ExtResource("2_vfu5l")
-room_b = ExtResource("4_w34mw")
-lock_type = 2
-
-[node name="Door4" parent="Doors" unique_id=2136076685 instance=ExtResource("3_g6e0f")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 0, -5)
-room_a = ExtResource("2_vfu5l")
-room_b = ExtResource("4_w34mw")
-required_key = ExtResource("5_s75vf")
-locked_key_hint = "Its locked.
-It has a diamond shaped keyhole."
 
 [node name="UI" parent="." unique_id=257678840 instance=ExtResource("4_jpnh6")]
 
-[node name="Player" parent="." unique_id=662147544 instance=ExtResource("3_0d06c")]
-
 [node name="FixedCam" parent="." unique_id=432870943 instance=ExtResource("7_w34mw")]
-transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 2.5, -7.8)
+transform = Transform3D(1.0000001, 0, -2.9802322e-08, 0, 1, 0, 2.9802322e-08, 0, 1.0000001, 0, 2.5, 1.1999998)
+current = true
+
+[node name="NewPlayer" parent="." unique_id=662147544 instance=ExtResource("4_vfu5l")]

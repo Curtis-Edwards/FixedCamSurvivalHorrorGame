@@ -1,0 +1,178 @@
+[gd_scene format=3 uid="uid://bwxo8t4gybr0r"]
+
+[ext_resource type="Script" uid="uid://dvswv8kdefqov" path="res://scenes/ui/dev_panel/dev_panel.gd" id="1_il64o"]
+
+[node name="DevPanel" type="Control" unique_id=520112781]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("1_il64o")
+
+[node name="General" type="Panel" parent="." unique_id=2071655923]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 0.4
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="DebugLabels" type="VBoxContainer" parent="General" unique_id=610298664]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+mouse_filter = 2
+
+[node name="General" type="Label" parent="General/DebugLabels" unique_id=1946770274]
+layout_mode = 2
+theme_override_constants/outline_size = 12
+theme_override_font_sizes/font_size = 32
+text = "General"
+horizontal_alignment = 1
+
+[node name="HSeparator" type="HSeparator" parent="General/DebugLabels" unique_id=678496226]
+layout_mode = 2
+
+[node name="FPSLabel" type="Label" parent="General/DebugLabels" unique_id=816831999]
+layout_mode = 2
+theme_override_constants/outline_size = 12
+theme_override_font_sizes/font_size = 32
+text = "Text Goes Here"
+
+[node name="PlayerStateLabel" type="Label" parent="General/DebugLabels" unique_id=1880918062]
+layout_mode = 2
+theme_override_constants/outline_size = 12
+theme_override_font_sizes/font_size = 32
+text = "Text Goes Here"
+
+[node name="UIStateLabel" type="Label" parent="General/DebugLabels" unique_id=1965529593]
+layout_mode = 2
+theme_override_constants/outline_size = 12
+theme_override_font_sizes/font_size = 32
+text = "Text Goes Here"
+
+[node name="Inputs" type="Panel" parent="." unique_id=1251943412]
+clip_contents = true
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.55
+anchor_right = 0.4
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="InputLabels" type="VBoxContainer" parent="Inputs" unique_id=285129070]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="Inputs/InputLabels" unique_id=1644531916]
+layout_mode = 2
+theme_override_constants/outline_size = 12
+theme_override_font_sizes/font_size = 32
+text = "Inputs"
+horizontal_alignment = 1
+
+[node name="HSeparator" type="HSeparator" parent="Inputs/InputLabels" unique_id=1276833182]
+layout_mode = 2
+
+[node name="HBox" type="HBoxContainer" parent="Inputs/InputLabels" unique_id=1637314777]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="VBox1" type="VBoxContainer" parent="Inputs/InputLabels/HBox" unique_id=162579236]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Interact" type="Label" parent="Inputs/InputLabels/HBox/VBox1" unique_id=1969789768]
+layout_mode = 2
+theme_override_constants/outline_size = 12
+theme_override_font_sizes/font_size = 32
+text = "Interact "
+
+[node name="QuickTurn" type="Label" parent="Inputs/InputLabels/HBox/VBox1" unique_id=104314561]
+layout_mode = 2
+theme_override_constants/outline_size = 12
+theme_override_font_sizes/font_size = 32
+text = "Quick Turn"
+
+[node name="SprintPressed" type="Label" parent="Inputs/InputLabels/HBox/VBox1" unique_id=1734482300]
+layout_mode = 2
+theme_override_constants/outline_size = 12
+theme_override_font_sizes/font_size = 32
+text = "Sprint (Pressed)"
+
+[node name="SprintHeld" type="Label" parent="Inputs/InputLabels/HBox/VBox1" unique_id=476077927]
+layout_mode = 2
+theme_override_constants/outline_size = 12
+theme_override_font_sizes/font_size = 32
+text = "Sprint (Held)"
+
+[node name="AimPressed" type="Label" parent="Inputs/InputLabels/HBox/VBox1" unique_id=637125393]
+layout_mode = 2
+theme_override_constants/outline_size = 12
+theme_override_font_sizes/font_size = 32
+text = "Aim (Pressed)"
+
+[node name="AimHeld" type="Label" parent="Inputs/InputLabels/HBox/VBox1" unique_id=1517509522]
+layout_mode = 2
+theme_override_constants/outline_size = 12
+theme_override_font_sizes/font_size = 32
+text = "Aim (Held)"
+
+[node name="Shoot" type="Label" parent="Inputs/InputLabels/HBox/VBox1" unique_id=405116210]
+layout_mode = 2
+theme_override_constants/outline_size = 12
+theme_override_font_sizes/font_size = 32
+text = "Shoot"
+
+[node name="VBox2" type="VBoxContainer" parent="Inputs/InputLabels/HBox" unique_id=499854945]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Confirm" type="Label" parent="Inputs/InputLabels/HBox/VBox2" unique_id=1918538629]
+layout_mode = 2
+theme_override_constants/outline_size = 12
+theme_override_font_sizes/font_size = 32
+text = "Confirm"
+
+[node name="Cancel" type="Label" parent="Inputs/InputLabels/HBox/VBox2" unique_id=1416165538]
+layout_mode = 2
+theme_override_constants/outline_size = 12
+theme_override_font_sizes/font_size = 32
+text = "Cancel"
+
+[node name="Inventory" type="Label" parent="Inputs/InputLabels/HBox/VBox2" unique_id=1692439884]
+layout_mode = 2
+theme_override_constants/outline_size = 12
+theme_override_font_sizes/font_size = 32
+text = "Open Inventroy"
+
+[node name="Map" type="Label" parent="Inputs/InputLabels/HBox/VBox2" unique_id=1482701039]
+layout_mode = 2
+theme_override_constants/outline_size = 12
+theme_override_font_sizes/font_size = 32
+text = "Open Map"
+
+[node name="Notes" type="Label" parent="Inputs/InputLabels/HBox/VBox2" unique_id=166652292]
+layout_mode = 2
+theme_override_constants/outline_size = 12
+theme_override_font_sizes/font_size = 32
+text = "Open Notes"
+
+[node name="Pause" type="Label" parent="Inputs/InputLabels/HBox/VBox2" unique_id=2083230958]
+layout_mode = 2
+theme_override_constants/outline_size = 12
+theme_override_font_sizes/font_size = 32
+text = "Open \"Pause\""

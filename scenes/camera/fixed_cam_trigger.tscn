@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://dtqt216u32jjf" path="res://scenes/camera/fixed_cam_trigger.gd" id="1_3adm8"]
 
-[node name="FixedCamTrigger_001" type="Node3D" unique_id=793731124]
+[node name="FixedCamTrigger_01" type="Node3D" unique_id=793731124]
 script = ExtResource("1_3adm8")
 
 [node name="CamTrigger" type="Area3D" parent="." unique_id=719714386]
@@ -12,6 +12,6 @@ collision_mask = 256
 [node name="CollisionShape3D" type="CollisionShape3D" parent="CamTrigger" unique_id=1615397601]
 debug_color = Color(0.92, 0.874, 0, 1)
 
-[node name="CamPos" type="Marker3D" parent="." unique_id=880205140]
+[node name="CamPos" type="Camera3D" parent="." unique_id=2093784570]
 
 [connection signal="area_shape_entered" from="CamTrigger" to="." method="_on_cam_trigger_area_shape_entered"]

@@ -62,6 +62,10 @@ func _on_focus_entered() -> void:
 	if not disabled:
 		GameManager.ui.inv_screen.focused_index = [inventory_type, slot_index]
 		modulate.a = 0.6
+		
+		GameManager.ui.inv_screen.update_item_display(
+			GameManager.inventory.get_item(inventory_type, slot_index)
+		)
 
 
 func _on_focus_exited() -> void:

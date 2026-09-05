@@ -12,10 +12,7 @@ func _ready() -> void:
 	transfer_menu.hide()
 	self.hide()
 
-"""
-Inventory UI Functions
-"""
-
+#region Inventory UI Functions
 var is_item_box_open: bool = false
 
 func open_inventory(open_item_box: bool = false) -> void:
@@ -36,11 +33,10 @@ func close_inventory() -> void:
 	
 	close_action_menu()
 	CombinationManager.end_combine_state()
+#endregion
 
 
-"""
-Slots Functions
-"""
+#region Slots Functions
 var focused_index: Array[int] = [0,0] # NOTE [inv_type, index]
 
 func focus_slot(_focused_index: Array[int]) -> void:
@@ -67,10 +63,10 @@ func disable_slots(_disable_slot: bool = true):
 	
 	for item in item_box_slots_ui.get_children():
 		item.disable_slot(_disable_slot)
+#endregion
 
-"""
-Item Action Menu Functions
-"""
+
+#region Item Action Menu Functions
 @onready var action_menu: GridContainer = $InventoryScreen/Inventory/ActionMenu/Menus/ActionMenu
 
 @onready var use_btn: Button = $InventoryScreen/Inventory/ActionMenu/Menus/ActionMenu/UseBtn
@@ -151,11 +147,10 @@ func _on_close_btn_pressed() -> void:
 	if is_action_menu_open:
 		focused_index = [action_inv_type, action_slot_index]
 		close_action_menu()
+#endregion
 
 
-"""
-Transfer Menu Functions
-"""
+#region Transfer Menu Functions
 @onready var transfer_menu: GridContainer = $InventoryScreen/Inventory/ActionMenu/Menus/TransferMenu
 
 @onready var increase_btn: Button = $InventoryScreen/Inventory/ActionMenu/Menus/TransferMenu/DecreaseBtn
@@ -220,3 +215,29 @@ func _on_transfer_btn_pressed() -> void:
 	
 	focused_index = [action_inv_type, action_slot_index]
 	close_action_menu()
+#endregion
+
+
+#region Item Viewer Functions
+@onready var item_viewer: ItemViewer = $InventoryScreen/ItemDisplay/ItemViewer/SubViewportContainer/SubViewport/ItemViewer
+@onready var main_label: Label = $InventoryScreen/ItemDisplay/ItemDetails/Panel/Labels/MainLabel
+@onready var sub_label: Label = $InventoryScreen/ItemDisplay/ItemDetails/Panel/Labels/SubLabel
+
+func update_item_display(item: ItemInstance) -> void:
+	if item:
+		item_viewer.update_viewer(item.item_def)
+		update_main_label(item.item_def.name)
+		update_sub_label(item.item_def.description)
+
+	else:
+		item_viewer.update_viewer(null)
+		update_main_label("")
+		update_sub_label("")
+
+
+func update_main_label(text: String) -> void:
+	main_label.text = text
+
+func update_sub_label(text: String) -> void:
+	sub_label.text = text
+#endregion
