@@ -1,32 +1,33 @@
 shader_type spatial;
 
-uniform sampler2D albedo_texture : source_color;
+uniform sampler2D albedo_texture : source_color, filter_linear_mipmap;
 
-uniform vec3 shadow_tint : source_color = vec3(0.35, 0.35, 0.40);
-uniform vec3 mid_tint : source_color = vec3(0.70, 0.70, 0.75);
-uniform vec3 light_tint : source_color = vec3(1.0, 1.0, 1.0);
+uniform float shadow_threshold : hint_range(0.0, 1.0) = 0.3;
+uniform float light_threshold : hint_range(0.0, 1.0) = 0.7;
 
-uniform float shadow_threshold = 0.25;
-uniform float light_threshold = 0.65;
+uniform float shadow_strength : hint_range(0.0, 1.0) = 0.35;
+uniform float mid_strength : hint_range(0.0, 1.0) = 0.65;
+
 
 void fragment() {
 	ALBEDO = texture(albedo_texture, UV).rgb;
 }
 
+
 void light() {
 	float ndotl = max(dot(NORMAL, LIGHT), 0.0);
 
-	vec3 lighting;
+	float lighting;
 
 	if (ndotl < shadow_threshold) {
-		lighting = shadow_tint;
+		lighting = shadow_strength;
 	}
 	else if (ndotl < light_threshold) {
-		lighting = mid_tint;
+		lighting = mid_strength;
 	}
 	else {
-		lighting = light_tint;
+		lighting = 1.0;
 	}
 
-	DIFFUSE_LIGHT += ALBEDO * lighting * ATTENUATION;
+	DIFFUSE_LIGHT += ALBEDO * LIGHT_COLOR * lighting * ATTENUATION;
 }

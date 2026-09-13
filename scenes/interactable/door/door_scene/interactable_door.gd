@@ -1,4 +1,5 @@
 #@tool
+@icon("res://addons/at-icons/node3d/door.svg")
 extends Interactable
 class_name InteractableDoor
 

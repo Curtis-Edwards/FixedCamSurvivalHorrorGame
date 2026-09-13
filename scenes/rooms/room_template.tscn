@@ -5,7 +5,7 @@
 [node name="RoomTemplate" type="Node3D" unique_id=1177210895]
 script = ExtResource("1_3uiam")
 
-[node name="BoxedOutRoom" type="Node3D" parent="." unique_id=612534032]
+[node name="BlenderExport" type="Node3D" parent="." unique_id=612534032]
 
 [node name="ExtraShapes" type="Node3D" parent="." unique_id=1727345854]
 
@@ -24,3 +24,4 @@ script = ExtResource("1_3uiam")
 [node name="Lights" type="Node3D" parent="." unique_id=1138910600]
 
 [node name="DebugStartingPoint" type="Marker3D" parent="." unique_id=1490553508]
+gizmo_extents = 0.5

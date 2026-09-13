@@ -14,7 +14,7 @@ enum LockTypes {
 }
 @export var lock_type: LockTypes = LockTypes.UNLOCKED
 
-@export_category("ONLY FOR \"LOCKED_NEEDS_KEY\"")
+@export_group("Only For \"LOCKED_NEEDS_KEY\"")
 @export var required_key: ItemDefinition = null
 @export_multiline var locked_key_hint: String = "Needs ___ key."
 

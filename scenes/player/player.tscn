@@ -3,7 +3,6 @@
 [ext_resource type="Script" uid="uid://dl4scqve1rmau" path="res://scenes/player/player.gd" id="1_dovo2"]
 [ext_resource type="Material" uid="uid://ph3n7o3uhrnv" path="res://assets/materials/place_holder_grid_material.tres" id="2_lvxji"]
 [ext_resource type="PackedScene" uid="uid://dkj4ivdjmo1i3" path="res://scenes/player/interaction_prompt/interaction_prompt.tscn" id="3_gmlin"]
-[ext_resource type="Texture2D" uid="uid://xxr4td3f35l1" path="res://assets/textures/red_cross_hair-1.png" id="4_lvxji"]
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_ypl5r"]
 height = 1.6
@@ -18,12 +17,139 @@ top_radius = 0.2
 bottom_radius = 0.2
 height = 1.0
 
+[sub_resource type="CylinderMesh" id="CylinderMesh_gmlin"]
+material = ExtResource("2_lvxji")
+top_radius = 0.1
+bottom_radius = 0.1
+height = 0.9
+
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_w4qpt"]
 height = 1.6
 radius = 0.001
 
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_dovo2"]
 points = PackedVector3Array(0, 0, -0.3, -0.5, 0, -1.5, 0.5, 0, -1.5, 0, 1.6, -0.3, -0.5, 1.6, -1.5, 0.5, 1.6, -1.5)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wwgp4"]
+shading_mode = 2
+albedo_color = Color(0.75, 1, 0.7, 1)
+
+[sub_resource type="SphereMesh" id="SphereMesh_bvwd6"]
+material = SubResource("StandardMaterial3D_wwgp4")
+radius = 0.2
+height = 0.4
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_gmlin"]
+shading_mode = 2
+albedo_color = Color(1, 0.7, 0.7, 1)
+
+[sub_resource type="SphereMesh" id="SphereMesh_lvxji"]
+material = SubResource("StandardMaterial3D_gmlin")
+radius = 0.2
+height = 0.4
+
+[sub_resource type="AnimationNodeBlendSpace2D" id="AnimationNodeBlendSpace2D_h17s1"]
+
+[sub_resource type="AnimationNodeBlendSpace2D" id="AnimationNodeBlendSpace2D_lvxji"]
+
+[sub_resource type="AnimationNodeBlendSpace2D" id="AnimationNodeBlendSpace2D_5gtgg"]
+
+[sub_resource type="AnimationNodeBlendSpace2D" id="AnimationNodeBlendSpace2D_0owmy"]
+
+[sub_resource type="AnimationNodeBlendSpace2D" id="AnimationNodeBlendSpace2D_75vfm"]
+
+[sub_resource type="AnimationNodeBlendSpace2D" id="AnimationNodeBlendSpace2D_p47bc"]
+
+[sub_resource type="AnimationNodeBlendSpace2D" id="AnimationNodeBlendSpace2D_qek5x"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_qek5x"]
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_5gtgg"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_h17s1"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_je7p5"]
+advance_mode = 2
+advance_condition = &"is_sprinting"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_fm80t"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_lvxji"]
+advance_mode = 2
+advance_condition = &"not_sprinting"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_p47bc"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_gx1jg"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_ugbui"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_fcs02"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_myrg7"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_kvlxm"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_uf5tr"]
+
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_bvwd6"]
+states/Aiming/node = SubResource("AnimationNodeBlendSpace2D_h17s1")
+states/Aiming/position = Vector2(155, -4)
+states/End/position = Vector2(1075, 100)
+states/Idle/node = SubResource("AnimationNodeBlendSpace2D_lvxji")
+states/Idle/position = Vector2(371, 100)
+states/Interacting/node = SubResource("AnimationNodeBlendSpace2D_5gtgg")
+states/Interacting/position = Vector2(371, -94)
+"states/Moving Backward/node" = SubResource("AnimationNodeBlendSpace2D_0owmy")
+"states/Moving Backward/position" = Vector2(604, 343)
+"states/Moving Forward/node" = SubResource("AnimationNodeBlendSpace2D_p47bc")
+"states/Moving Forward/position" = Vector2(604, 100)
+"states/Moving Forward (Sprinting)/node" = SubResource("AnimationNodeBlendSpace2D_75vfm")
+"states/Moving Forward (Sprinting)/position" = Vector2(868, 100)
+"states/Quick Turning/node" = SubResource("AnimationNodeBlendSpace2D_qek5x")
+"states/Quick Turning/position" = Vector2(371, 343)
+states/Start/position = Vector2(-97, 100)
+transitions = ["Start", "Idle", SubResource("AnimationNodeStateMachineTransition_qek5x"), "Idle", "Moving Forward", SubResource("AnimationNodeStateMachineTransition_5gtgg"), "Idle", "Moving Backward", SubResource("AnimationNodeStateMachineTransition_h17s1"), "Moving Forward", "Moving Forward (Sprinting)", SubResource("AnimationNodeStateMachineTransition_je7p5"), "Moving Forward", "Idle", SubResource("AnimationNodeStateMachineTransition_fm80t"), "Moving Forward (Sprinting)", "Moving Forward", SubResource("AnimationNodeStateMachineTransition_lvxji"), "Moving Backward", "Idle", SubResource("AnimationNodeStateMachineTransition_p47bc"), "Moving Backward", "Quick Turning", SubResource("AnimationNodeStateMachineTransition_gx1jg"), "Quick Turning", "Idle", SubResource("AnimationNodeStateMachineTransition_ugbui"), "Idle", "Interacting", SubResource("AnimationNodeStateMachineTransition_fcs02"), "Interacting", "Idle", SubResource("AnimationNodeStateMachineTransition_myrg7"), "Aiming", "Idle", SubResource("AnimationNodeStateMachineTransition_kvlxm"), "Idle", "Aiming", SubResource("AnimationNodeStateMachineTransition_uf5tr")]
+graph_offset = Vector2(-1, -33)
+
+[sub_resource type="Animation" id="Animation_lvxji"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Node3D/ArmPivots:position:y")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1.157924]
+}
+
+[sub_resource type="Animation" id="Animation_p47bc"]
+resource_name = "idle"
+length = 0.6
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Node3D/ArmPivots:position:y")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.6333333),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [1.157924, 1.1, 1.157924]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_75vfm"]
+_data = {
+&"RESET": SubResource("Animation_lvxji"),
+&"idle": SubResource("Animation_p47bc")
+}
 
 [node name="Player" type="CharacterBody3D" unique_id=662147544]
 collision_mask = 76
@@ -34,15 +160,37 @@ script = ExtResource("1_dovo2")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.8, 0)
 shape = SubResource("CylinderShape3D_ypl5r")
 
-[node name="BodyMesh" type="MeshInstance3D" parent="." unique_id=1418413834]
+[node name="Node3D" type="Node3D" parent="." unique_id=45695252]
+
+[node name="BodyMesh" type="MeshInstance3D" parent="Node3D" unique_id=1418413834]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.8, 0)
 layers = 2
 mesh = SubResource("CylinderMesh_7dm28")
 
-[node name="EyesMesh" type="MeshInstance3D" parent="." unique_id=556175140]
+[node name="EyesMesh" type="MeshInstance3D" parent="Node3D" unique_id=556175140]
 transform = Transform3D(-4.371139e-08, -1, -4.371139e-08, 0, -4.371139e-08, 1, -1, 4.371139e-08, 1.9106855e-15, 0, 1.26257, -0.4)
 layers = 2
 mesh = SubResource("CylinderMesh_uqdc8")
+
+[node name="ArmPivots" type="Node3D" parent="Node3D" unique_id=1473831409]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.157924, 0)
+visible = false
+
+[node name="LeftArmPivot" type="Node3D" parent="Node3D/ArmPivots" unique_id=1727488053]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 0, 0)
+
+[node name="LeftArm" type="MeshInstance3D" parent="Node3D/ArmPivots/LeftArmPivot" unique_id=1721324969]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
+layers = 2
+mesh = SubResource("CylinderMesh_gmlin")
+
+[node name="RightArmPivot" type="Node3D" parent="Node3D/ArmPivots" unique_id=519090764]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 0, 0)
+
+[node name="RightArm" type="MeshInstance3D" parent="Node3D/ArmPivots/RightArmPivot" unique_id=1670423192]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
+layers = 2
+mesh = SubResource("CylinderMesh_gmlin")
 
 [node name="QuickTurnDuration" type="Timer" parent="." unique_id=1671766073]
 wait_time = 0.15
@@ -72,24 +220,37 @@ shape = SubResource("ConvexPolygonShape3D_dovo2")
 debug_color = Color(0.6482781, 0.5093867, 0.31239182, 0.41960785)
 
 [node name="WeaponAim" type="Node3D" parent="." unique_id=1696293094]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.1353878, 0)
+visible = false
 
-[node name="ProjectileStart" type="Marker3D" parent="WeaponAim" unique_id=2039002744]
+[node name="ProjectileStart" type="MeshInstance3D" parent="WeaponAim" unique_id=1737835290]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1)
+mesh = SubResource("SphereMesh_bvwd6")
 
 [node name="SpringArm3D" type="SpringArm3D" parent="WeaponAim" unique_id=2089156285]
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0, -1)
 collision_mask = 76
 spring_length = 30.0
 
-[node name="Decal" type="Decal" parent="WeaponAim/SpringArm3D" unique_id=90579465]
-transform = Transform3D(0.385, 0, 0, 0, -1.6828885e-08, -0.385, 0, 0.385, -1.6828885e-08, 0, 0, 0)
-visible = false
-size = Vector3(8, 2.36, 8)
-texture_albedo = ExtResource("4_lvxji")
-texture_emission = ExtResource("4_lvxji")
-upper_fade = 0.7135244
-lower_fade = 1.044663
+[node name="ProjectileEnd" type="MeshInstance3D" parent="WeaponAim/SpringArm3D" unique_id=1729593572]
+transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 0, 0, 0)
+mesh = SubResource("SphereMesh_lvxji")
+
+[node name="AnimationTree" type="AnimationTree" parent="." unique_id=1116659743]
+tree_root = SubResource("AnimationNodeStateMachine_bvwd6")
+parameters/conditions/is_sprinting = false
+parameters/conditions/not_sprinting = true
+parameters/Aiming/blend_position = Vector2(0, 0)
+parameters/Idle/blend_position = Vector2(0, 0)
+parameters/Interacting/blend_position = Vector2(0, 0)
+"parameters/Moving Backward/blend_position" = Vector2(0, 0)
+"parameters/Moving Forward/blend_position" = Vector2(0, 0)
+"parameters/Moving Forward (Sprinting)/blend_position" = Vector2(0, 0)
+"parameters/Quick Turning/blend_position" = Vector2(0, 0)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=589779714]
+libraries/ = SubResource("AnimationLibrary_75vfm")
+autoplay = &"idle"
 
 [connection signal="timeout" from="QuickTurnDuration" to="." method="_on_quick_turn_duration_timeout"]
 [connection signal="area_entered" from="InteractionStuff/InteractionArea" to="." method="_on_interaction_area_area_entered"]

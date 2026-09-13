@@ -1,14 +1,49 @@
-[gd_scene format=3 uid="uid://bl1cj8wcuhcpn"]
+[gd_scene format=4 uid="uid://bl1cj8wcuhcpn"]
 
 [ext_resource type="PackedScene" uid="uid://1imavx2tumky" path="res://scenes/rooms/room_template.tscn" id="1_nmprf"]
-[ext_resource type="PackedScene" uid="uid://ddxh5pc8rwwck" path="res://assets/3d_objects/test_layout_02/TL02_MH.glb" id="2_qt1n7"]
 [ext_resource type="Material" uid="uid://ph3n7o3uhrnv" path="res://assets/materials/place_holder_grid_material.tres" id="3_r1doa"]
 [ext_resource type="Texture2D" uid="uid://b65ijnmhccx2r" path="res://assets/textures/placeholder_grid3.png" id="4_iheyd"]
 [ext_resource type="PackedScene" uid="uid://dff83q5333mis" path="res://scenes/camera/fixed_cam_trigger.tscn" id="4_r1doa"]
 [ext_resource type="PackedScene" uid="uid://03gfg7cvcqnv" path="res://scenes/interactable/door/door_scene/interactable_door.tscn" id="5_gloiw"]
+[ext_resource type="Resource" uid="uid://bd6000n6mdwto" path="res://scenes/interactable/door/door_instance/mh_to_ww.tres" id="5_nliy4"]
 [ext_resource type="Resource" uid="uid://slmydcxluydf" path="res://scenes/interactable/door/door_instance/mh_to_sr.tres" id="6_5v1iw"]
 [ext_resource type="Resource" uid="uid://cba6dh2b7q4so" path="res://scenes/interactable/door/door_instance/mh_to_ew.tres" id="7_m00wy"]
 [ext_resource type="Resource" uid="uid://chdjvadblds0p" path="res://scenes/interactable/door/door_instance/mh_to_ew2.tres" id="8_nliy4"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_t7cn4"]
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_25g4e"]
+_surfaces = [{
+"aabb": AABB(-4, -2, -15, 8, 8, 16),
+"format": 34896613377,
+"index_count": 96,
+"index_data": PackedByteArray("AAABAAIAAwACAAEAAwAAAAIAAwABAAQAAAAFAAEABQAEAAEABAAGAAMABgAAAAMABgAEAAcABQAIAAQABwAEAAgABgAHAAkABwAIAAkACgAGAAkAAAAGAAoACgAJAAsACAALAAkAAAAKAAwACwAMAAoABQAAAA0ACAAOAAsADwALAA4ACAAPAA4ACwAPAAwAEAAIAAUABQANABAACAAQAA8AAAAMABEAAAARAA0ADAAPABEAEAANABEAEAARAA8A"),
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 18,
+"vertex_data": PackedByteArray("/////wAAAAD//wAA/z8AAP//AAAAAAAA/38AAAAAAAD/fwAA/z8AAP///z//fwAA/3//fwAAAAD/f/8//z8AAP9//z//fwAA/3//f/8/AAAAAP9/AAAAAAAA/3//PwAAAAD//wAAAAD///////8AAAAA/z//fwAAAAD/P///AAD///8///8AAAAA/////wAA")
+}]
+blend_shape_mode = 0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_1kt5x"]
+resource_name = "TL02_MH_Cube_001"
+_surfaces = [{
+"aabb": AABB(-4, -2, -15, 8, 8, 16),
+"attribute_data": PackedByteArray("//8WeVTNycL//8nCqppcsFY1FnlWNVywqbLJwlPlFnlT5cnCqbLwnf9/8J3/fxZ5VjVcsFTN8J2qmlyw//8WeVY1Fnn///CdU+VcsP9/Fnn/f1ywU+UWeVPlmWz/f///U+X///9/mWxT5f//qbJMtlPlTLb/f////39MtlTNXLCqmlywVM3wnVTNycL///Cd///Jwv9/mWypsnOR/39zkamymWxT5Uy2qbJzkVPlc5Gpsky2qbJMtv9/c5GpsnOR/39MtqmymWxT5XORqbJzkVPlmWw="),
+"format": 34896613399,
+"index_count": 96,
+"index_data": PackedByteArray("AAABAAIAAAADAAEAAwAAAAQAAwAEAAUABgAHAAgACQAHAAYABwAJAAoABwAKAAsADAANAA4ADQAMAA8ADwAMABAADQAPABEAEgATABQAEgAVABMAFgAXABgAFgAZABcAGgAbABwAGwAaAB0AGwAdAB4AHwAgACEAHwAiACAAIwAfACEAIwAiAB8AIgAjACQAJQAmACcAJQAoACYAKQAqACsAKQAsACoALQAuAC8ALQAwAC4AMQAyADMAMQA0ADIA"),
+"material": SubResource("StandardMaterial3D_t7cn4"),
+"primitive": 3,
+"uv_scale": Vector4(2.526389, 3.473611, 0, 0),
+"vertex_count": 53,
+"vertex_data": PackedByteArray("/////wAAAAD//wAA/z8AAP//AAAAAAAA////P/9/AAD///////8AAP///z///wAA/38AAAAAAID/////AAAAgP//AAAAAACA/3//fwAAAIAAAP9/AAAAgAAA//8AAACAAAD/P////78AAP9//z//vwAA/z//f/+/AAD//wAA/78AAP//////vwAA/38AAP+/////P///AAAAAP////8AAAAA/z///wAA////////AAD/////AAD/PwAA//////8//////////z8AAP//AAD/P////z////+//3//P/9//7////8//3//vwAA/z////+/AAD/P/9//7//f/8//z//v/9//z//f/+//3//f/8//7//fwAA/z//v/9//38AAP+//38AAAAA/78AAP9/AAD/v/9//3//P/+/AAD/f/8//7//f/9/AAD/v////z//f+PS/38AAP8/49L//wAA/z/j0v9//z//f+PS/3//P/9/G60AAP9//z8brf9//3//PxutAAD/P/9/G63/fwAAAAD/v///AAD/P/+//38AAP8//7///wAAAAD/v/8//3//P/9//z//f/8//3//P/9//z//f/9/////f////3////9/////f////3////9/AAD/fwAA/38AAP9/AAD/fwAA/38AAP///3////9/////f////38AAP9/AAD/fwAA/38AAP9/////f////3////9/////f////3//fwAA/38AAP9/AAD/fwAA/38AAP9/AAD///9/////f////3////9/////f////3////9/////f////3////9/////f////3////9/////f////3////9/")
+}]
+blend_shape_mode = 0
+shadow_mesh = SubResource("ArrayMesh_25g4e")
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_jvdw3"]
+data = PackedVector3Array(4, 6, -15, 4, -2, -11, 4, -2, -15, 4, 0, -7, 4, 6, 1, 4, 0, 1, 4, 6, -15, 4, 0, -7, 4, -2, -11, 4, 0, -7, 4, 6, -15, 4, 6, 1, 0, -2, -15, 4, 6, -15, 4, -2, -15, 4, 6, -15, -4, 2, -15, -4, 6, -15, 0, 2, -15, 4, 6, -15, 0, -2, -15, 4, 6, -15, 0, 2, -15, -4, 2, -15, -4, 0, 1, -4, 2, -11, -4, 0, -7, -4, 2, -11, -4, 6, -15, -4, 2, -15, -4, 6, -15, -4, 0, 1, -4, 6, 1, -4, 2, -11, -4, 0, 1, -4, 6, -15, 4, 0, 1, -4, 6, 1, -4, 0, 1, 4, 0, 1, 4, 6, 1, -4, 6, 1, 4, 6, -15, -4, 6, 1, 4, 6, 1, 4, 6, -15, -4, 6, -15, -4, 6, 1, 4, 0, 1, 0, 0, -7, 4, 0, -7, 0, 0, -7, -4, 0, 1, -4, 0, -7, 0, 0, -7, 4, 0, 1, -4, 0, 1, 0, 0, -11, 0, 0, -7, 0, 2, -11, 0, 0, -11, 0, -2, -11, 0, 0, -7, -4, 2, -15, 0, 2, -11, -4, 2, -11, -4, 2, -15, 0, 2, -15, 0, 2, -11, 4, 0, -7, 0, -2, -11, 4, -2, -11, 4, 0, -7, 0, 0, -7, 0, -2, -11, 0, 0, -7, -4, 2, -11, 0, 2, -11, 0, 0, -7, -4, 0, -7, -4, 2, -11, 0, -2, -11, 0, 2, -15, 0, -2, -15, 0, 2, -15, 0, 0, -11, 0, 2, -11, 0, 2, -15, 0, -2, -11, 0, 0, -11, 0, -2, -15, 4, -2, -11, 0, -2, -11, 0, -2, -15, 4, -2, -15, 4, -2, -11)
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_bvwd6"]
 top_radius = 1.0
@@ -38,10 +73,16 @@ size = Vector3(4, 6, 8)
 
 [node name="TL02_MH" unique_id=1177210895 instance=ExtResource("1_nmprf")]
 
-[node name="TL02_MH" parent="BoxedOutRoom" parent_id_path=PackedInt32Array(612534032) index="0" unique_id=1497645075 instance=ExtResource("2_qt1n7")]
+[node name="TL02_MH" type="Node3D" parent="BlenderExport" parent_id_path=PackedInt32Array(612534032) index="0" unique_id=1497645075]
 
-[node name="MH" parent="BoxedOutRoom/TL02_MH" index="0" unique_id=1944595853]
+[node name="BoxedOutRoom_TL02_MH" type="MeshInstance3D" parent="BlenderExport/TL02_MH" index="0" unique_id=2081900795]
+mesh = SubResource("ArrayMesh_1kt5x")
 surface_material_override/0 = ExtResource("3_r1doa")
+
+[node name="BoxedOutRoom_TL02_MH" type="StaticBody3D" parent="BlenderExport/TL02_MH/BoxedOutRoom_TL02_MH" index="0" unique_id=353105668]
+
+[node name="BoxedOutRoom_TL02_MH" type="CollisionShape3D" parent="BlenderExport/TL02_MH/BoxedOutRoom_TL02_MH/BoxedOutRoom_TL02_MH" index="0" unique_id=1013837646]
+shape = SubResource("ConcavePolygonShape3D_jvdw3")
 
 [node name="Pillar1" type="MeshInstance3D" parent="ExtraShapes" parent_id_path=PackedInt32Array(1727345854) index="0" unique_id=459327630]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 2, -15)
@@ -87,23 +128,37 @@ collision_layer = 64
 [node name="CollisionShape3D" type="CollisionShape3D" parent="ExtraShapes/Pillar4/StaticBody3D" index="0" unique_id=1049094712]
 shape = SubResource("ConcavePolygonShape3D_gloiw")
 
-[node name="Door1" parent="Interactables/Doors" parent_id_path=PackedInt32Array(1804345606) index="0" unique_id=1451751561 instance=ExtResource("5_gloiw")]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, -2, -13)
-door_instance = ExtResource("6_5v1iw")
+[node name="DoorLocation_001" type="Marker3D" parent="Interactables/Doors" parent_id_path=PackedInt32Array(1804345606) index="0" unique_id=1951505215]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0, -3)
+
+[node name="Door1" parent="Interactables/Doors/DoorLocation_001" index="0" unique_id=1451751561 instance=ExtResource("5_gloiw")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, 0, 0)
+door_instance = ExtResource("5_nliy4")
 is_this_room_1 = true
 
-[node name="Door2" parent="Interactables/Doors" parent_id_path=PackedInt32Array(1804345606) index="1" unique_id=1724532173 instance=ExtResource("5_gloiw")]
-transform = Transform3D(1.3113416e-07, 0, -1, 0, 1, 0, 1, 0, 1.3113416e-07, 4, 0, -2.5)
+[node name="DoorLocation_002" type="Marker3D" parent="Interactables/Doors" parent_id_path=PackedInt32Array(1804345606) index="1" unique_id=1110577931]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, -3)
+
+[node name="Door2" parent="Interactables/Doors/DoorLocation_002" index="0" unique_id=1724532173 instance=ExtResource("5_gloiw")]
+transform = Transform3D(1.3113416e-07, 0, -1, 0, 1, 0, 1, 0, 1.3113416e-07, 0, 0, 0.5)
 door_instance = ExtResource("7_m00wy")
 is_this_room_1 = true
 
-[node name="Door3" parent="Interactables/Doors" parent_id_path=PackedInt32Array(1804345606) index="2" unique_id=2110467489 instance=ExtResource("5_gloiw")]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -4, 2, -13)
-door_instance = ExtResource("8_nliy4")
+[node name="DoorLocation_003" type="Marker3D" parent="Interactables/Doors" parent_id_path=PackedInt32Array(1804345606) index="2" unique_id=1277988566]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2, -13)
+
+[node name="Door3" parent="Interactables/Doors/DoorLocation_003" index="0" unique_id=2110467489 instance=ExtResource("5_gloiw")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, 0, 0)
+door_instance = ExtResource("6_5v1iw")
 is_this_room_1 = true
 
-[node name="Door4" parent="Interactables/Doors" parent_id_path=PackedInt32Array(1804345606) index="3" unique_id=959210688 instance=ExtResource("5_gloiw")]
-transform = Transform3D(-2.1855693e-07, 0, 1, 0, 1, 0, -1, 0, -2.1855693e-07, -4, 0, -2.5)
+[node name="DoorLocation_004" type="Marker3D" parent="Interactables/Doors" parent_id_path=PackedInt32Array(1804345606) index="3" unique_id=1189843309]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 2, -13)
+
+[node name="Door4" parent="Interactables/Doors/DoorLocation_004" index="0" unique_id=959210688 instance=ExtResource("5_gloiw")]
+transform = Transform3D(-2.1855693e-07, 0, 1, 0, 1, 0, -1, 0, -2.1855693e-07, 0, 0, 0)
+door_instance = ExtResource("8_nliy4")
+is_this_room_1 = true
 
 [node name="FixedCamTrigger_01" parent="FixedCamTriggers" parent_id_path=PackedInt32Array(1043019142) index="0" unique_id=793731124 instance=ExtResource("4_r1doa")]
 
@@ -130,7 +185,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 3, -11)
 shape = SubResource("BoxShape3D_gloiw")
 
 [node name="CamPos" parent="FixedCamTriggers/FixedCamTrigger_03" index="1" unique_id=2093784570]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 3.5600271, 3, -10.83655)
+transform = Transform3D(-0.25881907, -0.46533835, 0.8464472, 0, 0.87630665, 0.4817537, -0.9659258, 0.12468705, -0.22680488, 2.5600271, 5.5, -13.33655)
 
 [node name="AreaLight3D" type="OmniLight3D" parent="Lights" parent_id_path=PackedInt32Array(1138910600) index="0" unique_id=1285802986]
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 4.49, -3.5)
@@ -149,7 +204,6 @@ omni_range = 7.0
 [node name="DebugStartingPoint" parent="." index="5" unique_id=1490553508]
 transform = Transform3D(0.99999994, 0, 0, 0, 1, 0, 0, 0, 0.99999994, 0, 0, -2)
 
-[editable path="BoxedOutRoom/TL02_MH"]
 [editable path="FixedCamTriggers/FixedCamTrigger_01"]
 [editable path="FixedCamTriggers/FixedCamTrigger_02"]
 [editable path="FixedCamTriggers/FixedCamTrigger_03"]

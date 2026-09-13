@@ -1,171 +1,252 @@
 extends CharacterBody3D
 class_name Player
 
-@onready var state_machine: AnimationTree = $AnimationTree
+@onready var animation_tree: AnimationTree = $AnimationTree
+@onready var animation_state_machine: AnimationNodeStateMachinePlayback = animation_tree.get("parameters/playback")
 
-func update_animation_params() -> void:
-	state_machine["parameters/conditions/is_idle"] = true
-
-@export var f_move_speed: float = 4.0
-@export var b_move_speed: float = 3.0
-@export var sprint_multiplier: float = 2.0
-@export var rotation_speed: float = 4.0
 @export var gravity: float = 9.8
 
 enum PlayerState {
-	NORMAL, # Idle / Sprinting / Walking Backward
+	IDLE,
+	MOVING_FORWARD,
+	MOVING_BACKWARD,
+	AIMING,
 	QUICK_TURNING,
-	AIMING, # / Shhoting
 	INTERACTING
 }
 
-var cur_player_state: PlayerState = PlayerState.NORMAL
+var current_state: PlayerState = PlayerState.IDLE
 
-var lock_player_input: bool = false
-var lock_menu_input: bool = false
 
 func _ready() -> void:
-	#GameManager.player = self
-	pass
+	GameManager.player = self
 
-func _process(delta):
-	
-	update_lock_player_input()
-	
-	match cur_player_state:
-		PlayerState.NORMAL:
-			normal_process(delta)
-		PlayerState.QUICK_TURNING:
-			quick_turning_process(delta)
+func _physics_process(delta: float) -> void:
+	match current_state:
+		PlayerState.IDLE:
+			idle_state(delta)
+		PlayerState.MOVING_FORWARD:
+			moving_forward_state(delta)
+		PlayerState.MOVING_BACKWARD:
+			moving_backward_state(delta)
 		PlayerState.AIMING:
-			aiming_process(delta)
+			aiming_state(delta)
+		PlayerState.QUICK_TURNING:
+			quick_turning_state(delta)
+		PlayerState.INTERACTING:
+			interacting_state(delta)
+		_:
+			push_error("Err: State not found.")
 	
-	#var playback: AnimationNodeStateMachinePlayback = state_machine.get(
-		#"parameters/playback"
-	#)
-	#print(playback.get_current_node())
+	move_and_slide()
+
+
+func change_state(new_state: PlayerState) -> void:
+	current_state = new_state
 	
-	if velocity.dot(-transform.basis.z) > 0.0:
-		state_machine["parameters/conditions/is_idle"] = false
-		state_machine["parameters/conditions/is_walking"] = true
-	else:
-		state_machine["parameters/conditions/is_idle"] = true
-		state_machine["parameters/conditions/is_walking"] = false
+	match new_state:
+		PlayerState.IDLE:
+			animation_state_machine.travel("Idle")
+		PlayerState.MOVING_FORWARD:
+			animation_state_machine.travel("Moving Forward")
+		PlayerState.MOVING_BACKWARD:
+			animation_state_machine.travel("Moving Backward")
+		PlayerState.AIMING:
+			weapon_aim.show()
+			weapon_aim.rotation.x = 0.0
+			animation_state_machine.travel("Aiming")
+		PlayerState.QUICK_TURNING:
+			quick_turn_start_y = rotation.y
+			quick_turn_target_y = rotation.y + PI
+			quick_turn_progress = 0.0
+			animation_state_machine.travel("Quick Turning")
+		PlayerState.INTERACTING:
+			animation_state_machine.travel("Interacting")
+		_:
+			push_error("Err: State not found.")
 
-#region Normal State Functions
+#region IDLE
 
-var is_sprinting: bool = false
+@export var rotation_speed: float = 4.0
 
-func normal_process(delta: float) -> void:
-	# Interaction
+func idle_state(delta: float) -> void:
+	var move_axis: float = InputManager.get_player_move_axis()
+	var rotation_axis: float = InputManager.get_player_rotation_axis()
+	
 	if InputManager.is_interact_pressed():
 		var interactable: Interactable = get_best_interactable()
 		if interactable:
 			interactable.interact()
 			return
 	
-	# Quick Turn
-	if InputManager.is_quick_turn_inputed():
-		cur_player_state = PlayerState.QUICK_TURNING
-		quick_turn_start_y = rotation.y
-		quick_turn_target_y = rotation.y + PI
-		quick_turn_timer.start()
-		return
-	
-	# Aiming
 	if InputManager.is_aim_held():
-		velocity.x = 0
-		velocity.z = 0
-		weapon_aim.rotation.x = 0
-		cur_player_state = PlayerState.AIMING
+		change_state(PlayerState.AIMING)
 		return
 	
-	# Sprinting
-	is_sprinting = !is_sprinting if InputManager.is_sprint_pressed() else is_sprinting
+	if move_axis < 0.0:
+		change_state(PlayerState.MOVING_BACKWARD)
+		return
 	
-	rotate_player(
-		InputManager.get_player_rotation_axis(),
-		delta
-	)
-	move_player(
-		InputManager.get_player_move_axis(),
-		delta
-	)
-	# Gravity
+	if move_axis > 0.0:
+		change_state(PlayerState.MOVING_FORWARD)
+		return
+	
+	velocity.x = 0
+	velocity.z = 0
+	rotation.y -= rotation_axis * rotation_speed * delta
+	
 	velocity.y -= gravity * delta if not is_on_floor() else 0.0
 	
-	move_and_slide()
-
-
-func rotate_player(rotation_input: float, delta: float) -> void:
-	rotation.y -= rotation_input * rotation_speed * delta
-
-
-func move_player(move_input: float, _delta: float) -> void:
-	var direction = -transform.basis.z * move_input  # forward relative to player
-	var true_f_move_speed: float = f_move_speed * sprint_multiplier if is_sprinting else f_move_speed
-	velocity.x = direction.x * true_f_move_speed if move_input > 0 else direction.x * b_move_speed
-	velocity.z = direction.z * true_f_move_speed if move_input > 0 else direction.z * b_move_speed
 #endregion
 
+#region MOVING_FORWARD
 
-#region Quick Turn State Functions
+@export var forward_speed: float = 4.0
+@export var sprinting_speed: float = 6.0
 
-@onready var quick_turn_timer: Timer = $QuickTurnDuration
+func moving_forward_state(delta: float) -> void:
+	var move_axis: float = InputManager.get_player_move_axis()
+	var rotation_axis: float = InputManager.get_player_rotation_axis()
+	
+	if InputManager.is_interact_pressed():
+		var interactable: Interactable = get_best_interactable()
+		if interactable:
+			interactable.interact()
+			return
+	
+	if InputManager.is_aim_held():
+		change_state(PlayerState.AIMING)
+		return
+	
+	if move_axis == 0.0:
+		change_state(PlayerState.IDLE)
+		return
+	if move_axis < 0.0:
+		change_state(PlayerState.MOVING_BACKWARD)
+		return
+	
+	var move_speed: float = forward_speed
+	
+	if InputManager.is_sprint_inputed():
+		move_speed = sprinting_speed
+		animation_tree["parameters/conditions/is_sprinting"] = true
+		animation_tree["parameters/conditions/not_sprinting"] = false
+	else:
+		move_speed = forward_speed
+		animation_tree["parameters/conditions/is_sprinting"] = false
+		animation_tree["parameters/conditions/not_sprinting"] = true
+	
+	velocity.x = (-transform.basis.z * move_axis).x * move_speed
+	velocity.z = (-transform.basis.z * move_axis).z * move_speed
+	rotation.y -= rotation_axis * rotation_speed * delta
+	
+	velocity.y -= gravity * delta if not is_on_floor() else 0.0
+
+#endregion
+
+#region MOVING_BACKWARD
+
+@export var backward_speed: float = 3.0
+
+func moving_backward_state(delta: float) -> void:
+	var move_axis: float = InputManager.get_player_move_axis()
+	var rotation_axis: float = InputManager.get_player_rotation_axis()
+	
+	if InputManager.is_interact_pressed():
+		var interactable: Interactable = get_best_interactable()
+		if interactable:
+			interactable.interact()
+			return
+	
+	if InputManager.is_aim_held():
+		change_state(PlayerState.AIMING)
+		return
+	
+	if InputManager.is_quick_turn_inputed():
+		change_state(PlayerState.QUICK_TURNING)
+		return
+	
+	if move_axis == 0.0:
+		change_state(PlayerState.IDLE)
+		return
+	if move_axis > 0.0:
+		change_state(PlayerState.MOVING_BACKWARD)
+		return
+	
+	velocity.x = (-transform.basis.z * move_axis).x * backward_speed
+	velocity.z = (-transform.basis.z * move_axis).z * backward_speed
+	rotation.y -= rotation_axis * rotation_speed * delta
+	
+	velocity.y -= gravity * delta if not is_on_floor() else 0.0
+
+#endregion
+
+#region AIMING
+
+@onready var weapon_aim: Node3D = $WeaponAim
+#@onready var weapon_aim_decal: Decal = $WeaponAim/SpringArm3D/Mesh
+
+@export var max_aim_angle: float = 60
+@export var aim_rotation_speed: float = 3.0
+
+func aiming_state(delta: float) -> void:
+	var move_axis: float = InputManager.get_player_move_axis()
+	var rotation_axis: float = InputManager.get_player_rotation_axis()
+	
+	if not InputManager.is_aim_held():
+		weapon_aim.hide()
+		change_state(PlayerState.IDLE)
+		return
+	
+	if InputManager.is_shoot_held():
+		print("Shoot!")
+	
+	velocity.x = 0
+	velocity.z = 0
+	
+	weapon_aim.rotation.x += move_axis * aim_rotation_speed * delta
+	weapon_aim.rotation.x = clamp(weapon_aim.rotation.x, deg_to_rad(-max_aim_angle), deg_to_rad(max_aim_angle))
+	rotation.y -= rotation_axis * aim_rotation_speed * delta
+	
+	velocity.y -= gravity * delta if not is_on_floor() else 0.0
+
+#endregion
+
+#region QUICK_TURNING
 
 var quick_turn_target_y: float
 var quick_turn_start_y: float
 
-func quick_turning_process(_delta: float) -> void:
-	# Quick Turn
-	rotation.y = lerp_angle(
-		quick_turn_target_y,
-		quick_turn_start_y,
-		quick_turn_timer.time_left / quick_turn_timer.wait_time
-	)
+var quick_turn_progress: float = 0.0
+var quick_turn_duration: float = 0.4
 
+func quick_turning_state(delta: float) -> void:
+	quick_turn_progress += delta / quick_turn_duration
+	rotation.y = lerp_angle(
+		quick_turn_start_y,
+		quick_turn_target_y,
+		quick_turn_progress / quick_turn_duration
+	)
+	
 	velocity.x = 0
 	velocity.z = 0
+	
+	velocity.y -= gravity * delta if not is_on_floor() else 0.0
+	
+	if quick_turn_progress >= quick_turn_duration:
+		change_state(PlayerState.IDLE)
 
-func _on_quick_turn_duration_timeout() -> void:
-	cur_player_state = PlayerState.NORMAL
 #endregion
 
+#region INTERACTING
 
-#region Aiming State Functions
-
-@onready var weapon_aim: Node3D = $WeaponAim
-@onready var weapon_aim_decal: Decal = $WeaponAim/SpringArm3D/Decal
-
-func aiming_process(delta: float) -> void:
-	weapon_aim.show()
+func interacting_state(delta: float) -> void:
+	velocity.x = 0
+	velocity.z = 0
 	
-	if not InputManager.is_aim_held():
-		cur_player_state = PlayerState.NORMAL
-		weapon_aim.hide()
-		return
-	
-	if InputManager.is_shoot_held():
-		print("Shot!") # TODO: Make an actual shot function later
-	
-	rotate_player(
-		InputManager.get_player_rotation_axis(),
-		delta
-	)
-	
-	rotate_aim(
-		InputManager.get_player_move_axis(),
-		delta
-	)
+	velocity.y -= gravity * delta if not is_on_floor() else 0.0
 
 
-func rotate_aim(rotation_input: float, delta: float) -> void:
-	weapon_aim.rotation.x += rotation_input * rotation_speed * delta
-	weapon_aim.rotation.x = clamp(weapon_aim.rotation.x, deg_to_rad(-60), deg_to_rad(60))
-#endregion
-
-
-#region Interaction Functions
 @onready var interaction_area: Area3D = $InteractionStuff/InteractionArea
 
 var nearby_interactables: Array[Interactable] = []
@@ -196,6 +277,7 @@ func get_best_interactable() -> Interactable:
 
 	return closest
 
+
 @onready var inteaction_prompt: InteractionPrompt = $InteractionStuff/InteractionPrompt
 
 var active_interactable: Interactable = null
@@ -205,14 +287,14 @@ func start_interaction(interactable: Interactable) -> void:
 		return
 	
 	active_interactable = interactable
-	GameManager.player.lock_player_input = true
+	#GameManager.player.lock_player_input = true
 	
 	for btn in active_interactable.other_btns.get_children():
 		if btn.get_parent():
 			btn.get_parent().remove_child(btn)
 		inteaction_prompt.other_btns.add_child(btn)
 	
-	cur_player_state = PlayerState.INTERACTING
+	change_state(PlayerState.INTERACTING)
 	GameManager.ui.push_state(GameManager.ui.UIState.INTERACTING)
 
 func stop_interaction() -> void:
@@ -222,56 +304,23 @@ func stop_interaction() -> void:
 		active_interactable.other_btns.add_child(btn)
 	
 	
-	GameManager.player.lock_player_input = false
+	#GameManager.player.lock_player_input = false
 	active_interactable = null
-	
-	cur_player_state = PlayerState.NORMAL
+
+	change_state(PlayerState.IDLE)
 	
 	GameManager.ui.pop_state()
+
+
 #endregion
 
 
 #region Other
 
-func player_state_to_str(state: PlayerState) -> String:
-	match state:
-		PlayerState.NORMAL:
-			return "0 (IDLE)"
-		PlayerState.QUICK_TURNING:
-			return "1 (QUICK_TURNING)"
-		PlayerState.AIMING:
-			return "2 (AIMING)"
-		PlayerState.INTERACTING:
-			return "3 (INTERACTING)"
-		_:
-			return "9999 (UNKNOWN)"
+func get_player_state() -> String:
+	return animation_state_machine.get_current_node()
 
-func update_lock_player_input(lock_override: bool = false) -> void:
-	if lock_override: # lock input regardless of PlayerState
-		lock_player_input = true
-		return
-	
-	if cur_player_state == PlayerState.NORMAL or \
-	cur_player_state == PlayerState.AIMING:
-		lock_player_input = false
-		return
-		
-	if cur_player_state == PlayerState.QUICK_TURNING or \
-	cur_player_state == PlayerState.INTERACTING:
-		lock_player_input = true
-		return
-
-
-func is_state_normal() -> bool:
-	return cur_player_state == PlayerState.NORMAL
-
-func is_state_quick_turning() -> bool:
-	return cur_player_state == PlayerState.QUICK_TURNING
-
-func is_state_aiming() -> bool:
-	return cur_player_state == PlayerState.AIMING
-
-func is_state_interacting() -> bool:
-	return cur_player_state == PlayerState.INTERACTING
+func is_player_input_locked() -> bool:
+	return false
 
 #endregion

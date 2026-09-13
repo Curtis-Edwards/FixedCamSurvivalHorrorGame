@@ -138,5 +138,4 @@ func update_general_labels() -> void:
 	fps_label.text = str(Engine.get_frames_per_second()) + " FPS"
 	ui_state_label.text = GameManager.ui.ui_state_to_str(GameManager.ui.get_current_state())
 	player_state_label.text = GameManager.player.get_player_state()
-	#player_state_label.text = GameManager.player.player_state_to_str(GameManager.player.cur_player_state)
 #endregion

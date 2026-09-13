@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://byy008hhcmxsm" path="res://scenes/rooms/game_world/game_world.gd" id="1_k763n"]
 [ext_resource type="PackedScene" uid="uid://dryl1h48fk84f" path="res://scenes/ui/ui.tscn" id="4_jpnh6"]
-[ext_resource type="PackedScene" uid="uid://b08wv40xj3vi8" path="res://scenes/player/new_player.tscn" id="4_vfu5l"]
+[ext_resource type="PackedScene" uid="uid://g6vdvf12ss25" path="res://scenes/player/player.tscn" id="4_vfu5l"]
 [ext_resource type="PackedScene" uid="uid://b2tkhlonce14e" path="res://scenes/camera/fixed_cam.tscn" id="7_w34mw"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_ag62x"]
@@ -20,7 +20,6 @@ glow_enabled = true
 
 [node name="GameWorld" type="Node3D" unique_id=1994771557]
 script = ExtResource("1_k763n")
-starting_room = &"EastWing"
 metadata/_edit_lock_ = true
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=730185761]
@@ -42,4 +41,4 @@ sky_mode = 2
 transform = Transform3D(1.0000001, 0, -2.9802322e-08, 0, 1, 0, 2.9802322e-08, 0, 1.0000001, 0, 2.5, 1.1999998)
 current = true
 
-[node name="NewPlayer" parent="." unique_id=662147544 instance=ExtResource("4_vfu5l")]
+[node name="Player" parent="." unique_id=662147544 instance=ExtResource("4_vfu5l")]

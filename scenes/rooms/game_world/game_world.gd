@@ -27,7 +27,7 @@ const ROOMS: Dictionary[StringName, PackedScene] = {
 	&"MainHall": preload("res://scenes/rooms/test_layout_02/tl_02_mh.tscn"),
 	&"SaveRoom": preload("res://scenes/rooms/test_layout_02/tl_02_sr.tscn"),
 	&"EastWing": preload("res://scenes/rooms/test_layout_02/tl_02_ew.tscn"),
-	#&"WestWing": preload(),
+	&"WestWing": preload("res://scenes/rooms/test_layout_02/tl_02_ww.tscn"),
 }
 
 

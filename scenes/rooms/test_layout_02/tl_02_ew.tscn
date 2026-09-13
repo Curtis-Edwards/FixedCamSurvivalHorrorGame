@@ -1,7 +1,6 @@
-[gd_scene format=3 uid="uid://d1rm8cb3x5u4h"]
+[gd_scene format=4 uid="uid://d1rm8cb3x5u4h"]
 
 [ext_resource type="PackedScene" uid="uid://1imavx2tumky" path="res://scenes/rooms/room_template.tscn" id="1_1gd8s"]
-[ext_resource type="PackedScene" uid="uid://dmdcg3p8un4rx" path="res://assets/3d_objects/test_layout_02/TL02_EW.glb" id="2_6445c"]
 [ext_resource type="Material" uid="uid://ph3n7o3uhrnv" path="res://assets/materials/place_holder_grid_material.tres" id="3_bk1hq"]
 [ext_resource type="Texture2D" uid="uid://b65ijnmhccx2r" path="res://assets/textures/placeholder_grid3.png" id="4_bk1hq"]
 [ext_resource type="PackedScene" uid="uid://dib5jx12m052n" path="res://scenes/interactable/item_pickup/item_pickup.tscn" id="5_hpcdj"]
@@ -11,6 +10,42 @@
 [ext_resource type="PackedScene" uid="uid://03gfg7cvcqnv" path="res://scenes/interactable/door/door_scene/interactable_door.tscn" id="8_4lhir"]
 [ext_resource type="Resource" uid="uid://cba6dh2b7q4so" path="res://scenes/interactable/door/door_instance/mh_to_ew.tres" id="9_a5147"]
 [ext_resource type="Resource" uid="uid://chdjvadblds0p" path="res://scenes/interactable/door/door_instance/mh_to_ew2.tres" id="10_a5147"]
+[ext_resource type="Resource" uid="uid://bon3hp3otvel8" path="res://scenes/interactable/door/door_instance/ww_to_ew.tres" id="10_br6a7"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ry8om"]
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_xobd0"]
+_surfaces = [{
+"aabb": AABB(-20, -2, -20, 30, 6, 24),
+"format": 34896613377,
+"index_count": 264,
+"index_data": PackedByteArray("AAABAAIAAgABAAMABAAAAAIAAgADAAQAAAAFAAEABQADAAEABgAFAAAABgAHAAUABAAIAAAAAAAIAAYACQAHAAYACQAFAAcACQADAAUACQAGAAgAAwAKAAQACgAIAAQACQALAAMAAwALAAoACQAMAAsACAANAAkADAAJAA0ADgAIAAoADwAKAAsADgAQAAgADwARAAoACgARABIACgASAA4AEQAPABMAEQATABQAFAASABEAFQATAA8AFQAPABYAFwAWAA8AFwAVABYAFwAPAAsAEgAVABcACwAYABcAGQAXABgAEgAXABkACwAaABgAGQAYABoAEgAZAA4AGQAaABsAGwAOABkAHAAOABsAHAAbABoAEAAOABwACwAdABoAHAAaAB0AHQAQABwACwAMAB0AHQAMABAADAAeABAACAAQAB4ADAAfAB4ADAANAB8ACAAeACAACAAgAA0AIAAeACEAHwAhAB4AIAAiAA0AHwANACMAIwANACIAHwAjACEAIAAkACIAJAAjACIAIAAhACQAJAAhACMAFQASACUAJgAVACUAEgAnACUAJgAlACcAKAAVACYAKAAmACcAEgApACcAKAAnACkAEgAUACkAEwAVACgAEwAoACoAEwAqACsALAAqACgALAAoACkAKwAqACwAKQAUAC0AEwAtABQAKQAtACwAEwArAC0AKwAsAC0A"),
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 46,
+"vertex_data": PackedByteArray("mZkAAKnqAACZmaqq/78AAJmZAAD/vwAAqqqqqv+/AACqqgAA/78AAJmZqqqp6gAAzMwAAKnqAADMzKqqqeoAAMzMAACqqgAAzMyqqqqqAACqqgAAqioAAKqqqqqqKgAAzMyqqv9/AADd3aqqqqoAAKqqAAAAAAAAiIj//6oqAADMzAAA/38AAIiIVVWqKgAAiIhVVQAAAABVVf//qioAAFVVVVWqKgAAAAD//wAAAACIiP//AAAAAKqqqqoAAAAA//+qqgAAAAD//wAAAAAAAP//qqpVVQAA//8AAFVVAADMzAAAVVUAAMzMqqpVVQAA//8AAP9/AAD//6qq/38AAN3dAACqqgAA//8AAP//AADd3aqq//8AAP//qqr//wAA3d0AAP//AAAAAFVVAAAAAAAA//+qKgAAAABVVaoqAAAzM///qioAADMzVVWqKgAAMzP///9/AABVVf///38AADMzVVX/fwAAVVVVVf9/AAA=")
+}]
+blend_shape_mode = 0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_7nwdd"]
+resource_name = "TL02_EW_Cube_006"
+_surfaces = [{
+"aabb": AABB(-20, -2, -20, 30, 6, 24),
+"attribute_data": PackedByteArray("DUXwsd5lJZTeZfCxDUUllIud8LHzrSWU863wsYudJZSM+fCx6bcllOm38LGM+SWUxc7wsYudJZSLnfCxxc4llPOtTtOLnRnxi51O08XOaMTFzhnx860Ha/OtO03//9KI//87TcXO0ojFzp2m//+dpi3faMT/////Ld///8XOaMSLnRnxxc4Z8fOtTtOLnU7T860Ha8XOnaYt32jExc7SiP//nab/////Ld//////0oj//ztN8607TcXO8LH//yWUxc4llP//8LHeZSWUu9jwsd5l8LG72CWUGJcllKQ08LEYl/CxpDQllEd2JZQNRfCxR3bwsQ1FJZTFziWU///wscXO8LH//yWUxc7wsS3fJZTFziWULd/wsS3f8LH//yWULd8llP//8LFHdvCxpDQllEd2JZSkNPCxIo0Lo///8LHzrfCx860llP//JZTdCUCFIo1Ahd0JC6PptyWUGJfwsem38LEYlyWUIo1AhfOt8LHzrSWUIo0Lo+hbQIXoWwuj6FsHayKNO00ijQdrFzsHa+hbnaYXO52m3QkHa90JO00Ylwuju9hAhbvYC6MYl0CF8607TSKNB2vzrQdrIo07TfOtB2sijTtN8607TSKNB2vdCTtNIo0HayKNO03oWwdrFzsHa90JB2sXO52m6FudpuhbQIUXOwuj6FsLoxc7QIW72ECFGJcLo7vYC6MYl0CFu9hAhYz5C6O72AujjPlAhRc7QIXdCQujFzsLo90JQIU="),
+"format": 34896613399,
+"index_count": 264,
+"index_data": PackedByteArray("AAABAAIAAAADAAEABAAFAAYABAAHAAUACAAJAAoACAALAAkADAANAA4ADAAPAA0AEAARABIAEAATABEAEQATABQAFQATABAAFgATABUAFwAWABgAGQAWABcAGgAWABkAFgAaABMAEwAaABsAEwAbABwAHAAbAB0AHAAdAB4AHwAgACEAHwAiACAAIAAiACMAHwAkACIAHwAlACQAJQAfACYAJAAlACcAJQAmACgAKAAmACkAKQAmACoAJAAnACsAJAArACwAJAAsAC0ALgAvADAALgAxAC8AMgAzADQAMgA1ADMANgA3ADgANgA5ADcAOgA7ADwAOgA9ADsAPgA/AEAAPgBBAD8AQgBDAEQAQgBFAEMARgBHAEgARgBJAEcASgBLAEwASgBNAEsATgBPAFAATgBRAE8ATwBRAFIATgBTAFEAUQBTAFQAUwBOAFUAVgBXAFgAVgBZAFcAWgBbAFwAWgBdAFsAXQBaAF4AXQBeAF8AYABhAGIAYQBgAGMAYwBgAGQAYwBkAGUAYQBjAGYAYQBmAGcAaABpAGoAaABrAGkAbABtAG4AbABvAG0AcABxAHIAcABzAHEAdAB1AHYAdAB3AHUAdwB0AHgAeAB0AHkAdwB4AHoAdwB6AHsAfAB9AH4AfAB/AH0AgACBAIIAgACDAIEAhACFAIYAhACHAIUAiACJAIoAiACLAIkA"),
+"material": SubResource("StandardMaterial3D_ry8om"),
+"primitive": 3,
+"uv_scale": Vector4(3.9003205, 4.296154, 0, 0),
+"vertex_count": 140,
+"vertex_data": PackedByteArray("mZkAAKnq/7+Zmaqq/7//v5mZAAD/v/+/mZmqqqnq/7+ZmQAA/78AgKqqqqr/vwCAqqoAAP+/AICZmaqq/78AgP//AAAAAAAA//+qqlVVAAD//wAAVVUAAP//qqoAAAAAzMwAAKnqAACZmaqqqeoAAJmZAACp6gAAzMyqqqnqAACqqgAA/7//v5mZAACp6v+/mZkAAP+//7/MzAAAqqr/v8zMAACp6v+/qqoAAKoq/7+qqgAAAAD/v///AABVVf+///8AAAAA/7/MzAAAVVX/v8zMAAD/f/+///8AAP9//7/d3QAAqqr/v///AAD///+/3d0AAP///7/MzKqqqqr/P5mZqqqp6v8/zMyqqqnq/z+qqqqq/7//P5mZqqr/v/8/qqqqqqoq/z/MzKqq/3//P93dqqqqqv8/zMyqqlVV/z///6qq/3//P///qqr///8/3d2qqv///z///6qqVVX/P///qqoAAP8/qqqqqgAA/z/MzAAAVVUAAP//qqpVVQAAzMyqqlVVAAD//wAAVVUAAKqqqqr/v/+/qqoAAKoq/7+qqgAA/7//v6qqqqqqKv+///+qqv9/AAD//wAA//8AAP//AAD/fwAA//+qqv//AADMzKqqqqoAAMzMAACp6gAAzMwAAKqqAADMzKqqqeoAAMzMqqr/fwCA//8AAP9/AIDMzAAA/38AgP//qqr/fwCAzMwAAKqqAADd3aqqqqoAAMzMqqqqqgAA3d0AAKqqAADd3QAA//8AAP//qqr//wAA3d2qqv//AAD//wAA//8AAN3dAACqqv+/3d2qqv///7/d3aqqqqr/v93dAAD///+/iIhVVQAAAID//wAAAAAAgKqqAAAAAACAqqqqqgAAAID//6qqAAAAgAAA//8AAACAiIj//wAAAIAAAFVVAAAAgMzMqqpVVQAAzMwAAP9/AADMzAAAVVUAAMzMqqr/fwAAiIj//6oqAACqqgAAqioAAKqqqqqqKgAAiIhVVaoqAABVVf//qioAAFVVVVWqKgAAVVVVVaoq/7+IiFVVAAD/v4iIVVWqKv+/MzNVVaoq/79VVVVV/3//vzMzVVX/f/+/AABVVaoq/78AAFVVAAD/vzMzVVX/f/+/MzP//6oq/78zM1VVqir/vzMz////f/+/qqqqqgAA2D2IiP//qirYPaqqqqqqKtg9iIj//wAA2D2qqgAAqiomwoiIVVUAACbCqqoAAAAAJsKIiFVVqiomwgAA//8AAP8/iIj//6oq/z+IiP//AAD/P1VV//+qKv8/MzP//6oq/z8AAP//qir/PzMz////f/8/VVX///9//z9VVf///38AADMzVVX/fwAAVVVVVf9/AAAzM////38AAFVV//+qKgAAVVVVVf9/AABVVVVVqioAAFVV////fwAAAAD//6oq/78AAFVVAAD/vwAAVVWqKv+/AAD//wAA/78zM///qioAAAAAVVWqKgAAMzNVVaoqAAAAAP//qioAAP9/AAD/fwAA/38AAP9/AAD/f////3////9/////f////z//f/8//3//P/9//z//f////3////9/////f////3////9/////f////3////9/////f////3////9/////f////3////9/////f////3////9/////f////38AAP9/AAD/fwAA/38AAP9/AAD/fwAA/38AAP9/AAD/fwAA/38AAP9/AAD/fwAA/38AAP9/AAD/fwAA/3////9/////f////3////9//38AAP9/AAD/fwAA/38AAP8//3//P/9//z//f/8//3//P/9//z//f/8//3//P/9//3////9/////f////3///////3////9/////f////3////9/////f////3////9//38AAP9/AAD/fwAA/38AAP9/////f////3////9/////f////3////9/////f////z//f/8//3//P/9//z//f////3////9/////f////3////9/////f////3////9/////f////3////9/////f////3////9//38AAP9/AAD/fwAA/38AAA0phpQNKYaUDSmGlA0phpTx1nhr8dZ4a/HWeGvx1nhrAAD/fwAA/38AAP9/AAD/fwAA/38AAP9/AAD/fwAA/3////9/////f////3////9//z//f/8//3//P/9//z//f/9/AAD/fwAA/38AAP9/AAD///9/////f////3////9/")
+}]
+blend_shape_mode = 0
+shadow_mesh = SubResource("ArrayMesh_xobd0")
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_02l1o"]
+data = PackedVector3Array(-2, -2, 2, -2, 2, -2, -2, -2, -2, -2, -2, 2, -2, 2, 2, -2, 2, -2, -2, -2, -2, 0, 2, -2, 0, -2, -2, -2, -2, -2, -2, 2, -2, 0, 2, -2, 10, -2, -20, 10, 2, -12, 10, -2, -12, 10, -2, -20, 10, 2, -20, 10, 2, -12, 4, -2, 2, -2, 2, 2, -2, -2, 2, 4, -2, 2, 4, 2, 2, -2, 2, 2, 0, -2, -2, -2, -2, 2, -2, -2, -2, -2, -2, 2, 4, -2, -4, 4, -2, 2, 6, -2, -4, 10, -2, 4, 6, -2, 4, 0, -2, -2, 4, -2, -4, -2, -2, 2, 6, -2, -4, 10, -2, -8, 10, -2, 4, 0, -2, -16, 4, -2, -4, 0, -2, -2, 4, -2, -4, 10, -2, -8, 6, -2, -4, 4, -2, -4, 4, -2, -8, 10, -2, -8, 0, -2, -20, 4, -2, -4, 0, -2, -16, 10, -2, -12, 0, -2, -20, 10, -2, -20, 4, -2, -12, 0, -2, -20, 10, -2, -12, 0, -2, -20, 4, -2, -8, 4, -2, -4, 4, -2, -8, 0, -2, -20, 4, -2, -12, 4, 2, -4, -2, 2, 2, 4, 2, 2, -2, 2, 2, 0, 2, -2, -2, 2, -2, 0, 2, -16, 10, 2, -20, 0, 2, -20, 4, 2, -4, 0, 2, -2, -2, 2, 2, 0, 2, -16, 10, 2, -12, 10, 2, -20, 0, 2, -16, 4, 2, -12, 10, 2, -12, 4, 2, -4, 0, 2, -16, 0, 2, -2, 10, 2, 4, 6, 2, -4, 6, 2, 4, 0, 2, -16, 4, 2, -8, 4, 2, -12, 10, 2, -8, 6, 2, -4, 10, 2, 4, 4, 2, -4, 4, 2, -8, 0, 2, -16, 4, 2, -8, 6, 2, -4, 10, 2, -8, 4, 2, -8, 4, 2, -4, 6, 2, -4, 4, -2, -12, 10, 2, -12, 4, 2, -12, 4, -2, -12, 10, -2, -12, 10, 2, -12, 0, 2, -2, 0, -2, -16, 0, -2, -2, 0, 2, -2, 0, 2, -16, 0, -2, -16, 10, 2, -8, 10, -2, 4, 10, -2, -8, 10, 2, -8, 10, 2, 4, 10, -2, 4, 4, 2, -4, 4, -2, 2, 4, -2, -4, 4, 2, -4, 4, 2, 2, 4, -2, 2, 4, 2, -8, 10, -2, -8, 4, -2, -8, 4, 2, -8, 10, 2, -8, 10, -2, -8, 4, -2, -4, 6, 2, -4, 4, 2, -4, 4, -2, -4, 6, -2, -4, 6, 2, -4, 6, -2, 4, 10, 2, 4, 6, 2, 4, 6, -2, 4, 10, -2, 4, 10, 2, 4, 6, -2, -4, 6, 2, 4, 6, 2, -4, 6, -2, -4, 6, -2, 4, 6, 2, 4, -4, 0, -20, 10, -2, -20, 0, -2, -20, 10, -2, -20, 0, 2, -20, 10, 2, -20, 0, 2, -20, -20, 4, -20, -4, 4, -20, -20, 4, -20, -4, 0, -20, -20, 0, -20, -4, 0, -20, 0, 2, -20, 10, -2, -20, -4, 0, -20, -20, 4, -20, 0, 2, -20, 4, 2, -12, 4, -2, -8, 4, -2, -12, 4, 2, -12, 4, 2, -8, 4, -2, -8, -4, 4, -16, 0, -2, -16, 0, 2, -16, -4, 0, -16, -10, 4, -16, -10, 0, -16, -4, 4, -16, -4, 0, -16, 0, -2, -16, -4, 0, -16, -4, 4, -16, -10, 4, -16, -10, 0, -16, -4, 0, -20, -4, 0, -16, -4, 0, -20, -20, 0, -16, -20, 0, -20, -14, 0, -16, -10, 0, -8, -14, 0, -8, -4, 0, -20, -14, 0, -16, -20, 0, -16, -14, 0, -16, -10, 0, -16, -10, 0, -8, -4, 0, -20, -10, 0, -16, -14, 0, -16, -14, 0, -8, -14, 4, -16, -14, 0, -16, -14, 0, -8, -14, 4, -8, -14, 4, -16, 0, 2, -20, -4, 4, -16, 0, 2, -16, 0, 2, -20, -4, 4, -20, -4, 4, -16, 0, -2, -16, -4, 0, -20, 0, -2, -20, 0, -2, -16, -4, 0, -16, -4, 0, -20, -20, 4, -20, -4, 4, -16, -4, 4, -20, -10, 4, -16, -14, 4, -8, -10, 4, -8, -20, 4, -20, -10, 4, -16, -4, 4, -16, -14, 4, -16, -20, 4, -20, -20, 4, -16, -10, 4, -16, -14, 4, -16, -14, 4, -8, -10, 4, -16, -20, 4, -20, -14, 4, -16, -10, 4, -8, -14, 0, -8, -10, 0, -8, -10, 4, -8, -14, 4, -8, -14, 0, -8, -10, 4, -16, -10, 0, -8, -10, 0, -16, -10, 4, -16, -10, 4, -8, -10, 0, -8, -20, 4, -16, -20, 0, -20, -20, 0, -16, -20, 4, -16, -20, 4, -20, -20, 0, -20, -14, 4, -16, -20, 0, -16, -14, 0, -16, -14, 4, -16, -20, 4, -16, -20, 0, -16)
 
 [sub_resource type="BoxMesh" id="BoxMesh_6445c"]
 size = Vector3(1.9971924, 1, 0.88378906)
@@ -86,10 +121,17 @@ size = Vector3(6, 4, 4)
 
 [node name="TL02_EW" unique_id=1177210895 instance=ExtResource("1_1gd8s")]
 
-[node name="TL02_EW" parent="BoxedOutRoom" parent_id_path=PackedInt32Array(612534032) index="0" unique_id=2036332346 instance=ExtResource("2_6445c")]
+[node name="TL02_EW" type="Node3D" parent="BlenderExport" parent_id_path=PackedInt32Array(612534032) index="0" unique_id=2036332346]
 
-[node name="EW" parent="BoxedOutRoom/TL02_EW" index="0" unique_id=1576520137]
+[node name="BoxedOutRoom_TL02_EW#EW" type="MeshInstance3D" parent="BlenderExport/TL02_EW" index="0" unique_id=1700021972]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 2, -3)
+mesh = SubResource("ArrayMesh_7nwdd")
 surface_material_override/0 = ExtResource("3_bk1hq")
+
+[node name="BoxedOutRoom_TL02_EW_EW#StaticBody3D" type="StaticBody3D" parent="BlenderExport/TL02_EW/BoxedOutRoom_TL02_EW#EW" index="0" unique_id=232439072]
+
+[node name="BoxedOutRoom_TL02_EW_EW_StaticBody3D#CollisionShape3D" type="CollisionShape3D" parent="BlenderExport/TL02_EW/BoxedOutRoom_TL02_EW#EW/BoxedOutRoom_TL02_EW_EW#StaticBody3D" index="0" unique_id=1855692737]
+shape = SubResource("ConcavePolygonShape3D_02l1o")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="ExtraShapes" parent_id_path=PackedInt32Array(1727345854) index="0" unique_id=1627618602]
 transform = Transform3D(0.9874378, 0, -0.15800838, 0, 1, 0, 0.15800838, 0, 0.9874378, 13.98826, 0.5, -0.23091745)
@@ -172,13 +214,26 @@ amount = 15
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.354624, 0, -19.65)
 item_definition = ExtResource("7_paxi2")
 
-[node name="Door2" parent="Interactables/Doors" parent_id_path=PackedInt32Array(1804345606) index="0" unique_id=241651683 instance=ExtResource("8_4lhir")]
-transform = Transform3D(-2.1855693e-07, 0, 1, 0, 1, 0, -1, 0, -2.1855693e-07, 4, 0, -2.5)
+[node name="DoorLocation_002" type="Marker3D" parent="Interactables/Doors" parent_id_path=PackedInt32Array(1804345606) index="0" unique_id=933939675]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, -3)
+
+[node name="Door2" parent="Interactables/Doors/DoorLocation_002" index="0" unique_id=241651683 instance=ExtResource("8_4lhir")]
+transform = Transform3D(-2.1855693e-07, 0, 1, 0, 1, 0, -1, 0, -2.1855693e-07, 0, 0, 0)
 door_instance = ExtResource("9_a5147")
 
-[node name="Door3" parent="Interactables/Doors" parent_id_path=PackedInt32Array(1804345606) index="1" unique_id=1889467240 instance=ExtResource("8_4lhir")]
-transform = Transform3D(1.3113416e-07, 0, -1, 0, 1, 0, 1, 0, 1.3113416e-07, -4, 2, -13)
+[node name="DoorLocation_004" type="Marker3D" parent="Interactables/Doors" parent_id_path=PackedInt32Array(1804345606) index="1" unique_id=6806686]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 2, -13)
+
+[node name="Door3" parent="Interactables/Doors/DoorLocation_004" index="0" unique_id=1889467240 instance=ExtResource("8_4lhir")]
+transform = Transform3D(1.3113416e-07, 0, -1, 0, 1, 0, 1, 0, 1.3113416e-07, 0, 0, 0)
 door_instance = ExtResource("10_a5147")
+
+[node name="DoorLocation_005" type="Marker3D" parent="Interactables/Doors" parent_id_path=PackedInt32Array(1804345606) index="2" unique_id=1108719042]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14, 2, -21)
+
+[node name="Door4" parent="Interactables/Doors/DoorLocation_005" index="0" unique_id=919280476 instance=ExtResource("8_4lhir")]
+transform = Transform3D(-4.371138e-08, 0, 1, 0, 1, 0, -1, 0, -4.371138e-08, 0, 0, 0)
+door_instance = ExtResource("10_br6a7")
 
 [node name="FixedCamTrigger_01" parent="FixedCamTriggers" parent_id_path=PackedInt32Array(1043019142) index="0" unique_id=793731124 instance=ExtResource("5_lox6n")]
 
@@ -302,9 +357,8 @@ shadow_enabled = true
 omni_range = 12.5
 
 [node name="DebugStartingPoint" parent="." index="5" unique_id=1490553508]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.5, 0, -3)
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 5.5, 0, -3)
 
-[editable path="BoxedOutRoom/TL02_EW"]
 [editable path="FixedCamTriggers/FixedCamTrigger_01"]
 [editable path="FixedCamTriggers/FixedCamTrigger_02"]
 [editable path="FixedCamTriggers/FixedCamTrigger_03"]

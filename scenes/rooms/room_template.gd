@@ -1,7 +1,7 @@
 extends Node3D
 class_name RoomTemplate
 
-@onready var room_collison: Node3D = $BoxedOutRoom
+@onready var room_collison: Node3D = $BlenderExport
 @onready var camera_triggers: Node3D = $FixedCamTriggers
 @onready var items: Node3D = $Interactables/Items
 @onready var starting_point: Marker3D = $DebugStartingPoint
