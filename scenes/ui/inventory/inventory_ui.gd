@@ -2,8 +2,9 @@
 extends Control
 class_name InventoryUI
 
-@onready var inventory_slots_ui: GridContainer = $InventoryScreen/Inventory/InventorySlots/Slots
-@onready var item_box_slots_ui: GridContainer = $InventoryScreen/Inventory/ItemBoxSlots/ScrollContainer/Slots
+@onready var inventory_slots_ui: GridContainer = $InventoryScreen/Inventory/VBox/SlotsAndMenus/Scroll/InvSlots
+@onready var item_box_slots_ui: GridContainer = $InventoryScreen/Inventory/VBox/SlotsAndMenus/Scroll/BoxSlots
+
 
 func _ready() -> void:
 	inventory_slots_ui.show()
@@ -13,30 +14,29 @@ func _ready() -> void:
 	self.hide()
 
 #region Inventory UI Functions
+
 var is_item_box_open: bool = false
 
 func open_inventory(open_item_box: bool = false) -> void:
 	self.show()
 	
-	if open_item_box:
-		is_item_box_open = true
-		item_box_slots_ui.show()
-		focus_slot([1,0])
-	else:
-		is_item_box_open = false
-		item_box_slots_ui.hide()
-		focus_slot([0,0])
+	inventory_slots_ui.show()
+	item_box_slots_ui.hide()
+	focus_slot([0,0])
+	
+	is_item_box_open = open_item_box
+	toggle_inv_type_btn.disabled = not open_item_box
 
 func close_inventory() -> void:
 	self.hide()
-	is_item_box_open = false
-	
 	close_action_menu()
 	CombinationManager.end_combine_state()
+
 #endregion
 
 
 #region Slots Functions
+
 var focused_index: Array[int] = [0,0] # NOTE [inv_type, index]
 
 func focus_slot(_focused_index: Array[int]) -> void:
@@ -56,6 +56,22 @@ func update_slots_ui() -> void:
 	
 	for item in item_box_slots_ui.get_children():
 		item.update_slot()
+	
+	update_equiped_item()
+
+@onready var equiped_item_image: TextureRect = $InventoryScreen/PlayerStats/EquipedItem/TextureRect
+
+func update_equiped_item() -> void:
+	if not GameManager.inventory.equiped_item:
+		return
+	
+	for item in GameManager.inventory.inventory_slots:
+		if item == GameManager.inventory.equiped_item:
+			break
+		
+		GameManager.inventory.unequip_item()
+		return
+
 
 func disable_slots(_disable_slot: bool = true):
 	for item in inventory_slots_ui.get_children():
@@ -67,14 +83,17 @@ func disable_slots(_disable_slot: bool = true):
 
 
 #region Item Action Menu Functions
-@onready var action_menu: GridContainer = $InventoryScreen/Inventory/ActionMenu/Menus/ActionMenu
 
-@onready var use_btn: Button = $InventoryScreen/Inventory/ActionMenu/Menus/ActionMenu/UseBtn
-@onready var equip_btn: Button = $InventoryScreen/Inventory/ActionMenu/Menus/ActionMenu/EquipBtn
-@onready var discard_btn: Button = $InventoryScreen/Inventory/ActionMenu/Menus/ActionMenu/DiscardBtn
-@onready var consume_btn: Button = $InventoryScreen/Inventory/ActionMenu/Menus/ActionMenu/ConsumeBtn
-@onready var combine_btn: Button = $InventoryScreen/Inventory/ActionMenu/Menus/ActionMenu/CombineBtn
-@onready var close_btn: Button = $InventoryScreen/Inventory/ActionMenu/Menus/ActionMenu/CloseBtn
+@onready var action_menu: Control = $InventoryScreen/Inventory/VBox/SlotsAndMenus/ActionMenu
+
+@onready var toggle_inv_type_btn: Button = $InventoryScreen/Inventory/VBox/ToggleInventoryType
+
+@onready var use_btn: Button = $InventoryScreen/Inventory/VBox/SlotsAndMenus/ActionMenu/Menus/ActionMenu/VBox/UseBtn
+@onready var equip_btn: Button = $InventoryScreen/Inventory/VBox/SlotsAndMenus/ActionMenu/Menus/ActionMenu/VBox/EquipBtn
+@onready var discard_btn: Button = $InventoryScreen/Inventory/VBox/SlotsAndMenus/ActionMenu/Menus/ActionMenu/VBox/DiscardBtn
+@onready var consume_btn: Button = $InventoryScreen/Inventory/VBox/SlotsAndMenus/ActionMenu/Menus/ActionMenu/VBox/ConsumeBtn
+@onready var combine_btn: Button = $InventoryScreen/Inventory/VBox/SlotsAndMenus/ActionMenu/Menus/ActionMenu/VBox/CombineBtn
+@onready var close_btn: Button = $InventoryScreen/Inventory/VBox/SlotsAndMenus/ActionMenu/Menus/CloseMenu/VBox/CloseBtn
 
 var action_item: ItemInstance = null
 var action_slot_index: int
@@ -113,10 +132,28 @@ func open_action_menu(type: int, slot: ItemInstance, index: int)  -> void:
 func close_action_menu():
 	is_action_menu_open = false
 	action_item = null
+	
+	
 	disable_slots(false)
 	action_menu.hide()
 	transfer_menu.hide()
 	focus_slot(focused_index)
+
+	
+
+func _on_toggle_inventory_type_pressed() -> void:
+	if is_action_menu_open or not is_item_box_open:
+		return
+	
+	if inventory_slots_ui.visible:
+		focus_slot([1,0])
+	else:
+		focus_slot([0,0])
+	
+	inventory_slots_ui.visible = not inventory_slots_ui.visible
+	item_box_slots_ui.visible = not item_box_slots_ui.visible
+	
+
 
 
 # Buttons
@@ -124,7 +161,14 @@ func _on_use_btn_pressed() -> void:
 	GameManager.player.active_interactable.try_use_item(action_item.item_def)
 
 func _on_equip_btn_pressed() -> void:
-	# TODO: Implement consume btn
+	if not GameManager.inventory.equiped_item: 
+		GameManager.inventory.equip_item(action_item)
+	else:
+		if action_item != GameManager.inventory.equiped_item:
+			GameManager.inventory.equip_item(action_item)
+		else:
+			GameManager.inventory.unequip_item()
+	
 	focused_index = [action_inv_type, action_slot_index]
 	close_action_menu()
 
@@ -147,15 +191,17 @@ func _on_close_btn_pressed() -> void:
 	if is_action_menu_open:
 		focused_index = [action_inv_type, action_slot_index]
 		close_action_menu()
+
 #endregion
 
 
 #region Transfer Menu Functions
-@onready var transfer_menu: GridContainer = $InventoryScreen/Inventory/ActionMenu/Menus/TransferMenu
 
-@onready var increase_btn: Button = $InventoryScreen/Inventory/ActionMenu/Menus/TransferMenu/DecreaseBtn
-@onready var transfer_btn: Button = $InventoryScreen/Inventory/ActionMenu/Menus/TransferMenu/TransferBtn
-@onready var decrease_btn: Button = $InventoryScreen/Inventory/ActionMenu/Menus/TransferMenu/IncreaseBtn
+@onready var transfer_menu: Control = $InventoryScreen/Inventory/VBox/SlotsAndMenus/ActionMenu/Menus/TransferMenu
+
+@onready var increase_btn: Button = $InventoryScreen/Inventory/VBox/SlotsAndMenus/ActionMenu/Menus/TransferMenu/VBox/IncreaseBtn
+@onready var transfer_btn: Button = $InventoryScreen/Inventory/VBox/SlotsAndMenus/ActionMenu/Menus/TransferMenu/VBox/TransferBtn
+@onready var decrease_btn: Button = $InventoryScreen/Inventory/VBox/SlotsAndMenus/ActionMenu/Menus/TransferMenu/VBox/DecreaseBtn
 
 var transfer_amount: int
 var max_transfer_amount: int
@@ -219,6 +265,7 @@ func _on_transfer_btn_pressed() -> void:
 
 
 #region Item Viewer Functions
+
 @onready var item_viewer: ItemViewer = $InventoryScreen/ItemDisplay/ItemViewer/SubViewportContainer/SubViewport/ItemViewer
 @onready var main_label: Label = $InventoryScreen/ItemDisplay/ItemDetails/Panel/Labels/MainLabel
 @onready var sub_label: Label = $InventoryScreen/ItemDisplay/ItemDetails/Panel/Labels/SubLabel

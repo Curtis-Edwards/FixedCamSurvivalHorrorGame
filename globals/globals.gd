@@ -3,6 +3,7 @@ extends Node
 # Collision masks
 const PLAYER_COL: int = 1
 
+const EMPTY_SLOT_TEXTURE: AtlasTexture = preload("res://assets/textures/empty.tres") 
 
 # Items
 const ITEMS: Dictionary[StringName, ItemDefinition] = {

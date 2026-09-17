@@ -10,6 +10,7 @@ func _ready() -> void:
 	
 	add_item(0, Globals.ITEMS["pistol"],1)
 	add_item(0, Globals.ITEMS["pistol_ammo"],20)
+	add_item(0, Globals.ITEMS["g_herb"],1)
 	add_item(1, Globals.ITEMS["shotgun"],1)
 	add_item(1, Globals.ITEMS["shotgun_ammo"],8)
 	add_item(1, Globals.ITEMS["g_herb"],1)
@@ -22,13 +23,14 @@ func _process(_delta: float) -> void:
 
 
 #region Inventory Functions
+
 var inventory_slots: Array[ItemInstance] = []
 const INV_SLOT_COUNT: int = 8
-@onready var inventory_slots_ui: GridContainer = $InventoryUI/InventoryScreen/Inventory/InventorySlots/Slots
+@onready var inventory_slots_ui: GridContainer = $InventoryUI/InventoryScreen/Inventory/VBox/SlotsAndMenus/Scroll/InvSlots
 
 var item_box_slots: Array[ItemInstance] = []
-const BOX_SLOT_COUNT: int = 16
-@onready var item_box_slots_ui: GridContainer = $InventoryUI/InventoryScreen/Inventory/ItemBoxSlots/ScrollContainer/Slots
+const BOX_SLOT_COUNT: int = 12
+@onready var item_box_slots_ui: GridContainer = $InventoryUI/InventoryScreen/Inventory/VBox/SlotsAndMenus/Scroll/BoxSlots
 
 func get_inventory_type(type: int) -> Dictionary:
 	match type:
@@ -219,4 +221,20 @@ func print_inventory(type: int) -> void:
 		else:
 			print("[ " + str(slot.item_def.name) + ": " + str(slot.item_amount) + "/" + str(slot.item_def.max_stack) + " ]")
 	print("-----")
+
+
+#endregion
+
+#region Item Equip Functions
+
+var equiped_item: ItemInstance = null
+
+func equip_item(item: ItemInstance) -> void:
+	equiped_item = item
+	GameManager.ui.inv_screen.equiped_item_image.texture = item.item_def.inventory_texture
+
+
+func unequip_item() -> void:
+	equiped_item = null
+	GameManager.ui.inv_screen.equiped_item_image.texture = Globals.EMPTY_SLOT_TEXTURE
 #endregion

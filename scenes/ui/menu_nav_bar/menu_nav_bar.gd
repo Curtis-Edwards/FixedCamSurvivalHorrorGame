@@ -43,7 +43,7 @@ func in_notes() -> void:
 
 #region Buttons Pressed Functions
 func _on_inventory_button_pressed() -> void:
-	if GameManager.ui.inv_screen.item_box_slots_ui.visible:
+	if GameManager.ui.inv_screen.is_item_box_open:
 		GameManager.ui.change_state(GameManager.ui.UIState.ITEM_BOX)
 	else:
 		GameManager.ui.change_state(GameManager.ui.UIState.INVENTORY)
