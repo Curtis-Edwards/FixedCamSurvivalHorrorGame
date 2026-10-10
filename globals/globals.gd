@@ -19,5 +19,10 @@ const ITEMS: Dictionary[StringName, ItemDefinition] = {
 	&"blue_tablet_r": preload("res://scenes/items/item_resources/4xx_key_items/02_blue_tablet_right/blue_tablet_right.tres"),
 	&"blue_tablet": preload("res://scenes/items/item_resources/4xx_key_items/03_blue_tablet/blue_tablet.tres"),
 	&"spade_key": preload("res://scenes/items/item_resources/4xx_key_items/04_spade_key/spade_key.tres"),
-	&"diamond_key": preload("res://scenes/items/item_resources/4xx_key_items/05_diamond_key/diamond_key.tres"),
+	&"diamond_key": preload("res://scenes/items/item_resources/4xx_key_items/05_diamond_key/diamond_key.tres")
+}
+
+var ROOMS: Dictionary[StringName, PackedScene] = {
+	&"room_a": load("res://scenes/rooms/test_layout_05/tl_05_room_a.tscn"),
+	&"room_b": load("res://scenes/rooms/test_layout_05/tl_05_room_b.tscn")
 }

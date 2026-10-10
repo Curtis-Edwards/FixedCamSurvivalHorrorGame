@@ -1,4 +1,5 @@
 @tool
+@icon("res://addons/at-icons/node3d/floor_plane.svg")
 extends Interactable
 class_name ItemPickup
 
@@ -40,7 +41,7 @@ func do_interaction() -> void:
 	
 	var amount_str = " (" + str(amount) + ")" if item_definition.max_stack > 1 else ""
 	
-	max_pickup_amount = GameManager.inventory.can_add_item(0, item_definition, amount)
+	max_pickup_amount = GameManager.inventory.can_add_item(item_definition, amount)
 	pickup_amount = max_pickup_amount
 	
 	if max_pickup_amount == 0:
@@ -88,7 +89,7 @@ func update_take_btn_text(not_statckable: bool) -> void:
 
 
 func _on_take_btn_pressed() -> void:
-	GameManager.inventory.add_item(0, item_definition, pickup_amount)
+	GameManager.inventory.add_item(item_definition, pickup_amount)
 	amount -= pickup_amount
 	
 	GameManager.player.stop_interaction()

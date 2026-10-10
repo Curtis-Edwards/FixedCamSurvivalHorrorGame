@@ -19,6 +19,12 @@ anchor_bottom = 0.1
 
 [node name="Inventory" parent="." unique_id=827783153 instance=ExtResource("2_aac20")]
 
+[node name="InvenrtorySlotBtn1" parent="Inventory/InventoryScreen/Inventory/VBox/SlotsAndMenus/Scroll/InvSlots" parent_id_path=PackedInt32Array(827783153, 1847600422) index="0" unique_id=247350083]
+display_slot_index = 1
+
+[node name="ItemBoxSlotBtn1" parent="Inventory/InventoryScreen/Inventory/VBox/SlotsAndMenus/Scroll/BoxSlots" parent_id_path=PackedInt32Array(827783153, 265506306) index="0" unique_id=1165801173]
+display_slot_index = 1
+
 [node name="Map" parent="." unique_id=1331333032 instance=ExtResource("4_pfayw")]
 
 [node name="Notes" parent="." unique_id=2051857582 instance=ExtResource("5_7vp6q")]

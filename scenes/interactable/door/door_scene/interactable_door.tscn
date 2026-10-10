@@ -1,8 +1,8 @@
 [gd_scene format=4 uid="uid://03gfg7cvcqnv"]
 
-[ext_resource type="PackedScene" uid="uid://dd68ka1cr6pmj" path="res://scenes/interactable/intractable_template/interactable_template.tscn" id="1_xs3dx"]
+[ext_resource type="PackedScene" uid="uid://byfuptugrt2ka" path="res://scenes/interactable/intractable_template/interactable.tscn" id="1_otb5i"]
 [ext_resource type="Script" uid="uid://bu2rcs84kallr" path="res://scenes/interactable/door/door_scene/interactable_door.gd" id="2_axxj1"]
-[ext_resource type="Texture2D" uid="uid://b65ijnmhccx2r" path="res://assets/textures/placeholder_grid3.png" id="4_0w5xc"]
+[ext_resource type="Texture2D" uid="uid://b5c7dx2prch1s" path="res://assets/textures/kenney_stuff/kenney_prototype-textures/PNG/Dark/texture_03.png" id="3_goqoe"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_mu5rm"]
 size = Vector3(2, 3, 1)
@@ -22,7 +22,7 @@ _surfaces = [{
 }]
 blend_shape_mode = 0
 
-[sub_resource type="ArrayMesh" id="ArrayMesh_qlf8s"]
+[sub_resource type="ArrayMesh" id="ArrayMesh_goqoe"]
 resource_name = "SmallDoor_Cube_001"
 _surfaces = [{
 "aabb": AABB(-0.75, 0, -0.1, 1.5, 2.5, 0.2),
@@ -39,13 +39,14 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_44x3g")
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_goqoe"]
-diffuse_mode = 3
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_bnqo3"]
+diffuse_mode = 1
 albedo_color = Color(0.50980395, 0.33333334, 0.2, 1)
-albedo_texture = ExtResource("4_0w5xc")
-texture_filter = 0
+albedo_texture = ExtResource("3_goqoe")
+uv1_triplanar = true
+texture_filter = 5
 
-[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_0amyv"]
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_xs3dx"]
 data = PackedVector3Array(-0.75, 0, 0.1, -0.75, 2.5, -0.1, -0.75, 2.5, 0.1, -0.75, 0, 0.1, -0.75, 0, -0.1, -0.75, 2.5, -0.1, -0.75, 0, -0.1, 0.75, 2.5, -0.1, -0.75, 2.5, -0.1, -0.75, 0, -0.1, 0.75, 0, -0.1, 0.75, 2.5, -0.1, 0.75, 0, -0.1, 0.75, 2.5, 0.1, 0.75, 2.5, -0.1, 0.75, 0, -0.1, 0.75, 0, 0.1, 0.75, 2.5, 0.1, 0.75, 0, 0.1, -0.75, 2.5, 0.1, 0.75, 2.5, 0.1, 0.75, 0, 0.1, -0.75, 0, 0.1, -0.75, 2.5, 0.1, -0.75, 0, -0.1, 0.75, 0, 0.1, 0.75, 0, -0.1, -0.75, 0, -0.1, -0.75, 0, 0.1, 0.75, 0, 0.1, 0.75, 2.5, -0.1, -0.75, 2.5, 0.1, -0.75, 2.5, -0.1, 0.75, 2.5, -0.1, 0.75, 2.5, 0.1, -0.75, 2.5, 0.1)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_iydke"]
@@ -63,7 +64,7 @@ _surfaces = [{
 }]
 blend_shape_mode = 0
 
-[sub_resource type="ArrayMesh" id="ArrayMesh_4eeig"]
+[sub_resource type="ArrayMesh" id="ArrayMesh_axxj1"]
 resource_name = "SmallDoor_Cube_002"
 _surfaces = [{
 "aabb": AABB(-0.85, 0, -0.1, 1.7, 2.6, 0.2),
@@ -80,13 +81,14 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_w15o8")
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_bnqo3"]
-diffuse_mode = 3
-albedo_color = Color(0.3882353, 0.09411765, 0.08235294, 1)
-albedo_texture = ExtResource("4_0w5xc")
-texture_filter = 0
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xs3dx"]
+diffuse_mode = 1
+albedo_color = Color(0.31, 0.20284334, 0.1209, 1)
+albedo_texture = ExtResource("3_goqoe")
+uv1_triplanar = true
+texture_filter = 5
 
-[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_0dlp5"]
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_0w5xc"]
 data = PackedVector3Array(-0.85, 0, 0.1, -0.85, 2.6, -0.1, -0.85, 2.6, 0.1, -0.85, 0, 0.1, -0.85, 0, -0.1, -0.85, 2.6, -0.1, -0.75, 2.5, -0.1, -0.85, 0, -0.1, -0.75, 0, -0.1, 0.85, 2.6, -0.1, 0.75, 0, -0.1, 0.85, 0, -0.1, 0.85, 2.6, -0.1, 0.75, 2.5, -0.1, 0.75, 0, -0.1, -0.75, 2.5, -0.1, -0.85, 2.6, -0.1, -0.85, 0, -0.1, 0.85, 2.6, -0.1, -0.75, 2.5, -0.1, 0.75, 2.5, -0.1, -0.85, 2.6, -0.1, -0.75, 2.5, -0.1, 0.85, 2.6, -0.1, 0.85, 0, -0.1, 0.85, 2.6, 0.1, 0.85, 2.6, -0.1, 0.85, 0, -0.1, 0.85, 0, 0.1, 0.85, 2.6, 0.1, 0.75, 2.5, 0.1, 0.85, 0, 0.1, 0.75, 0, 0.1, -0.85, 2.6, 0.1, -0.75, 0, 0.1, -0.85, 0, 0.1, -0.85, 2.6, 0.1, -0.75, 2.5, 0.1, -0.75, 0, 0.1, 0.75, 2.5, 0.1, 0.85, 2.6, 0.1, 0.85, 0, 0.1, -0.85, 2.6, 0.1, 0.75, 2.5, 0.1, -0.75, 2.5, 0.1, 0.85, 2.6, 0.1, 0.75, 2.5, 0.1, -0.85, 2.6, 0.1, 0.85, 0, -0.1, 0.75, 0, 0.1, 0.85, 0, 0.1, 0.85, 0, -0.1, 0.75, 0, -0.1, 0.75, 0, 0.1, -0.75, 0, 0.1, -0.85, 0, -0.1, -0.85, 0, 0.1, -0.75, 0, 0.1, -0.75, 0, -0.1, -0.85, 0, -0.1, 0.85, 2.6, -0.1, -0.85, 2.6, 0.1, -0.85, 2.6, -0.1, 0.85, 2.6, -0.1, 0.85, 2.6, 0.1, -0.85, 2.6, 0.1, -0.75, 0, -0.1, -0.75, 2.5, 0.1, -0.75, 2.5, -0.1, -0.75, 0, -0.1, -0.75, 0, 0.1, -0.75, 2.5, 0.1, 0.75, 2.5, 0.1, 0.75, 0, -0.1, 0.75, 2.5, -0.1, 0.75, 2.5, 0.1, 0.75, 0, 0.1, 0.75, 0, -0.1, -0.75, 2.5, 0.1, 0.75, 2.5, -0.1, -0.75, 2.5, -0.1, -0.75, 2.5, 0.1, 0.75, 2.5, 0.1, 0.75, 2.5, -0.1)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_tv48p"]
@@ -104,7 +106,7 @@ _surfaces = [{
 }]
 blend_shape_mode = 0
 
-[sub_resource type="ArrayMesh" id="ArrayMesh_7qq3x"]
+[sub_resource type="ArrayMesh" id="ArrayMesh_6fpxq"]
 resource_name = "SmallDoor_Cube"
 _surfaces = [{
 "aabb": AABB(-0.1, -0.1, -0.2, 0.2, 0.2, 0.4),
@@ -121,45 +123,46 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_p088u")
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qv4ps"]
-diffuse_mode = 3
-albedo_color = Color(1, 0.908, 0.31, 1)
-albedo_texture = ExtResource("4_0w5xc")
-texture_filter = 0
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_axxj1"]
+diffuse_mode = 1
+albedo_color = Color(1, 0.9098039, 0.30980393, 1)
+albedo_texture = ExtResource("3_goqoe")
+uv1_triplanar = true
+texture_filter = 5
 
-[node name="Door1" unique_id=1451751561 instance=ExtResource("1_xs3dx")]
+[node name="InteractableDoor" unique_id=2101348855 instance=ExtResource("1_otb5i")]
 script = ExtResource("2_axxj1")
 door_instance = null
 is_this_room_1 = false
 
-[node name="InteractableCollision" parent="." index="0" unique_id=773940465]
+[node name="InteractableCollision" parent="InteractableArea" parent_id_path=PackedInt32Array(1451751561) index="0" unique_id=773940465]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
 shape = SubResource("BoxShape3D_mu5rm")
 
-[node name="SmallDoor" type="Node3D" parent="." index="1" unique_id=143734340]
+[node name="SmallDoor" type="Node3D" parent="." index="1" unique_id=1928209729]
 
-[node name="Door" type="MeshInstance3D" parent="SmallDoor" index="0" unique_id=155183933]
-mesh = SubResource("ArrayMesh_qlf8s")
-surface_material_override/0 = SubResource("StandardMaterial3D_goqoe")
-
-[node name="StaticBody3D" type="StaticBody3D" parent="SmallDoor/Door" index="0" unique_id=1536555052]
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="SmallDoor/Door/StaticBody3D" index="0" unique_id=1969326496]
-shape = SubResource("ConcavePolygonShape3D_0amyv")
-
-[node name="DoorFrame" type="MeshInstance3D" parent="SmallDoor" index="1" unique_id=477794508]
-mesh = SubResource("ArrayMesh_4eeig")
+[node name="Door" type="MeshInstance3D" parent="SmallDoor" index="0" unique_id=837344036]
+mesh = SubResource("ArrayMesh_goqoe")
 surface_material_override/0 = SubResource("StandardMaterial3D_bnqo3")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="SmallDoor/DoorFrame" index="0" unique_id=2006837831]
+[node name="StaticBody3D" type="StaticBody3D" parent="SmallDoor/Door" index="0" unique_id=620278090]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="SmallDoor/DoorFrame/StaticBody3D" index="0" unique_id=1696716670]
-shape = SubResource("ConcavePolygonShape3D_0dlp5")
+[node name="CollisionShape3D" type="CollisionShape3D" parent="SmallDoor/Door/StaticBody3D" index="0" unique_id=2038869073]
+shape = SubResource("ConcavePolygonShape3D_xs3dx")
 
-[node name="Handle" type="MeshInstance3D" parent="SmallDoor" index="2" unique_id=1091923585]
+[node name="DoorFrame" type="MeshInstance3D" parent="SmallDoor" index="1" unique_id=2099220208]
+mesh = SubResource("ArrayMesh_axxj1")
+surface_material_override/0 = SubResource("StandardMaterial3D_xs3dx")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="SmallDoor/DoorFrame" index="0" unique_id=892796707]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="SmallDoor/DoorFrame/StaticBody3D" index="0" unique_id=1518261384]
+shape = SubResource("ConcavePolygonShape3D_0w5xc")
+
+[node name="Handle" type="MeshInstance3D" parent="SmallDoor" index="2" unique_id=2126995944]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.55, 1.25, 0)
-mesh = SubResource("ArrayMesh_7qq3x")
-surface_material_override/0 = SubResource("StandardMaterial3D_qv4ps")
+mesh = SubResource("ArrayMesh_6fpxq")
+surface_material_override/0 = SubResource("StandardMaterial3D_axxj1")
 
-[node name="RoomDestinationPoint" type="Marker3D" parent="." index="2" unique_id=1312606428]
+[node name="RoomDestinationPoint" type="Marker3D" parent="." index="3" unique_id=1863736835]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1.5)

@@ -1,11 +1,8 @@
 [gd_scene format=4 uid="uid://bvswcyi6gw0f3"]
 
 [ext_resource type="PackedScene" uid="uid://1imavx2tumky" path="res://scenes/rooms/room_template.tscn" id="1_p4rsy"]
-[ext_resource type="Material" uid="uid://ph3n7o3uhrnv" path="res://assets/materials/place_holder_grid_material.tres" id="3_2o6np"]
+[ext_resource type="Material" uid="uid://duw5q00ixdrej" path="res://assets/materials/ph_dark.tres" id="2_ldqll"]
 [ext_resource type="PackedScene" uid="uid://dff83q5333mis" path="res://scenes/camera/fixed_cam_trigger.tscn" id="4_2o6np"]
-[ext_resource type="Texture2D" uid="uid://b65ijnmhccx2r" path="res://assets/textures/placeholder_grid3.png" id="4_h0f6i"]
-[ext_resource type="PackedScene" uid="uid://03gfg7cvcqnv" path="res://scenes/interactable/door/door_scene/interactable_door.tscn" id="5_kwnl2"]
-[ext_resource type="Resource" uid="uid://slmydcxluydf" path="res://scenes/interactable/door/door_instance/mh_to_sr.tres" id="6_cbkm4"]
 [ext_resource type="PackedScene" uid="uid://ckmucpd1ph3km" path="res://scenes/interactable/item_box/item_box.tscn" id="6_ldqll"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_aupj0"]
@@ -43,19 +40,6 @@ shadow_mesh = SubResource("ArrayMesh_rt4ge")
 [sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_panv8"]
 data = PackedVector3Array(-6, -2, -2, 2, 2, -2, 2, -2, -2, -6, -2, -2, -6, 2, -2, 2, 2, -2, 2, 2, -2, 2, -2, 6, 2, -2, -2, 2, -2, 6, 2, 2, 2, 2, 0, 6, 2, -2, 6, 2, 2, -2, 2, 2, 2, 2, 2, -2, -6, 2, 2, 2, 2, 2, 2, 2, -2, -6, 2, -2, -6, 2, 2, 2, 0, 6, -2, -2, 6, 2, -2, 6, -2, -1, 6, 2, 0, 6, -2, 0, 6, -2, -2, 6, 2, 0, 6, -2, -1, 6, -6, 0, 6, 2, 2, 2, -6, 2, 2, 2, 2, 2, -2, 0, 6, 2, 0, 6, 2, 2, 2, -6, 0, 6, -2, 0, 6, -6, -1, 2, -6, -2, -2, -6, -2, 2, -6, -2, -2, -6, 2, 2, -6, 2, -2, -6, 2, 2, -6, -1, 6, -6, 0, 6, -6, -1, 2, -6, 2, 2, -6, -2, -2, -6, 2, 2, -6, -1, 2, -6, -1, 6, -2, 0, 6, -6, -1, 6, -2, -1, 6, -2, 0, 6, -6, 0, 6, -6, -1, 6, -4, -2, 2, -3.2346332, -1, 2.152241, -4, -1, 2, -4, -2, 2, -3.2346332, -2, 2.152241, -3.2346332, -1, 2.152241, -3.2346332, -2, 2.152241, -2.5857863, -1, 2.5857863, -3.2346332, -1, 2.152241, -3.2346332, -2, 2.152241, -2.5857863, -2, 2.5857863, -2.5857863, -1, 2.5857863, -2.5857863, -2, 2.5857863, -2.152241, -1, 3.2346332, -2.5857863, -1, 2.5857863, -2.5857863, -2, 2.5857863, -2.152241, -2, 3.2346332, -2.152241, -1, 3.2346332, -2.152241, -2, 3.2346332, -2, -1, 4, -2.152241, -1, 3.2346332, -2.152241, -2, 3.2346332, -2, -2, 4, -2, -1, 4, -6, -1, 2, -4, -2, 2, -4, -1, 2, -6, -1, 2, -6, -2, 2, -4, -2, 2, -2, -1, 6, -2, -2, 4, -2, -2, 6, -2, -1, 6, -2, -1, 4, -2, -2, 4, -2, -2, 4, 2, -2, 6, -2, -2, 6, 2, -2, 6, -6, -2, -2, 2, -2, -2, -6, -2, -2, -4, -2, 2, -6, -2, 2, -6, -2, -2, -3.2346332, -2, 2.152241, -4, -2, 2, -2.152241, -2, 3.2346332, 2, -2, 6, -2, -2, 4, -6, -2, -2, -2.5857863, -2, 2.5857863, -3.2346332, -2, 2.152241, -2.5857863, -2, 2.5857863, 2, -2, 6, -2.152241, -2, 3.2346332, 2, -2, 6, -2.5857863, -2, 2.5857863, -6, -2, -2, -6, -1, 2, -2, -1, 6, -6, -1, 6, -2, -1, 6, -2.152241, -1, 3.2346332, -2, -1, 4, -2.152241, -1, 3.2346332, -3.2346332, -1, 2.152241, -2.5857863, -1, 2.5857863, -3.2346332, -1, 2.152241, -6, -1, 2, -4, -1, 2, -6, -1, 2, -2.152241, -1, 3.2346332, -2, -1, 6, -2.152241, -1, 3.2346332, -6, -1, 2, -3.2346332, -1, 2.152241)
 
-[sub_resource type="BoxMesh" id="BoxMesh_bvwd6"]
-size = Vector3(3, 1, 1)
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ldqll"]
-diffuse_mode = 3
-albedo_texture = ExtResource("4_h0f6i")
-uv1_scale = Vector3(0.25, 0.25, 0.25)
-uv1_triplanar = true
-texture_filter = 0
-
-[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_kwnl2"]
-data = PackedVector3Array(-1.5, 0.5, 0.5, 1.5, 0.5, 0.5, -1.5, -0.5, 0.5, 1.5, 0.5, 0.5, 1.5, -0.5, 0.5, -1.5, -0.5, 0.5, 1.5, 0.5, -0.5, -1.5, 0.5, -0.5, 1.5, -0.5, -0.5, -1.5, 0.5, -0.5, -1.5, -0.5, -0.5, 1.5, -0.5, -0.5, 1.5, 0.5, 0.5, 1.5, 0.5, -0.5, 1.5, -0.5, 0.5, 1.5, 0.5, -0.5, 1.5, -0.5, -0.5, 1.5, -0.5, 0.5, -1.5, 0.5, -0.5, -1.5, 0.5, 0.5, -1.5, -0.5, -0.5, -1.5, 0.5, 0.5, -1.5, -0.5, 0.5, -1.5, -0.5, -0.5, 1.5, 0.5, 0.5, -1.5, 0.5, 0.5, 1.5, 0.5, -0.5, -1.5, 0.5, 0.5, -1.5, 0.5, -0.5, 1.5, 0.5, -0.5, -1.5, -0.5, 0.5, 1.5, -0.5, 0.5, -1.5, -0.5, -0.5, 1.5, -0.5, 0.5, 1.5, -0.5, -0.5, -1.5, -0.5, -0.5)
-
 [sub_resource type="BoxShape3D" id="BoxShape3D_2o6np"]
 size = Vector3(8, 4, 8)
 
@@ -66,33 +50,18 @@ size = Vector3(8, 4, 8)
 [node name="BoxedOutRoom_TL02_SR#SR" type="MeshInstance3D" parent="BlenderExport/TL02_SR" index="0" unique_id=886485521]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, -13)
 mesh = SubResource("ArrayMesh_7c87u")
-surface_material_override/0 = ExtResource("3_2o6np")
+surface_material_override/0 = ExtResource("2_ldqll")
 
 [node name="BoxedOutRoom_TL02_SR_SR#StaticBody3D" type="StaticBody3D" parent="BlenderExport/TL02_SR/BoxedOutRoom_TL02_SR#SR" index="0" unique_id=1340084728]
 
 [node name="BoxedOutRoom_TL02_SR_SR_StaticBody3D#CollisionShape3D" type="CollisionShape3D" parent="BlenderExport/TL02_SR/BoxedOutRoom_TL02_SR#SR/BoxedOutRoom_TL02_SR_SR#StaticBody3D" index="0" unique_id=1459315328]
 shape = SubResource("ConcavePolygonShape3D_panv8")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="ExtraShapes" parent_id_path=PackedInt32Array(1727345854) index="0" unique_id=587138656]
-transform = Transform3D(0.9659258, 0, 0.25881904, 0, 1, 0, -0.25881904, 0, 0.9659258, -6.5, -1.5, -14)
-mesh = SubResource("BoxMesh_bvwd6")
-surface_material_override/0 = SubResource("StandardMaterial3D_ldqll")
-
-[node name="StaticBody3D" type="StaticBody3D" parent="ExtraShapes/MeshInstance3D" index="0" unique_id=2011399605]
-collision_layer = 64
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="ExtraShapes/MeshInstance3D/StaticBody3D" index="0" unique_id=1084114254]
-shape = SubResource("ConcavePolygonShape3D_kwnl2")
-
-[node name="ItemBox" parent="Interactables/ItemBox" parent_id_path=PackedInt32Array(1244118018) index="0" unique_id=1671250023 instance=ExtResource("6_ldqll")]
+[node name="ItemBox" parent="Interactables/ItemBox" parent_id_path=PackedInt32Array(1244118018) index="0" unique_id=2101348855 instance=ExtResource("6_ldqll")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, -2, -8)
 
 [node name="DoorLocation_003" type="Marker3D" parent="Interactables/Doors" parent_id_path=PackedInt32Array(1804345606) index="0" unique_id=1795111232]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2, -13)
-
-[node name="Door1" parent="Interactables/Doors/DoorLocation_003" index="0" unique_id=1451751561 instance=ExtResource("5_kwnl2")]
-transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 0, 0, 0)
-door_instance = ExtResource("6_cbkm4")
 
 [node name="FixedCamTrigger_01" parent="FixedCamTriggers" parent_id_path=PackedInt32Array(1043019142) index="0" unique_id=793731124 instance=ExtResource("4_2o6np")]
 

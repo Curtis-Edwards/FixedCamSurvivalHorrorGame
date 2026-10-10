@@ -4,11 +4,11 @@ var combinations: Dictionary = {}
 
 var combine_state: bool = false
 
-var combine_type_a: int
+var combine_type_a: InventorySystem
 var combine_index_a: int
 var combine_item_a: ItemInstance
 
-var combine_type_b: int
+var combine_type_b: InventorySystem
 var combine_index_b: int
 var combine_item_b: ItemInstance
 
@@ -60,27 +60,27 @@ func combine(item_a: ItemInstance, item_b: ItemInstance) -> bool:
 
 
 #region Combine State
-func start_combine_state(_combine_type_a: int, _combine_index_a: int, _combine_item_a: ItemInstance) -> void:
+func start_combine_state(_combine_type_a: InventorySystem, _combine_index_a: int, _combine_item_a: ItemInstance) -> void:
 	combine_state = true
 	assign_combine_a(_combine_type_a, _combine_index_a, _combine_item_a)
 
 func end_combine_state() -> void:
 	combine_state = false
 	
-	combine_type_a = -1
+	combine_type_a = null
 	combine_index_a = -1
 	combine_item_a = null
 
-	combine_type_b = -1
+	combine_type_b = null
 	combine_index_b = -1
 	combine_item_b = null
 
-func assign_combine_a(_combine_type_a: int, _combine_index_a: int, _combine_item_a: ItemInstance) -> void:
+func assign_combine_a(_combine_type_a: InventorySystem, _combine_index_a: int, _combine_item_a: ItemInstance) -> void:
 	combine_type_a = _combine_type_a
 	combine_index_a = _combine_index_a
 	combine_item_a = _combine_item_a
 
-func assign_combine_b(_combine_type_b: int, _combine_index_b: int, _combine_item_b: ItemInstance) -> void:
+func assign_combine_b(_combine_type_b: InventorySystem, _combine_index_b: int, _combine_item_b: ItemInstance) -> void:
 	combine_type_b = _combine_type_b
 	combine_index_b = _combine_index_b
 	combine_item_b = _combine_item_b
@@ -99,14 +99,15 @@ func print_combine_state():
 
 
 #region Combine Types
-func basic_two_item_combo(item_c: ItemDefinition, amount: int):
-	GameManager.inventory.reduce_item(combine_type_a, combine_item_a.item_def, 1, false)
-	GameManager.inventory.reduce_item(combine_type_b, combine_item_b.item_def, 1, false)
-	GameManager.inventory.add_item(combine_type_b, item_c, amount)
-	
-	GameManager.inventory.sort_slots(combine_type_a)
-	GameManager.inventory.sort_slots(combine_type_b)
-	
-	GameManager.inventory.inv_ui.update_slots_ui()
-	GameManager.inventory.inv_ui.focus_slot([combine_type_b, combine_index_b])
+func basic_two_item_combo(_item_c: ItemDefinition, _amount: int):
+	pass # TODO: Fix later
+	#GameManager.inventory.reduce_item(combine_type_a, combine_item_a.item_def, 1, false)
+	#GameManager.inventory.reduce_item(combine_type_b, combine_item_b.item_def, 1, false)
+	#GameManager.inventory.add_item(combine_type_b, item_c, amount)
+	#
+	#GameManager.inventory.sort_slots(combine_type_a)
+	#GameManager.inventory.sort_slots(combine_type_b)
+	#
+	#GameManager.inventory.inv_ui.update_slots_ui()
+	#GameManager.inventory.inv_ui.focus_slot([combine_type_b, combine_index_b])
 #endregion

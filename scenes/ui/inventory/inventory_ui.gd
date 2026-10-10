@@ -20,9 +20,10 @@ var is_item_box_open: bool = false
 func open_inventory(open_item_box: bool = false) -> void:
 	self.show()
 	
+	update_slots_ui()
 	inventory_slots_ui.show()
 	item_box_slots_ui.hide()
-	focus_slot([0,0])
+	set_focused_slot(GameManager.inventory, 0, true)
 	
 	is_item_box_open = open_item_box
 	toggle_inv_type_btn.disabled = not open_item_box
@@ -37,18 +38,26 @@ func close_inventory() -> void:
 
 #region Slots Functions
 
-var focused_index: Array[int] = [0,0] # NOTE [inv_type, index]
+var focused_index: Array = [GameManager.inventory, 0]
 
-func focus_slot(_focused_index: Array[int]) -> void:
-	var data: Dictionary = GameManager.inventory.get_inventory_type(_focused_index[0])
-	var _inv = data["slots"]
-	var _inv_size = data["size"]
-	var inv_ui = data["ui"]
+func set_focused_slot(inv: InventorySystem, index: int, focus_after: bool = false) -> void:
+	focused_index = [inv, index]
+	if focus_after:
+		focus_slot(focused_index)
+
+func focus_slot(index: Array) -> void:
+	var slot: InventorySlotBtn
 	
-	var slot = inv_ui.get_child(_focused_index[1])
+	if index[0] == GameManager.inventory:
+		slot = inventory_slots_ui.get_child(index[1])
+	else:
+		slot = item_box_slots_ui.get_child(index[1])
+	
 	if slot:
 		get_viewport().gui_release_focus()
 		slot.grab_focus()
+
+
 
 func update_slots_ui() -> void:
 	for item in inventory_slots_ui.get_children():
@@ -62,15 +71,16 @@ func update_slots_ui() -> void:
 @onready var equiped_item_image: TextureRect = $InventoryScreen/PlayerStats/EquipedItem/TextureRect
 
 func update_equiped_item() -> void:
-	if not GameManager.inventory.equiped_item:
-		return
-	
-	for item in GameManager.inventory.inventory_slots:
-		if item == GameManager.inventory.equiped_item:
-			break
-		
-		GameManager.inventory.unequip_item()
-		return
+	pass
+	#if not GameManager.inventory.equiped_item:
+		#return
+	#
+	#for item in GameManager.inventory.inventory_slots:
+		#if item == GameManager.inventory.equiped_item:
+			#break
+		#
+		#GameManager.inventory.unequip_item()
+		#return
 
 
 func disable_slots(_disable_slot: bool = true):
@@ -97,21 +107,27 @@ func disable_slots(_disable_slot: bool = true):
 
 var action_item: ItemInstance = null
 var action_slot_index: int
-var action_inv_type: int
+var action_inv_type: InventorySystem
+var opposite_inv_type: InventorySystem
 
 var is_action_menu_open: bool = false
 
-func toggle_action_menu(type: int, slot: ItemInstance, index: int)  -> void:
-	if not is_action_menu_open or (is_action_menu_open and slot != action_item):
-		open_action_menu(type, slot, index)
+func toggle_action_menu(type: InventorySystem, item: ItemInstance, index: int)  -> void:
+	if not is_action_menu_open or (is_action_menu_open and item != action_item):
+		open_action_menu(type, item, index)
 	else:
 		close_action_menu()
 
-func open_action_menu(type: int, slot: ItemInstance, index: int)  -> void:
+func open_action_menu(type: InventorySystem, item: ItemInstance, index: int)  -> void:
 	is_action_menu_open = true
-	action_item = slot
+	action_item = item
 	action_slot_index = index
 	action_inv_type = type
+
+	if action_inv_type == GameManager.inventory:
+		opposite_inv_type = GameManager.item_box
+	else:
+		opposite_inv_type = GameManager.inventory
 	
 	if not action_item:
 		return
@@ -120,7 +136,7 @@ func open_action_menu(type: int, slot: ItemInstance, index: int)  -> void:
 	transfer_menu_show()
 	
 	use_btn.disabled = false if GameManager.ui.is_interacting() else true
-	equip_btn.disabled = false if action_item.item_def.can_equip and action_inv_type == 0 else true
+	equip_btn.disabled = false if action_item.item_def.can_equip and action_inv_type == GameManager.inventory else true
 	consume_btn.disabled = false if action_item.item_def.can_consume else true
 	discard_btn.disabled = false if action_item.item_def.can_discard else true
 	
@@ -139,26 +155,24 @@ func close_action_menu():
 	transfer_menu.hide()
 	focus_slot(focused_index)
 
-	
-
 func _on_toggle_inventory_type_pressed() -> void:
 	if is_action_menu_open or not is_item_box_open:
 		return
 	
-	if inventory_slots_ui.visible:
-		focus_slot([1,0])
-	else:
-		focus_slot([0,0])
-	
 	inventory_slots_ui.visible = not inventory_slots_ui.visible
 	item_box_slots_ui.visible = not item_box_slots_ui.visible
 	
-
+	if inventory_slots_ui.visible:
+		set_focused_slot(GameManager.inventory, 0)
+	else:
+		set_focused_slot(GameManager.item_box, 0)
+	
 
 
 # Buttons
 func _on_use_btn_pressed() -> void:
 	GameManager.player.active_interactable.try_use_item(action_item.item_def)
+	update_slots_ui()
 
 func _on_equip_btn_pressed() -> void:
 	if not GameManager.inventory.equiped_item: 
@@ -171,26 +185,32 @@ func _on_equip_btn_pressed() -> void:
 	
 	focused_index = [action_inv_type, action_slot_index]
 	close_action_menu()
+	update_slots_ui()
 
 func _on_discard_btn_pressed() -> void:
-	GameManager.inventory.remove_item(action_inv_type, action_slot_index)
+	action_inv_type.remove_item(action_slot_index)
+	
 	focused_index = [action_inv_type, action_slot_index]
 	close_action_menu()
+	update_slots_ui()
 
 func _on_consume_btn_pressed() -> void:
 	# TODO: Implement consume btn
 	focused_index = [action_inv_type, action_slot_index]
 	close_action_menu()
+	update_slots_ui()
 
 func _on_combine_btn_pressed() -> void:
 	CombinationManager.start_combine_state(action_inv_type, action_slot_index, action_item)
 	focused_index = [action_inv_type, action_slot_index]
 	close_action_menu()
+	update_slots_ui()
 
 func _on_close_btn_pressed() -> void:
 	if is_action_menu_open:
 		focused_index = [action_inv_type, action_slot_index]
 		close_action_menu()
+	update_slots_ui()
 
 #endregion
 
@@ -213,7 +233,7 @@ func transfer_menu_show() -> void:
 	
 	transfer_menu.show()
 	max_transfer_amount = min(
-		GameManager.inventory.can_add_item(1 - action_inv_type, action_item.item_def, action_item.item_amount),
+		opposite_inv_type.can_add_item(action_item.item_def, action_item.item_amount),
 		action_item.item_amount
 	)
 	transfer_amount = max_transfer_amount
@@ -250,17 +270,20 @@ func update_transfer_btn_text(not_statckable: bool) -> void:
 func _on_increase_btn_pressed() -> void:
 	transfer_amount = min(max_transfer_amount, transfer_amount + 1)
 	update_transfer_btn_text(false)
+	update_slots_ui()
 
 func _on_decrease_btn_pressed() -> void:
 	transfer_amount = max(1, transfer_amount - 1)
 	update_transfer_btn_text(false)
+	update_slots_ui()
 
 func _on_transfer_btn_pressed() -> void:
-	GameManager.inventory.reduce_item(action_inv_type, action_item.item_def, transfer_amount)
-	GameManager.inventory.add_item(1 - action_inv_type, action_item.item_def, transfer_amount)
+	action_inv_type.reduce_item(action_item.item_def, transfer_amount)
+	opposite_inv_type.add_item(action_item.item_def, transfer_amount)
 	
 	focused_index = [action_inv_type, action_slot_index]
 	close_action_menu()
+	update_slots_ui()
 #endregion
 
 

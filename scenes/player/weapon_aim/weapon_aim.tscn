@@ -1,0 +1,58 @@
+[gd_scene format=3 uid="uid://cn6f5ahfvam0j"]
+
+[ext_resource type="Script" uid="uid://b8we0qtb1617a" path="res://scenes/player/weapon_aim/weapon_aim.gd" id="1_7l52m"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wwgp4"]
+shading_mode = 2
+albedo_color = Color(0.42666662, 1, 0.13999999, 1)
+
+[sub_resource type="SphereMesh" id="SphereMesh_bvwd6"]
+material = SubResource("StandardMaterial3D_wwgp4")
+radius = 0.05
+height = 0.1
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_gmlin"]
+albedo_color = Color(1, 0.45490196, 0.14117648, 1)
+
+[sub_resource type="SphereMesh" id="SphereMesh_lvxji"]
+material = SubResource("StandardMaterial3D_gmlin")
+radius = 0.05
+height = 0.1
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_68fqt"]
+top_radius = 0.01
+bottom_radius = 0.01
+height = 1.0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_bvwd6"]
+albedo_color = Color(1, 0.45490196, 0.14117648, 1)
+emission_enabled = true
+emission = Color(1, 0.45490196, 0.14117648, 1)
+emission_energy_multiplier = 2.58
+
+[node name="WeaponAim" type="Node3D" unique_id=1434723451]
+visible = false
+script = ExtResource("1_7l52m")
+
+[node name="SpringArm3D" type="SpringArm3D" parent="." unique_id=252965210]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0, 0)
+collision_mask = 76
+
+[node name="ProjectileStart" type="MeshInstance3D" parent="SpringArm3D" unique_id=1076997445]
+mesh = SubResource("SphereMesh_bvwd6")
+
+[node name="SpringArm3D" type="SpringArm3D" parent="SpringArm3D/ProjectileStart" unique_id=1476176825]
+collision_mask = 76
+spring_length = 30.0
+
+[node name="ProjectileEnd" type="MeshInstance3D" parent="SpringArm3D/ProjectileStart/SpringArm3D" unique_id=710541818]
+transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 0, 0, 0)
+mesh = SubResource("SphereMesh_lvxji")
+
+[node name="Laser" type="Node3D" parent="SpringArm3D/ProjectileStart" unique_id=1236286377]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0, 0)
+
+[node name="BeamMesh" type="MeshInstance3D" parent="SpringArm3D/ProjectileStart/Laser" unique_id=1879193599]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0, -0.5)
+mesh = SubResource("CylinderMesh_68fqt")
+surface_material_override/0 = SubResource("StandardMaterial3D_bvwd6")

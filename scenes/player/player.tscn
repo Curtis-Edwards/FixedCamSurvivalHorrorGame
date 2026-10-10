@@ -1,27 +1,35 @@
 [gd_scene format=3 uid="uid://g6vdvf12ss25"]
 
 [ext_resource type="Script" uid="uid://dl4scqve1rmau" path="res://scenes/player/player.gd" id="1_dovo2"]
-[ext_resource type="Material" uid="uid://ph3n7o3uhrnv" path="res://assets/materials/place_holder_grid_material.tres" id="2_lvxji"]
+[ext_resource type="Texture2D" uid="uid://b5c7dx2prch1s" path="res://assets/textures/kenney_stuff/kenney_prototype-textures/PNG/Dark/texture_03.png" id="2_lvxji"]
 [ext_resource type="PackedScene" uid="uid://dkj4ivdjmo1i3" path="res://scenes/player/interaction_prompt/interaction_prompt.tscn" id="3_gmlin"]
+[ext_resource type="PackedScene" uid="uid://cn6f5ahfvam0j" path="res://scenes/player/weapon_aim/weapon_aim.tscn" id="4_lvxji"]
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_ypl5r"]
 height = 1.6
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_7dm28"]
-material = ExtResource("2_lvxji")
 height = 1.6
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_p47bc"]
+diffuse_mode = 1
+albedo_color = Color(0.4509804, 0.4862745, 1, 1)
+albedo_texture = ExtResource("2_lvxji")
+uv1_triplanar = true
+texture_filter = 5
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_75vfm"]
+diffuse_mode = 1
+albedo_color = Color(0.4509804, 0.4862745, 1, 1)
+albedo_texture = ExtResource("2_lvxji")
+uv1_triplanar = true
+texture_filter = 5
+
 [sub_resource type="CylinderMesh" id="CylinderMesh_uqdc8"]
-material = ExtResource("2_lvxji")
+material = SubResource("StandardMaterial3D_75vfm")
 top_radius = 0.2
 bottom_radius = 0.2
 height = 1.0
-
-[sub_resource type="CylinderMesh" id="CylinderMesh_gmlin"]
-material = ExtResource("2_lvxji")
-top_radius = 0.1
-bottom_radius = 0.1
-height = 0.9
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_w4qpt"]
 height = 1.6
@@ -29,24 +37,6 @@ radius = 0.001
 
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_dovo2"]
 points = PackedVector3Array(0, 0, -0.3, -0.5, 0, -1.5, 0.5, 0, -1.5, 0, 1.6, -0.3, -0.5, 1.6, -1.5, 0.5, 1.6, -1.5)
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wwgp4"]
-shading_mode = 2
-albedo_color = Color(0.75, 1, 0.7, 1)
-
-[sub_resource type="SphereMesh" id="SphereMesh_bvwd6"]
-material = SubResource("StandardMaterial3D_wwgp4")
-radius = 0.2
-height = 0.4
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_gmlin"]
-shading_mode = 2
-albedo_color = Color(1, 0.7, 0.7, 1)
-
-[sub_resource type="SphereMesh" id="SphereMesh_lvxji"]
-material = SubResource("StandardMaterial3D_gmlin")
-radius = 0.2
-height = 0.4
 
 [sub_resource type="AnimationNodeBlendSpace2D" id="AnimationNodeBlendSpace2D_h17s1"]
 
@@ -115,35 +105,11 @@ graph_offset = Vector2(-1, -33)
 
 [sub_resource type="Animation" id="Animation_lvxji"]
 length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Node3D/ArmPivots:position:y")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [1.157924]
-}
 
 [sub_resource type="Animation" id="Animation_p47bc"]
 resource_name = "idle"
 length = 0.6
 loop_mode = 1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Node3D/ArmPivots:position:y")
-tracks/0/interp = 2
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.3, 0.6333333),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 0,
-"values": [1.157924, 1.1, 1.157924]
-}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_75vfm"]
 _data = {
@@ -166,31 +132,12 @@ shape = SubResource("CylinderShape3D_ypl5r")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.8, 0)
 layers = 2
 mesh = SubResource("CylinderMesh_7dm28")
+surface_material_override/0 = SubResource("StandardMaterial3D_p47bc")
 
 [node name="EyesMesh" type="MeshInstance3D" parent="Node3D" unique_id=556175140]
 transform = Transform3D(-4.371139e-08, -1, -4.371139e-08, 0, -4.371139e-08, 1, -1, 4.371139e-08, 1.9106855e-15, 0, 1.26257, -0.4)
 layers = 2
 mesh = SubResource("CylinderMesh_uqdc8")
-
-[node name="ArmPivots" type="Node3D" parent="Node3D" unique_id=1473831409]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.157924, 0)
-visible = false
-
-[node name="LeftArmPivot" type="Node3D" parent="Node3D/ArmPivots" unique_id=1727488053]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 0, 0)
-
-[node name="LeftArm" type="MeshInstance3D" parent="Node3D/ArmPivots/LeftArmPivot" unique_id=1721324969]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
-layers = 2
-mesh = SubResource("CylinderMesh_gmlin")
-
-[node name="RightArmPivot" type="Node3D" parent="Node3D/ArmPivots" unique_id=519090764]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 0, 0)
-
-[node name="RightArm" type="MeshInstance3D" parent="Node3D/ArmPivots/RightArmPivot" unique_id=1670423192]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
-layers = 2
-mesh = SubResource("CylinderMesh_gmlin")
 
 [node name="QuickTurnDuration" type="Timer" parent="." unique_id=1671766073]
 wait_time = 0.15
@@ -219,22 +166,8 @@ collision_mask = 16
 shape = SubResource("ConvexPolygonShape3D_dovo2")
 debug_color = Color(0.6482781, 0.5093867, 0.31239182, 0.41960785)
 
-[node name="WeaponAim" type="Node3D" parent="." unique_id=1696293094]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.1353878, 0)
-visible = false
-
-[node name="ProjectileStart" type="MeshInstance3D" parent="WeaponAim" unique_id=1737835290]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1)
-mesh = SubResource("SphereMesh_bvwd6")
-
-[node name="SpringArm3D" type="SpringArm3D" parent="WeaponAim" unique_id=2089156285]
-transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0, -1)
-collision_mask = 76
-spring_length = 30.0
-
-[node name="ProjectileEnd" type="MeshInstance3D" parent="WeaponAim/SpringArm3D" unique_id=1729593572]
-transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 0, 0, 0)
-mesh = SubResource("SphereMesh_lvxji")
+[node name="WeaponAim" parent="." unique_id=1434723451 instance=ExtResource("4_lvxji")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.93645936, 0)
 
 [node name="AnimationTree" type="AnimationTree" parent="." unique_id=1116659743]
 tree_root = SubResource("AnimationNodeStateMachine_bvwd6")

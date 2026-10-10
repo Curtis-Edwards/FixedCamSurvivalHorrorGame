@@ -15,6 +15,7 @@ var wrong_item_text: String = "That item has no use here."
 
 #region Interaction Functions
 func interact() -> void:
+	
 	if not door_instance:
 		interact_door_locked_always()
 		return

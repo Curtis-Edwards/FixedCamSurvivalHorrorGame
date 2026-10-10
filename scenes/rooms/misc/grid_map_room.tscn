@@ -1,5 +1,0 @@
-[gd_scene format=3 uid="uid://cvtsfmjcuvydu"]
-
-[ext_resource type="PackedScene" uid="uid://1imavx2tumky" path="res://scenes/rooms/room_template.tscn" id="1_fdehx"]
-
-[node name="GridMapRoom" unique_id=1177210895 instance=ExtResource("1_fdehx")]

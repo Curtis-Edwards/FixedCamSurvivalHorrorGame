@@ -64,6 +64,7 @@ func change_state(new_state: PlayerState) -> void:
 			animation_state_machine.travel("Interacting")
 		_:
 			push_error("Err: State not found.")
+#region Player State
 
 #region IDLE
 
@@ -184,7 +185,6 @@ func moving_backward_state(delta: float) -> void:
 #region AIMING
 
 @onready var weapon_aim: Node3D = $WeaponAim
-#@onready var weapon_aim_decal: Decal = $WeaponAim/SpringArm3D/Mesh
 
 @export var max_aim_angle: float = 60
 @export var aim_rotation_speed: float = 3.0
@@ -252,10 +252,14 @@ func interacting_state(delta: float) -> void:
 var nearby_interactables: Array[Interactable] = []
 
 func _on_interaction_area_area_entered(area: Area3D) -> void:
-	nearby_interactables.append(area)
+	var interactable: Interactable = area.get_parent()
+	nearby_interactables.append(interactable)
+	interactable.entered_interactable()
 
 func _on_interaction_area_area_exited(area: Area3D) -> void:
-	nearby_interactables.erase(area)
+	var interactable: Interactable = area.get_parent()
+	nearby_interactables.erase(area.get_parent())
+	interactable.exited_interactable()
 
 func get_best_interactable() -> Interactable:
 	if nearby_interactables.is_empty():
@@ -314,6 +318,9 @@ func stop_interaction() -> void:
 
 #endregion
 
+#endregion
+
+#func 
 
 #region Other
 
