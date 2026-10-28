@@ -1,0 +1,44 @@
+[gd_scene format=3 uid="uid://d28ro5nqjnjjh"]
+
+[ext_resource type="PackedScene" uid="uid://bkutcgtpdujbi" path="res://assets/3d_objects/door/SmallDoor2.glb" id="1_6gb76"]
+[ext_resource type="Script" uid="uid://c84l20tkteg7x" path="res://scenes/door_scene/door_scene.gd" id="1_t2gni"]
+[ext_resource type="PackedScene" uid="uid://csfc620oajisq" path="res://components/interaction/interaction_component.tscn" id="3_luf5d"]
+[ext_resource type="Material" uid="uid://ck5it6uv4h3l0" path="res://assets/materials/ph.tres" id="3_t2gni"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_luf5d"]
+size = Vector3(2, 2.75, 1)
+
+[node name="Door01" type="Node3D" unique_id=177482063]
+script = ExtResource("1_t2gni")
+
+[node name="DoorMesh" parent="." unique_id=131132130 instance=ExtResource("1_6gb76")]
+
+[node name="Door" parent="DoorMesh" index="0" unique_id=1250795435]
+surface_material_override/0 = ExtResource("3_t2gni")
+
+[node name="StaticBody3D" parent="DoorMesh/Door" index="0" unique_id=937048632]
+visible = false
+collision_layer = 32
+collision_mask = 15
+
+[node name="DoorFrame" parent="DoorMesh" index="1" unique_id=1272689302]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 0.2, 0, 0, 0)
+surface_material_override/0 = ExtResource("3_t2gni")
+
+[node name="StaticBody3D" parent="DoorMesh/DoorFrame" index="0" unique_id=592306203]
+visible = false
+collision_layer = 32
+collision_mask = 15
+
+[node name="InteractionComponent" parent="." unique_id=201647549 instance=ExtResource("3_luf5d")]
+visible = false
+
+[node name="CollisionShape3D" parent="InteractionComponent" index="0" unique_id=28869980]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.625, 0)
+shape = SubResource("BoxShape3D_luf5d")
+debug_color = Color(0.7294118, 0.42745098, 0.5568628, 0.41960785)
+
+[connection signal="interact" from="InteractionComponent" to="." method="_on_interaction_component_interact"]
+
+[editable path="DoorMesh"]
+[editable path="InteractionComponent"]

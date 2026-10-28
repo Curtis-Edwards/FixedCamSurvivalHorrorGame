@@ -1,9 +1,0 @@
-[gd_resource type="Resource" script_class="DoorInstance" format=3 uid="uid://chjxnxgs1yygf"]
-
-[ext_resource type="Script" uid="uid://dfbfkfvab88x" path="res://scenes/interactable/door/door_instance/door_instance.gd" id="1_st8jf"]
-
-[resource]
-script = ExtResource("1_st8jf")
-room_1 = &"room_a"
-room_2 = &"room_b"
-metadata/_custom_type_script = "uid://dfbfkfvab88x"

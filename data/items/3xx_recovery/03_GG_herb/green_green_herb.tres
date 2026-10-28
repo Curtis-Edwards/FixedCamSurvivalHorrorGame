@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="ItemDefinition" format=3 uid="uid://no1d17nk4uom"]
+
+[ext_resource type="Texture2D" uid="uid://d1qh3s1t6esi7" path="res://assets/textures/resi_2_sprite_sheet.png" id="1_p21md"]
+[ext_resource type="Script" uid="uid://bqtff8hunhhx3" path="res://data/items/item_definition.gd" id="2_j5imi"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jrmod"]
+atlas = ExtResource("1_p21md")
+region = Rect2(0, 511, 113, 73)
+
+[resource]
+script = ExtResource("2_j5imi")
+id = 303
+name = "Green + Red Herb"
+description = "Mmm very yummy "
+inventory_texture = SubResource("AtlasTexture_jrmod")
+can_consume = true
+can_discard = true
+metadata/_custom_type_script = "uid://bqtff8hunhhx3"

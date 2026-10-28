@@ -5,31 +5,24 @@
 [ext_resource type="PackedScene" uid="uid://dkj4ivdjmo1i3" path="res://scenes/player/interaction_prompt/interaction_prompt.tscn" id="3_gmlin"]
 [ext_resource type="PackedScene" uid="uid://cn6f5ahfvam0j" path="res://scenes/player/weapon_aim/weapon_aim.tscn" id="4_lvxji"]
 
-[sub_resource type="CylinderShape3D" id="CylinderShape3D_ypl5r"]
-height = 1.6
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_kwrrq"]
 
-[sub_resource type="CylinderMesh" id="CylinderMesh_7dm28"]
-height = 1.6
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_bvwd6"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_p47bc"]
 diffuse_mode = 1
-albedo_color = Color(0.4509804, 0.4862745, 1, 1)
 albedo_texture = ExtResource("2_lvxji")
+backlight_enabled = true
+backlight = Color(0.6, 0.6, 0.6, 1)
+refraction_enabled = true
 uv1_triplanar = true
 texture_filter = 5
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_75vfm"]
-diffuse_mode = 1
-albedo_color = Color(0.4509804, 0.4862745, 1, 1)
-albedo_texture = ExtResource("2_lvxji")
-uv1_triplanar = true
-texture_filter = 5
-
-[sub_resource type="CylinderMesh" id="CylinderMesh_uqdc8"]
-material = SubResource("StandardMaterial3D_75vfm")
-top_radius = 0.2
-bottom_radius = 0.2
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_hvd6r"]
+radius = 0.25
 height = 1.0
+
+[sub_resource type="SphereMesh" id="SphereMesh_kitn0"]
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_w4qpt"]
 height = 1.6
@@ -38,114 +31,91 @@ radius = 0.001
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_dovo2"]
 points = PackedVector3Array(0, 0, -0.3, -0.5, 0, -1.5, 0.5, 0, -1.5, 0, 1.6, -0.3, -0.5, 1.6, -1.5, 0.5, 1.6, -1.5)
 
-[sub_resource type="AnimationNodeBlendSpace2D" id="AnimationNodeBlendSpace2D_h17s1"]
-
-[sub_resource type="AnimationNodeBlendSpace2D" id="AnimationNodeBlendSpace2D_lvxji"]
-
-[sub_resource type="AnimationNodeBlendSpace2D" id="AnimationNodeBlendSpace2D_5gtgg"]
-
-[sub_resource type="AnimationNodeBlendSpace2D" id="AnimationNodeBlendSpace2D_0owmy"]
-
-[sub_resource type="AnimationNodeBlendSpace2D" id="AnimationNodeBlendSpace2D_75vfm"]
-
-[sub_resource type="AnimationNodeBlendSpace2D" id="AnimationNodeBlendSpace2D_p47bc"]
-
-[sub_resource type="AnimationNodeBlendSpace2D" id="AnimationNodeBlendSpace2D_qek5x"]
-
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_qek5x"]
-advance_mode = 2
-
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_5gtgg"]
-
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_h17s1"]
-
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_je7p5"]
-advance_mode = 2
-advance_condition = &"is_sprinting"
-
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_fm80t"]
-
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_lvxji"]
-advance_mode = 2
-advance_condition = &"not_sprinting"
-
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_p47bc"]
-
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_gx1jg"]
-
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_ugbui"]
-
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_fcs02"]
-
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_myrg7"]
-
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_kvlxm"]
-
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_uf5tr"]
-
-[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_bvwd6"]
-states/Aiming/node = SubResource("AnimationNodeBlendSpace2D_h17s1")
-states/Aiming/position = Vector2(155, -4)
-states/End/position = Vector2(1075, 100)
-states/Idle/node = SubResource("AnimationNodeBlendSpace2D_lvxji")
-states/Idle/position = Vector2(371, 100)
-states/Interacting/node = SubResource("AnimationNodeBlendSpace2D_5gtgg")
-states/Interacting/position = Vector2(371, -94)
-"states/Moving Backward/node" = SubResource("AnimationNodeBlendSpace2D_0owmy")
-"states/Moving Backward/position" = Vector2(604, 343)
-"states/Moving Forward/node" = SubResource("AnimationNodeBlendSpace2D_p47bc")
-"states/Moving Forward/position" = Vector2(604, 100)
-"states/Moving Forward (Sprinting)/node" = SubResource("AnimationNodeBlendSpace2D_75vfm")
-"states/Moving Forward (Sprinting)/position" = Vector2(868, 100)
-"states/Quick Turning/node" = SubResource("AnimationNodeBlendSpace2D_qek5x")
-"states/Quick Turning/position" = Vector2(371, 343)
-states/Start/position = Vector2(-97, 100)
-transitions = ["Start", "Idle", SubResource("AnimationNodeStateMachineTransition_qek5x"), "Idle", "Moving Forward", SubResource("AnimationNodeStateMachineTransition_5gtgg"), "Idle", "Moving Backward", SubResource("AnimationNodeStateMachineTransition_h17s1"), "Moving Forward", "Moving Forward (Sprinting)", SubResource("AnimationNodeStateMachineTransition_je7p5"), "Moving Forward", "Idle", SubResource("AnimationNodeStateMachineTransition_fm80t"), "Moving Forward (Sprinting)", "Moving Forward", SubResource("AnimationNodeStateMachineTransition_lvxji"), "Moving Backward", "Idle", SubResource("AnimationNodeStateMachineTransition_p47bc"), "Moving Backward", "Quick Turning", SubResource("AnimationNodeStateMachineTransition_gx1jg"), "Quick Turning", "Idle", SubResource("AnimationNodeStateMachineTransition_ugbui"), "Idle", "Interacting", SubResource("AnimationNodeStateMachineTransition_fcs02"), "Interacting", "Idle", SubResource("AnimationNodeStateMachineTransition_myrg7"), "Aiming", "Idle", SubResource("AnimationNodeStateMachineTransition_kvlxm"), "Idle", "Aiming", SubResource("AnimationNodeStateMachineTransition_uf5tr")]
-graph_offset = Vector2(-1, -33)
-
-[sub_resource type="Animation" id="Animation_lvxji"]
+[sub_resource type="Animation" id="Animation_kitn0"]
 length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PlayerModel:rotation:y")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0.0]
+}
 
-[sub_resource type="Animation" id="Animation_p47bc"]
-resource_name = "idle"
-length = 0.6
-loop_mode = 1
+[sub_resource type="Animation" id="Animation_3yikm"]
+resource_name = "quick_turn"
+length = 0.2
+tracks/0/type = "method"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.2),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"end_quick_turn"
+}]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("PlayerModel:rotation:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [3.142, 0.0]
+}
 
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_75vfm"]
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_pvg44"]
 _data = {
-&"RESET": SubResource("Animation_lvxji"),
-&"idle": SubResource("Animation_p47bc")
+&"RESET": SubResource("Animation_kitn0"),
+&"quick_turn": SubResource("Animation_3yikm")
 }
 
 [node name="Player" type="CharacterBody3D" unique_id=662147544]
-collision_mask = 76
+collision_mask = 60
 floor_snap_length = 1.0
 script = ExtResource("1_dovo2")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1558072215]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.8, 0)
-shape = SubResource("CylinderShape3D_ypl5r")
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+shape = SubResource("CapsuleShape3D_kwrrq")
 
-[node name="Node3D" type="Node3D" parent="." unique_id=45695252]
+[node name="PlayerModel" type="Node3D" parent="." unique_id=45695252]
 
-[node name="BodyMesh" type="MeshInstance3D" parent="Node3D" unique_id=1418413834]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.8, 0)
-layers = 2
-mesh = SubResource("CylinderMesh_7dm28")
+[node name="Body" type="MeshInstance3D" parent="PlayerModel" unique_id=343209541]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+mesh = SubResource("CapsuleMesh_bvwd6")
 surface_material_override/0 = SubResource("StandardMaterial3D_p47bc")
 
-[node name="EyesMesh" type="MeshInstance3D" parent="Node3D" unique_id=556175140]
-transform = Transform3D(-4.371139e-08, -1, -4.371139e-08, 0, -4.371139e-08, 1, -1, 4.371139e-08, 1.9106855e-15, 0, 1.26257, -0.4)
-layers = 2
-mesh = SubResource("CylinderMesh_uqdc8")
+[node name="Eye" type="MeshInstance3D" parent="PlayerModel" unique_id=1835794217]
+transform = Transform3D(-4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0, 1, 0, 1.5, -0.35)
+mesh = SubResource("CapsuleMesh_hvd6r")
+surface_material_override/0 = SubResource("StandardMaterial3D_p47bc")
 
-[node name="QuickTurnDuration" type="Timer" parent="." unique_id=1671766073]
-wait_time = 0.15
-one_shot = true
+[node name="RightHand" type="MeshInstance3D" parent="PlayerModel" unique_id=1808494195]
+transform = Transform3D(0.29999998, 0, 0, 0, 0.29999998, 0, 0, 0, 0.29999998, 0.75, 1, 0)
+mesh = SubResource("SphereMesh_kitn0")
+surface_material_override/0 = SubResource("StandardMaterial3D_p47bc")
+
+[node name="LeftHand" type="MeshInstance3D" parent="PlayerModel" unique_id=1050470018]
+transform = Transform3D(0.29999998, 0, 0, 0, 0.29999998, 0, 0, 0, 0.29999998, -0.75, 1, 0)
+mesh = SubResource("SphereMesh_kitn0")
+surface_material_override/0 = SubResource("StandardMaterial3D_p47bc")
 
 [node name="CamTriggerArea" type="Area3D" parent="." unique_id=1752617538]
-collision_layer = 256
-collision_mask = 32
+collision_layer = 512
+collision_mask = 64
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="CamTriggerArea" unique_id=2073159486]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.8, 0)
@@ -159,8 +129,8 @@ visible = false
 visible = false
 
 [node name="InteractionArea" type="Area3D" parent="InteractionStuff" unique_id=987143809]
-collision_layer = 32
-collision_mask = 16
+collision_layer = 256
+collision_mask = 64
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="InteractionStuff/InteractionArea" unique_id=1919086584]
 shape = SubResource("ConvexPolygonShape3D_dovo2")
@@ -169,22 +139,15 @@ debug_color = Color(0.6482781, 0.5093867, 0.31239182, 0.41960785)
 [node name="WeaponAim" parent="." unique_id=1434723451 instance=ExtResource("4_lvxji")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.93645936, 0)
 
-[node name="AnimationTree" type="AnimationTree" parent="." unique_id=1116659743]
-tree_root = SubResource("AnimationNodeStateMachine_bvwd6")
-parameters/conditions/is_sprinting = false
-parameters/conditions/not_sprinting = true
-parameters/Aiming/blend_position = Vector2(0, 0)
-parameters/Idle/blend_position = Vector2(0, 0)
-parameters/Interacting/blend_position = Vector2(0, 0)
-"parameters/Moving Backward/blend_position" = Vector2(0, 0)
-"parameters/Moving Forward/blend_position" = Vector2(0, 0)
-"parameters/Moving Forward (Sprinting)/blend_position" = Vector2(0, 0)
-"parameters/Quick Turning/blend_position" = Vector2(0, 0)
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=555447558]
+libraries/ = SubResource("AnimationLibrary_pvg44")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=589779714]
-libraries/ = SubResource("AnimationLibrary_75vfm")
-autoplay = &"idle"
+[node name="Light" type="Node3D" parent="." unique_id=771136320]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
 
-[connection signal="timeout" from="QuickTurnDuration" to="." method="_on_quick_turn_duration_timeout"]
+[node name="OmniLight3D" type="OmniLight3D" parent="Light" unique_id=2129662608]
+light_color = Color(1, 0.85833335, 0.65999997, 1)
+shadow_enabled = true
+
 [connection signal="area_entered" from="InteractionStuff/InteractionArea" to="." method="_on_interaction_area_area_entered"]
 [connection signal="area_exited" from="InteractionStuff/InteractionArea" to="." method="_on_interaction_area_area_exited"]

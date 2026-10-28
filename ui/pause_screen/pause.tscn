@@ -1,0 +1,41 @@
+[gd_scene format=3 uid="uid://djoygsd2l6qs"]
+
+[ext_resource type="Script" uid="uid://dob1gd3nq1pi4" path="res://ui/pause_screen/pause_ui.gd" id="2_lyriy"]
+
+[node name="PauseUI" type="Control" unique_id=1569017312]
+visible = false
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+script = ExtResource("2_lyriy")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1725036398]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0.08866676, 0.38, 0.5254902)
+
+[node name="Label" type="Label" parent="." unique_id=1466178737]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -31.0
+offset_top = -11.5
+offset_right = 31.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 64
+text = "PAUSED"
+horizontal_alignment = 1

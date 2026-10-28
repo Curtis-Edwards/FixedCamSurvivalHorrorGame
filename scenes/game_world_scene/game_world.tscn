@@ -1,0 +1,43 @@
+[gd_scene format=3 uid="uid://bp260futyx5dr"]
+
+[ext_resource type="Script" uid="uid://byy008hhcmxsm" path="res://scenes/game_world_scene/game_world.gd" id="1_yb5st"]
+[ext_resource type="PackedScene" uid="uid://b2tkhlonce14e" path="res://scenes/camera/fixed_cam.tscn" id="2_6sh6l"]
+[ext_resource type="PackedScene" uid="uid://g6vdvf12ss25" path="res://scenes/player/player.tscn" id="3_liei2"]
+[ext_resource type="PackedScene" uid="uid://dfx5scbv5yowc" path="res://ui/game_ui.tscn" id="4_nxv6a"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_bx05y"]
+sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+ground_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+
+[sub_resource type="Sky" id="Sky_53pnx"]
+sky_material = SubResource("ProceduralSkyMaterial_bx05y")
+
+[sub_resource type="Environment" id="Environment_oxw5x"]
+background_mode = 1
+sky = SubResource("Sky_53pnx")
+tonemap_mode = 2
+glow_enabled = true
+
+[node name="GameWorld" type="Node3D" unique_id=1994771557]
+script = ExtResource("1_yb5st")
+metadata/_edit_lock_ = true
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=730185761]
+environment = SubResource("Environment_oxw5x")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=654448067]
+transform = Transform3D(-0.8660254, -0.43301278, 0.25, 0, 0.49999997, 0.86602545, -0.50000006, 0.75, -0.43301266, 0, 0, 0)
+shadow_enabled = true
+sky_mode = 2
+
+[node name="Rooms" type="Node3D" parent="." unique_id=2080548484]
+
+[node name="Doors" type="Node3D" parent="." unique_id=1939218934]
+
+[node name="FixedCam" parent="." unique_id=432870943 instance=ExtResource("2_6sh6l")]
+transform = Transform3D(1.0000001, 0, -2.9802322e-08, 0, 1, 0, 2.9802322e-08, 0, 1.0000001, 0, 2.5, 1.1999998)
+current = true
+
+[node name="Player" parent="." unique_id=662147544 instance=ExtResource("3_liei2")]
+
+[node name="GameUI" parent="." unique_id=257678840 instance=ExtResource("4_nxv6a")]

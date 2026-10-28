@@ -1,18 +1,16 @@
 # game_manager.gd
 extends Node
 
-var dev_panel: DevPanel
-
 var main_scene: MainScene
 
 var game_world: GameWorld
 
-var ui: UI
+var ui: GameUI
 
 var player: Player
 
-var inventory: InventorySystem = preload("res://scenes/ui/inventory/inv_inventory.tres")
-var item_box: InventorySystem = preload("res://scenes/ui/inventory/inv_item_box.tres")
+var inventory: InventorySystem = preload("res://data/inventory/player_inventory.tres")
+var item_box: InventorySystem = preload("res://data/inventory/player_item_box.tres")
 
 var interaction_prompt: InteractionPrompt
 

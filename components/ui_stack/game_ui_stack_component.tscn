@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://bp4yo7lgs1en1"]
+
+[ext_resource type="Script" uid="uid://ckjepynhavg33" path="res://components/ui_stack/game_ui_stack_component.gd" id="1_iuwhc"]
+
+[node name="GameUIStackComponent" type="Node" unique_id=1988641853]
+script = ExtResource("1_iuwhc")

@@ -1,0 +1,28 @@
+[gd_scene format=3 uid="uid://beuyog2x42lfr"]
+
+[ext_resource type="Script" uid="uid://bt0oji74t07o4" path="res://ui/inventory/sub_menu_buttons/button/inv_sub_menu_button.gd" id="1_m4ue0"]
+
+[node name="InvSubMenuButton" type="Button" unique_id=1563439566]
+custom_minimum_size = Vector2(0, 80)
+custom_maximum_size = Vector2(-1, 80)
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -98.5
+offset_top = -26.5
+offset_right = 98.5
+offset_bottom = 26.5
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/outline_size = 12
+theme_override_font_sizes/font_size = 32
+text = "Sample Text"
+script = ExtResource("1_m4ue0")
+
+[connection signal="focus_entered" from="." to="." method="_on_focus_entered"]
+[connection signal="focus_exited" from="." to="." method="_on_focus_exited"]
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]

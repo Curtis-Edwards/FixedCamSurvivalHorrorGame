@@ -15,21 +15,22 @@ var combine_item_b: ItemInstance
 
 #region Combine Setup
 func _ready() -> void:
-	register_recipe(
-		Globals.ITEMS["g_herb"],
-		Globals.ITEMS["g_herb"],
-		basic_two_item_combo.bind(Globals.ITEMS["gg_herb"], 1)
-	)
-	register_recipe(
-		Globals.ITEMS["g_herb"],
-		Globals.ITEMS["r_herb"],
-		basic_two_item_combo.bind(Globals.ITEMS["gr_herb"], 1)
-	)
-	register_recipe(
-		Globals.ITEMS["blue_tablet_r"],
-		Globals.ITEMS["blue_tablet_l"],
-		basic_two_item_combo.bind(Globals.ITEMS["blue_tablet"], 1)
-	)
+	pass
+	#register_recipe(
+		#Globals.ITEMS["g_herb"],
+		#Globals.ITEMS["g_herb"],
+		#basic_two_item_combo.bind(Globals.ITEMS["gg_herb"], 1)
+	#)
+	#register_recipe(
+		#Globals.ITEMS["g_herb"],
+		#Globals.ITEMS["r_herb"],
+		#basic_two_item_combo.bind(Globals.ITEMS["gr_herb"], 1)
+	#)
+	#register_recipe(
+		#Globals.ITEMS["blue_tablet_r"],
+		#Globals.ITEMS["blue_tablet_l"],
+		#basic_two_item_combo.bind(Globals.ITEMS["blue_tablet"], 1)
+	#)
 	
 
 func make_key(a_id: int, b_id: int) -> String:

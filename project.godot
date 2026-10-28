@@ -26,6 +26,7 @@ Globals="*uid://db8sm0s4c5tai"
 
 window/size/viewport_width=1920
 window/size/viewport_height=1080
+window/size/mode=2
 window/size/resizable=false
 window/stretch/mode="canvas_items"
 
@@ -38,36 +39,36 @@ enabled=PackedStringArray("res://addons/anthonyec.camera_preview/plugin.cfg", "r
 folder_colors={
 "res://addons/": "gray",
 "res://assets/materials/old/": "gray",
+"res://data/inventory/": "green",
+"res://data/items/1xx_weapons/": "red",
+"res://data/items/2xx_ammo/": "yellow",
+"res://data/items/3xx_recovery/": "green",
+"res://data/items/4xx_key_items/": "blue",
+"res://data/items/5xx_other/": "gray",
 "res://globals/": "red",
+"res://old_scenes/interactable/": "yellow",
+"res://old_scenes/interactable/door/": "green",
+"res://old_scenes/interactable/intractable_template/": "gray",
+"res://old_scenes/interactable/item_box/": "yellow",
+"res://old_scenes/interactable/item_pickup/": "orange",
+"res://old_scenes/items/": "yellow",
+"res://old_scenes/items/item_combinations/": "red",
+"res://old_scenes/items/item_combinations_new/": "red",
 "res://scenes/": "blue",
 "res://scenes/camera/": "orange",
 "res://scenes/enemies/": "red",
-"res://scenes/interactable/": "yellow",
-"res://scenes/interactable/door/": "green",
-"res://scenes/interactable/intractable_template/": "gray",
-"res://scenes/interactable/item_box/": "yellow",
-"res://scenes/interactable/item_pickup/": "orange",
-"res://scenes/items/": "yellow",
-"res://scenes/items/item_combinations/": "red",
-"res://scenes/items/item_combinations_new/": "red",
-"res://scenes/items/item_resources/1xx_weapons/": "red",
-"res://scenes/items/item_resources/3xx_recovery/": "green",
-"res://scenes/items/item_resources/4xx_key_items/": "blue",
-"res://scenes/items/item_resources/5xx_other/": "gray",
+"res://scenes/game_world_scene/": "gray",
+"res://scenes/main_scene/": "gray",
 "res://scenes/player/": "green",
 "res://scenes/player/interaction_prompt/": "green",
-"res://scenes/props/": "pink",
-"res://scenes/rooms/": "blue",
-"res://scenes/rooms/room_template/": "gray",
-"res://scenes/ui/": "teal",
-"res://scenes/ui/inventory/": "teal",
-"res://scenes/ui/inventory/item_viewer/": "purple",
-"res://scenes/ui/inventory/sub_menu_buttons/": "red",
-"res://scenes/ui/map/": "blue",
-"res://scenes/ui/menu_nav_bar/": "yellow",
-"res://scenes/ui/notes/": "orange",
-"res://scenes/ui/pause_screen/": "gray",
-"res://testing/": "purple"
+"res://scenes/rooms/": "orange",
+"res://ui/inventory/": "teal",
+"res://ui/inventory/item_viewer/": "purple",
+"res://ui/inventory/sub_menu_buttons/": "red",
+"res://ui/map/": "blue",
+"res://ui/menu_nav_bar/": "yellow",
+"res://ui/notes/": "orange",
+"res://ui/pause_screen/": "gray"
 }
 
 [filesystem]
@@ -244,15 +245,15 @@ debug9={
 
 [layer_names]
 
-3d_physics/layer_1="PLAYER"
-3d_physics/layer_2="PLAYER PROJECTILES"
-3d_physics/layer_3="ENEMIES"
-3d_physics/layer_4="ENEMY PROJECTILES"
-3d_physics/layer_5="INTERACTBLES"
-3d_physics/layer_6="AREAS/ZONES"
-3d_physics/layer_7="WALLS&FLOORS"
-3d_physics/layer_8="OTHER"
-3d_physics/layer_9="Player CamTriggerArea"
+3d_physics/layer_1="Player"
+3d_physics/layer_2="Player Projectiles"
+3d_physics/layer_3="Enemy"
+3d_physics/layer_4="Enemy Projectiles"
+3d_physics/layer_5="Static Enviroment"
+3d_physics/layer_6="Non Static Enviroment"
+3d_physics/layer_7="Areas"
+3d_physics/layer_9="Interation Listener"
+3d_physics/layer_10="Player CamTriggerArea Listener"
 
 [physics]
 

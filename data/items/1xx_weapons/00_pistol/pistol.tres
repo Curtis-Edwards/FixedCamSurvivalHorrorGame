@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="ItemDefinition" format=3 uid="uid://bgnc5v4nsiifw"]
+
+[ext_resource type="Texture2D" uid="uid://d1qh3s1t6esi7" path="res://assets/textures/resi_2_sprite_sheet.png" id="1_lu7jn"]
+[ext_resource type="Script" uid="uid://bqtff8hunhhx3" path="res://data/items/item_definition.gd" id="2_k63q8"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3srkw"]
+atlas = ExtResource("1_lu7jn")
+region = Rect2(339, 0, 113, 73)
+
+[resource]
+script = ExtResource("2_k63q8")
+id = 100
+name = "Pistol"
+description = "Pew pew"
+inventory_texture = SubResource("AtlasTexture_3srkw")
+can_equip = true
+metadata/_custom_type_script = "uid://bqtff8hunhhx3"

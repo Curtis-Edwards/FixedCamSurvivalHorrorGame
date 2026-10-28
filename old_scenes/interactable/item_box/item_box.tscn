@@ -1,0 +1,165 @@
+[gd_scene format=3 uid="uid://ckmucpd1ph3km"]
+
+[ext_resource type="PackedScene" uid="uid://byfuptugrt2ka" path="res://old_scenes/interactable/intractable_template/interactable.tscn" id="1_rxgay"]
+[ext_resource type="Script" uid="uid://w5twaskgfe54" path="res://old_scenes/interactable/item_box/item_box.gd" id="2_rxgay"]
+[ext_resource type="PackedScene" uid="uid://t6e5ox8ieavr" path="res://assets/3d_objects/item_box/ItemBox.glb" id="3_h4y0r"]
+[ext_resource type="Texture2D" uid="uid://b5c7dx2prch1s" path="res://assets/textures/kenney_stuff/kenney_prototype-textures/PNG/Dark/texture_03.png" id="4_vieg0"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_bvwd6"]
+size = Vector3(4, 1.5, 2)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_h4y0r"]
+diffuse_mode = 1
+albedo_color = Color(1, 0.81666666, 0, 1)
+albedo_texture = ExtResource("4_vieg0")
+uv1_triplanar = true
+texture_filter = 5
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_u3jla"]
+diffuse_mode = 1
+albedo_color = Color(1, 0.81666666, 0, 1)
+albedo_texture = ExtResource("4_vieg0")
+uv1_triplanar = true
+texture_filter = 5
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_h4y0r"]
+data = PackedVector3Array(-1.5, 0, 0.75, -1.5, 1, -0.75, -1.5, 1, 0.75, -1.5, 0, 0.75, -1.5, 0, -0.75, -1.5, 1, -0.75, -1.5, 0, -0.75, 1.5, 1, -0.75, -1.5, 1, -0.75, -1.5, 0, -0.75, 1.5, 0, -0.75, 1.5, 1, -0.75, 1.5, 0, -0.75, 1.5, 1, 0.75, 1.5, 1, -0.75, 1.5, 0, -0.75, 1.5, 0, 0.75, 1.5, 1, 0.75, 1.5, 0, 0.75, -1.5, 1, 0.75, 1.5, 1, 0.75, 1.5, 0, 0.75, -1.5, 0, 0.75, -1.5, 1, 0.75, -1.5, 0, -0.75, 1.5, 0, 0.75, 1.5, 0, -0.75, -1.5, 0, -0.75, -1.5, 0, 0.75, 1.5, 0, 0.75, 1.5, 1, -0.75, -1.5, 1, 0.75, -1.5, 1, -0.75, 1.5, 1, -0.75, 1.5, 1, 0.75, -1.5, 1, 0.75)
+
+[sub_resource type="Animation" id="Animation_vieg0"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ItemBoxVisuals/ItemBoxLid:rotation:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [-2.9802326e-08]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("ItemBoxVisuals/ItemBoxLid:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-2.9802326e-08, -8.7422755e-08, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("ItemBoxVisuals/ItemBoxLight:light_energy")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_g8tn0"]
+resource_name = "peak_lid_close"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ItemBoxVisuals/ItemBoxLid:rotation")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(-0.26179945, -8.742275e-08, 0), Vector3(-2.9802326e-08, -8.7422755e-08, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("ItemBoxVisuals/ItemBoxLight:light_energy")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [1.5, 0.0]
+}
+
+[sub_resource type="Animation" id="Animation_g85rx"]
+resource_name = "peak_lid_open"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ItemBoxVisuals/ItemBoxLid:rotation")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(-2.9802326e-08, -8.7422755e-08, 0), Vector3(-0.26179945, -8.742275e-08, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("ItemBoxVisuals/ItemBoxLight:light_energy")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 1.5]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_u3jla"]
+_data = {
+&"RESET": SubResource("Animation_vieg0"),
+&"peak_lid_close": SubResource("Animation_g8tn0"),
+&"peak_lid_open": SubResource("Animation_g85rx")
+}
+
+[node name="ItemBox" unique_id=2101348855 instance=ExtResource("1_rxgay")]
+script = ExtResource("2_rxgay")
+
+[node name="InteractableCollision" parent="InteractableArea" parent_id_path=PackedInt32Array(1451751561) index="0" unique_id=773940465]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.75, -0.5)
+shape = SubResource("BoxShape3D_bvwd6")
+
+[node name="ItemBoxVisuals" parent="." index="2" unique_id=1091843281 instance=ExtResource("3_h4y0r")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0, 0)
+
+[node name="ItemBox" parent="ItemBoxVisuals" index="0" unique_id=260807670]
+surface_material_override/0 = SubResource("StandardMaterial3D_h4y0r")
+
+[node name="ItemBoxLid" parent="ItemBoxVisuals" index="1" unique_id=1789137432]
+transform = Transform3D(1, 2.605401e-15, -8.742274e-08, 0, 0.9999998, 2.980232e-08, 8.7422755e-08, -2.980232e-08, 0.9999998, 0, 1, -0.75)
+surface_material_override/0 = SubResource("StandardMaterial3D_u3jla")
+
+[node name="ItemBoxLight" type="OmniLight3D" parent="ItemBoxVisuals" index="2" unique_id=876127054]
+transform = Transform3D(-1, -1.509958e-07, -6.600236e-15, 0, -4.371139e-08, 1, -1.509958e-07, 1, 4.371139e-08, 1.5191639e-15, 0.8668839, -1.0060967e-08)
+light_color = Color(1, 0.9253333, 0.44, 1)
+light_energy = 0.0
+shadow_enabled = true
+omni_range = 3.0
+
+[node name="StaticBody3D" type="StaticBody3D" parent="ItemBoxVisuals" index="3" unique_id=1512515956]
+transform = Transform3D(1, 0, -7.1054274e-15, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+collision_layer = 64
+collision_mask = 3
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="ItemBoxVisuals/StaticBody3D" index="0" unique_id=1330860450]
+shape = SubResource("ConcavePolygonShape3D_h4y0r")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." index="3" unique_id=1839221203]
+libraries/ = SubResource("AnimationLibrary_u3jla")
+
+[editable path="ItemBoxVisuals"]

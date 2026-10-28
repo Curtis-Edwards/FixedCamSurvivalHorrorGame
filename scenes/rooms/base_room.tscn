@@ -1,0 +1,41 @@
+[gd_scene format=3 uid="uid://b7x7r16egjd4v"]
+
+[ext_resource type="Script" uid="uid://cjhamoyv035m8" path="res://scenes/rooms/base_room.gd" id="1_43ixu"]
+[ext_resource type="Texture2D" uid="uid://b28beq151tpdj" path="res://assets/textures/down.png" id="2_4x8xk"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_bx05y"]
+sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+ground_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+
+[sub_resource type="Sky" id="Sky_53pnx"]
+sky_material = SubResource("ProceduralSkyMaterial_bx05y")
+
+[sub_resource type="Environment" id="Environment_oxw5x"]
+background_mode = 2
+background_color = Color(0.3, 0.3, 0.3, 1)
+sky = SubResource("Sky_53pnx")
+tonemap_mode = 2
+glow_enabled = true
+
+[node name="BaseRoom" type="Node3D" unique_id=1177210895]
+script = ExtResource("1_43ixu")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=201213087]
+environment = SubResource("Environment_oxw5x")
+
+[node name="BlenderExport" type="Node3D" parent="." unique_id=612534032]
+
+[node name="Doors" type="Node3D" parent="." unique_id=168177880]
+
+[node name="Objects" type="Node3D" parent="." unique_id=1473741202]
+
+[node name="FixedCamTriggers" type="Node3D" parent="." unique_id=1043019142]
+
+[node name="StartingPointMarker" type="Marker3D" parent="." unique_id=1490553508]
+gizmo_extents = 0.5
+
+[node name="Sprite3D" type="Sprite3D" parent="StartingPointMarker" unique_id=1979588619]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.001, 0)
+flip_v = true
+axis = 1
+texture = ExtResource("2_4x8xk")

@@ -6,43 +6,26 @@ func _ready():
 #region Player Inputs
 # Movement
 func get_player_move_axis() -> float:
-	if GameManager.player.is_player_input_locked():
-		return 0.0
-	
 	return float(Input.is_action_pressed("tank_forward")) - float(Input.is_action_pressed("tank_backward"))
 
 func get_player_rotation_axis() -> float:
-	if GameManager.player.is_player_input_locked():
-		return 0.0
-	
 	return float(Input.is_action_pressed("tank_right")) - float(Input.is_action_pressed("tank_left"))
 
 func is_quick_turn_inputed()  -> bool:
-	if GameManager.player.is_player_input_locked():
-		return false
-	
-	return Input.is_action_just_pressed("quick_turn")
+	return Input.is_action_pressed("tank_backward") and Input.is_action_just_pressed("quick_turn")
 
-
+# TODO: move to a dedicated settings script
 var is_toggle_sprint_on: bool = true
-var is_sprinting: bool = false
+var is_toggle_aim_on: bool = false
 
 func is_sprint_pressed() -> bool:
-	if GameManager.player.is_player_input_locked():
-		return false
-	
-	return not GameManager.player.current_state == GameManager.player.PlayerState.MOVING_BACKWARD and Input.is_action_just_pressed("sprint")
+	return not Input.is_action_pressed("tank_backward") and Input.is_action_just_pressed("sprint")
 
 func is_sprint_held() -> bool:
-	if GameManager.player.is_player_input_locked():
-		return false
-	
-	return not GameManager.player.current_state == GameManager.player.PlayerState.MOVING_BACKWARD and Input.is_action_pressed("sprint")
+	return not Input.is_action_pressed("tank_backward") and Input.is_action_pressed("sprint")
 
+var is_sprinting: bool = false
 func is_sprint_inputed() -> bool:
-	if GameManager.player.is_player_input_locked():
-		return false
-	
 	if is_toggle_sprint_on:
 		is_sprinting = !is_sprinting if is_sprint_pressed() else is_sprinting
 	else:
@@ -53,61 +36,50 @@ func is_sprint_inputed() -> bool:
 
 # Other
 func is_interact_pressed() -> bool:
-	if GameManager.player.is_player_input_locked():
-		return false
-	
 	return Input.is_action_just_pressed("interact")
 
-func is_shoot_held() -> bool:
-	if GameManager.player.is_player_input_locked():
-		return false
-	
-	return Input.is_action_pressed("player_shoot")
-
 func is_aim_pressed() -> bool:
-	if GameManager.player.is_player_input_locked():
-		return false
-	
 	return Input.is_action_just_pressed("player_aim")
 
 func is_aim_held() -> bool:
-	if GameManager.player.is_player_input_locked():
-		return false
-	
 	return Input.is_action_pressed("player_aim")
+
+var is_aiming: bool = false
+func is_aim_inputed() -> bool:
+	if is_toggle_aim_on:
+		is_aiming = !is_aiming if is_aim_pressed() else is_aiming
+	else:
+		is_aiming = true if is_aim_held() else false
+	
+	return is_sprinting
+
+func is_shoot_held() -> bool:
+	return Input.is_action_pressed("player_shoot")
+
+func is_shoot_pressed() -> bool:
+	return Input.is_action_just_pressed("player_shoot")
+	
+func is_shoot_released() -> bool:
+	return Input.is_action_just_released("player_shoot")
+
 #endregion
 
 
 #region UI Inputs
 func is_accept_pressed() -> bool:
-	if GameManager.ui.is_cur_state_closed():
-		return false
-	
 	return Input.is_action_just_pressed("ui_accept")
 
 func is_cancel_pressed() -> bool:
-	if GameManager.ui.is_cur_state_closed():
-		return false
-	
 	return Input.is_action_just_pressed("ui_cancel")
 
 
 func is_inventory_pressed() -> bool:
-	if GameManager.ui.is_cur_state_paused():
-		return false
-	
 	return Input.is_action_just_pressed("open_inventory")
 
 func is_map_pressed() -> bool:
-	if GameManager.ui.is_cur_state_paused():
-		return false
-	
 	return Input.is_action_just_pressed("open_map")
 
 func is_notes_pressed() -> bool:
-	if GameManager.ui.is_cur_state_paused():
-		return false
-	
 	return Input.is_action_just_pressed("open_notes")
 
 func is_paused_pressed() -> bool:

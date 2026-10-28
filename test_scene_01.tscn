@@ -1,0 +1,10 @@
+[gd_scene format=3 uid="uid://cf6ragpn6yn65"]
+
+[ext_resource type="Script" uid="uid://bktwbw5cxdxkt" path="res://test_scene_01.gd" id="1_c3slr"]
+[ext_resource type="PackedScene" uid="uid://b76tfk06pbuf3" path="res://ui/dialogue/dialogue_ui.tscn" id="1_p0enw"]
+
+[node name="TestScene01" type="Node" unique_id=746012423]
+script = ExtResource("1_c3slr")
+
+[node name="DialogueUI" parent="." unique_id=358986939 instance=ExtResource("1_p0enw")]
+metadata/_edit_use_anchors_ = true

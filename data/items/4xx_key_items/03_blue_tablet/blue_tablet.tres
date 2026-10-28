@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="ItemDefinition" format=3 uid="uid://dw3rfg48ahpfu"]
+
+[ext_resource type="Texture2D" uid="uid://d1qh3s1t6esi7" path="res://assets/textures/resi_2_sprite_sheet.png" id="1_j1vaw"]
+[ext_resource type="Script" uid="uid://bqtff8hunhhx3" path="res://data/items/item_definition.gd" id="2_ytqq4"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3srkw"]
+atlas = ExtResource("1_j1vaw")
+region = Rect2(565, 584, 113, 73)
+
+[resource]
+script = ExtResource("2_ytqq4")
+id = 403
+name = "Blue Tablet"
+description = "Much better"
+inventory_texture = SubResource("AtlasTexture_3srkw")
+metadata/_custom_type_script = "uid://bqtff8hunhhx3"

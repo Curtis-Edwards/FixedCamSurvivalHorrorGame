@@ -1,0 +1,17 @@
+[gd_scene format=3 uid="uid://bihtmajhoxygv"]
+
+[ext_resource type="Script" uid="uid://dba63d53mj1ty" path="res://ui/inventory/item_viewer/item_viewer.gd" id="1_4vgyr"]
+[ext_resource type="Texture2D" uid="uid://bwn557ohbv1kt" path="res://icon.svg" id="2_qpakc"]
+
+[node name="ItemViewer" type="Node3D" unique_id=1396397147]
+script = ExtResource("1_4vgyr")
+
+[node name="Item" type="Node3D" parent="." unique_id=1975320663]
+
+[node name="ItemImage" type="Sprite3D" parent="Item" unique_id=1018910008]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 1, 0, 0, 0)
+texture = ExtResource("2_qpakc")
+
+[node name="Camera3D" type="Camera3D" parent="." unique_id=1047976027]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 3)
+current = true

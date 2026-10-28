@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="ItemDefinition" format=3 uid="uid://dxxy5ktru5m2b"]
+
+[ext_resource type="Texture2D" uid="uid://d1qh3s1t6esi7" path="res://assets/textures/resi_2_sprite_sheet.png" id="1_36txo"]
+[ext_resource type="Script" uid="uid://bqtff8hunhhx3" path="res://data/items/item_definition.gd" id="2_vm540"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5v6o4"]
+atlas = ExtResource("1_36txo")
+region = Rect2(113, 73, 113, 73)
+
+[resource]
+script = ExtResource("2_vm540")
+id = 101
+name = "Shotgun"
+description = "Bang bang"
+inventory_texture = SubResource("AtlasTexture_5v6o4")
+can_equip = true
+metadata/_custom_type_script = "uid://bqtff8hunhhx3"

@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="ItemDefinition" format=3 uid="uid://cdrpqcyb2wym1"]
+
+[ext_resource type="Texture2D" uid="uid://d1qh3s1t6esi7" path="res://assets/textures/resi_2_sprite_sheet.png" id="1_pb2kd"]
+[ext_resource type="Script" uid="uid://bqtff8hunhhx3" path="res://data/items/item_definition.gd" id="2_k10xp"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3srkw"]
+atlas = ExtResource("1_pb2kd")
+region = Rect2(339, 1022, 113, 73)
+
+[resource]
+script = ExtResource("2_k10xp")
+id = 404
+name = "Spade Key"
+description = "A key with a Spade on it."
+inventory_texture = SubResource("AtlasTexture_3srkw")
+metadata/_custom_type_script = "uid://bqtff8hunhhx3"

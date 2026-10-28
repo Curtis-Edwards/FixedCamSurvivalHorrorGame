@@ -1,0 +1,40 @@
+[gd_scene format=3 uid="uid://dfx5scbv5yowc"]
+
+[ext_resource type="Script" uid="uid://7y4c607mgq8h" path="res://ui/game_ui.gd" id="1_yvtb5"]
+[ext_resource type="PackedScene" uid="uid://fmfoheoxtx3o" path="res://ui/inventory/inventory_ui.tscn" id="3_xh48a"]
+[ext_resource type="PackedScene" uid="uid://dgfwgcsrwjbg3" path="res://ui/map/map_ui.tscn" id="4_2uxy6"]
+[ext_resource type="PackedScene" uid="uid://gon642jbhbu8" path="res://ui/notes/notes_ui.tscn" id="5_hgyfx"]
+[ext_resource type="PackedScene" uid="uid://dohdt76eu18ty" path="res://ui/pause_screen/pause_ui.tscn" id="6_vtgmo"]
+[ext_resource type="PackedScene" uid="uid://b76tfk06pbuf3" path="res://ui/dialogue/dialogue_ui.tscn" id="6_xh48a"]
+[ext_resource type="PackedScene" uid="uid://bp4yo7lgs1en1" path="res://components/ui_stack/game_ui_stack_component.tscn" id="7_2uxy6"]
+
+[node name="GameUI" type="CanvasLayer" unique_id=257678840]
+process_mode = 3
+script = ExtResource("1_yvtb5")
+
+[node name="GameUIStackComponent" parent="." unique_id=1988641853 instance=ExtResource("7_2uxy6")]
+
+[node name="DialogueUI" parent="." unique_id=358986939 instance=ExtResource("6_xh48a")]
+visible = false
+
+[node name="InventoryUI" parent="." unique_id=1809274956 instance=ExtResource("3_xh48a")]
+
+[node name="MapUI" parent="." unique_id=157985960 instance=ExtResource("4_2uxy6")]
+
+[node name="NotesUI" parent="." unique_id=387158806 instance=ExtResource("5_hgyfx")]
+
+[node name="PauseUI" parent="." unique_id=1569017312 instance=ExtResource("6_vtgmo")]
+
+[connection signal="accept_pressed" from="GameUIStackComponent" to="." method="_on_game_ui_stack_component_accept_pressed"]
+[connection signal="cancel_pressed" from="GameUIStackComponent" to="." method="_on_game_ui_stack_component_cancel_pressed"]
+[connection signal="inventory_pressed" from="GameUIStackComponent" to="." method="_on_game_ui_stack_component_inventory_pressed"]
+[connection signal="map_pressed" from="GameUIStackComponent" to="." method="_on_game_ui_stack_component_map_pressed"]
+[connection signal="notes_pressed" from="GameUIStackComponent" to="." method="_on_game_ui_stack_component_notes_pressed"]
+[connection signal="state_appended" from="GameUIStackComponent" to="." method="_on_game_ui_stack_component_state_appended"]
+[connection signal="state_popped" from="GameUIStackComponent" to="." method="_on_game_ui_stack_component_state_popped"]
+
+[editable path="DialogueUI"]
+[editable path="InventoryUI"]
+[editable path="MapUI"]
+[editable path="NotesUI"]
+[editable path="PauseUI"]

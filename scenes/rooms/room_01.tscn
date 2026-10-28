@@ -1,0 +1,73 @@
+[gd_scene format=4 uid="uid://clksgilbuhrcc"]
+
+[ext_resource type="PackedScene" uid="uid://b7x7r16egjd4v" path="res://scenes/rooms/base_room.tscn" id="1_bbo4o"]
+[ext_resource type="Material" uid="uid://ck5it6uv4h3l0" path="res://assets/materials/ph.tres" id="3_apclf"]
+[ext_resource type="PackedScene" uid="uid://d28ro5nqjnjjh" path="res://scenes/door_scene/door_scene.tscn" id="4_0yqvd"]
+[ext_resource type="PackedScene" uid="uid://dff83q5333mis" path="res://scenes/camera/fixed_cam_trigger.tscn" id="4_5wsos"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qxdaq"]
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_v4dqp"]
+_surfaces = [{
+"aabb": AABB(-3, 0, -2, 4, 2, 3),
+"format": 34359742465,
+"index_count": 78,
+"index_data": PackedByteArray("AAABAAIAAQADAAIAAgAEAAAABQACAAMABAACAAUABgAFAAMAAQAGAAMABgAHAAUABgAIAAcABAAFAAkABgAKAAgACAAKAAkAAQALAAYABgALAAoACQAKAAwABAAJAAwADAAKAAsADAALAAQABAALAA0ACwABAA4ACwAOAA0AAAAOAAEABAANAA8AAAAEAA8ADwANAA4ADwAOAAAA"),
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 16,
+"vertex_data": PackedByteArray("AABAwAAAAAAAAIC/AACAvwAAAEAAAIC/AACAvwAAAAAAAIC/AACAvwAAAAAAAADAAACAPwAAAAAAAIA/AAAAvwAAAAAAAADAAACAvwAAAEAAAADAAAAAvwAAwD8AAADAAAAAPwAAwD8AAADAAAAAPwAAAAAAAADAAACAPwAAAEAAAADAAACAPwAAAEAAAIA/AACAPwAAAAAAAADAAABAwAAAAEAAAIA/AABAwAAAAEAAAIC/AABAwAAAAAAAAIA/")
+}]
+blend_shape_mode = 0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_no4da"]
+resource_name = "TestLayout08_Cube_002"
+_surfaces = [{
+"aabb": AABB(-3, 0, -2, 4, 2, 3),
+"attribute_data": PackedByteArray("AADAPgAAQD8AACA/AAAgPwAAwD4AACA/AAAgPwAAQD8AAMA+AAAAPwAAID8AAIA+AADAPgAAgD4AACA/AAAAPwAAwD4AAIA+AAAgPwAAAAAAAMA+AAAAAAAAID8AAIA+AAAAPgAAAD8AAMA+AACAPgAAAD4AAIA+AACAPgAAAD8AAJA+AAAAPwAAgD4AAAA/AACgPgAAAD8AAMA+AAAAPwAAQD8AAAA/AAAgPwAAgD4AACA/AAAAPwAAQD8AAAA/AABgPwAAAD8AAGA/AACAPgAAwD4AAIA/AAAgPwAAQD8AAMA+AABAPwAAID8AAIA/AAAgPwAAID8AAMA+AAAgPwAAwD4AACA/AAAgPwAAID8AACA/AAAgPwAAwD4AABg/AADAPgAAID8AAAA/AAAYPwAAAD8AABA/AAAgPwAAAD8AAMA+AAAQPwAAwD4AAAA/"),
+"format": 34359742487,
+"index_count": 78,
+"index_data": PackedByteArray("AAABAAIAAAADAAEABAAFAAYABAAHAAUACAAJAAoACAALAAkADAANAA4ADwANAAwADQAPABAAEAAPABEADQAQABIADQASABMAFAAVABYAFwAVABQAFQAXABgAFQAYABkAGgAbABwAGgAdABsAHgAfACAAHgAhAB8AIgAjACQAIgAlACMAIgAmACUAIgAnACYAJgAnACgAKAAnACkA"),
+"material": SubResource("StandardMaterial3D_qxdaq"),
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 42,
+"vertex_data": PackedByteArray("AABAwAAAAAAAAIC/AACAvwAAAEAAAIC/AACAvwAAAAAAAIC/AABAwAAAAEAAAIC/AACAPwAAAAAAAADAAACAPwAAAEAAAIA/AACAPwAAAAAAAIA/AACAPwAAAEAAAADAAACAPwAAAAAAAIA/AABAwAAAAEAAAIA/AABAwAAAAAAAAIA/AACAPwAAAEAAAIA/AABAwAAAAAAAAIC/AACAPwAAAAAAAIA/AABAwAAAAAAAAIA/AACAvwAAAAAAAIC/AAAAvwAAAAAAAADAAACAvwAAAAAAAADAAAAAPwAAAAAAAADAAACAPwAAAAAAAADAAACAvwAAAEAAAADAAACAPwAAAEAAAIA/AACAPwAAAEAAAADAAACAvwAAAEAAAIC/AABAwAAAAEAAAIC/AABAwAAAAEAAAIA/AABAwAAAAAAAAIA/AABAwAAAAEAAAIC/AABAwAAAAAAAAIC/AABAwAAAAEAAAIA/AACAvwAAAEAAAIC/AACAvwAAAAAAAADAAACAvwAAAAAAAIC/AACAvwAAAEAAAADAAACAvwAAAEAAAADAAAAAvwAAAAAAAADAAACAvwAAAAAAAADAAAAAvwAAwD8AAADAAAAAPwAAwD8AAADAAACAPwAAAEAAAADAAAAAPwAAAAAAAADAAACAPwAAAAAAAADA/3//f/9/AAD/f/9//38AAP9//3//fwAA/3//f/9/AAAAAP9//38AAAAA/3//fwAAAAD/f/9/AAAAAP9//38AAP//////fwAA//////9/AAD//////38AAP//////fwAA/3///////z//f/////8KNf9///////8//3//////3in/f/////9sKf9///////+//3///////z//f///////P/9/AAAAAP8//38AAAAA/z//fwAAAAD/P/9/AAAAAP8//38AAAAA/z//fwAAAAD/P////3//fwAA////f/9/AAD///9//38AAP///3//fwAA////f////7////9/////v////3////+/////f////7//f/9/6Ih0BP9//3//fwAA/3//f/9/AAD/f/9/fKW+Ev9//39gYs8O/3//f4JavhL/f/9//38AAP9//3//fwAA")
+}]
+blend_shape_mode = 0
+shadow_mesh = SubResource("ArrayMesh_v4dqp")
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_1l2ak"]
+data = PackedVector3Array(-3, 0, -1, -1, 2, -1, -1, 0, -1, -3, 0, -1, -3, 2, -1, -1, 2, -1, 1, 0, -2, 1, 2, 1, 1, 0, 1, 1, 0, -2, 1, 2, -2, 1, 2, 1, 1, 0, 1, -3, 2, 1, -3, 0, 1, 1, 0, 1, 1, 2, 1, -3, 2, 1, -3, 0, -1, 1, 0, 1, -3, 0, 1, 1, 0, 1, 0.5, 0, -2, 1, 0, -2, -0.5, 0, -2, -1, 0, -1, -1, 0, -2, 1, 0, 1, -0.5, 0, -2, 0.5, 0, -2, -1, 0, -1, 1, 0, 1, -3, 0, -1, 1, 0, 1, -1, 0, -1, -0.5, 0, -2, -1, 2, -2, 1, 2, 1, 1, 2, -2, 1, 2, 1, -3, 2, -1, -3, 2, 1, -1, 2, -1, 1, 2, 1, -1, 2, -2, 1, 2, 1, -1, 2, -1, -3, 2, -1, -3, 0, 1, -3, 2, -1, -3, 0, -1, -3, 0, 1, -3, 2, 1, -3, 2, -1, -1, 2, -1, -1, 0, -2, -1, 0, -1, -1, 2, -1, -1, 2, -2, -1, 0, -2, -1, 2, -2, -0.5, 0, -2, -1, 0, -2, -1, 2, -2, -0.5, 1.5, -2, -0.5, 0, -2, 0.5, 0, -2, 1, 2, -2, 1, 0, -2, -1, 2, -2, 0.5, 1.5, -2, -0.5, 1.5, -2, 0.5, 1.5, -2, 1, 2, -2, 0.5, 0, -2, -1, 2, -2, 1, 2, -2, 0.5, 1.5, -2)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_jwebg"]
+size = Vector3(8, 4, 6)
+
+[node name="Room01" unique_id=1177210895 instance=ExtResource("1_bbo4o")]
+
+[node name="Room01" type="MeshInstance3D" parent="BlenderExport" parent_id_path=PackedInt32Array(612534032) index="0" unique_id=2091790663]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
+mesh = SubResource("ArrayMesh_no4da")
+surface_material_override/0 = ExtResource("3_apclf")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="BlenderExport/Room01" index="0" unique_id=639818760]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="BlenderExport/Room01/StaticBody3D" index="0" unique_id=1923236882]
+shape = SubResource("ConcavePolygonShape3D_1l2ak")
+
+[node name="Door01" parent="Doors" parent_id_path=PackedInt32Array(168177880) index="0" unique_id=177482063 instance=ExtResource("4_0yqvd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -4)
+
+[node name="FixedCamTrigger_01" parent="FixedCamTriggers" parent_id_path=PackedInt32Array(1043019142) index="0" unique_id=793731124 instance=ExtResource("4_5wsos")]
+
+[node name="CollisionShape3D" parent="FixedCamTriggers/FixedCamTrigger_01/CamTrigger" parent_id_path=PackedInt32Array(793731124, 719714386) index="0" unique_id=1615397601]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 2, -1)
+shape = SubResource("BoxShape3D_jwebg")
+
+[node name="CamPos" parent="FixedCamTriggers/FixedCamTrigger_01" index="1" unique_id=2093784570]
+transform = Transform3D(0.6033939, 0, 0.79744333, 0, 1, 0, -0.79744333, 0, 0.6033939, 2.5813117, 1.8998892, 1.9354242)
+
+[node name="StartingPointMarker" parent="." index="5" unique_id=1490553508]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -5, 0, 0)
+
+[editable path="FixedCamTriggers/FixedCamTrigger_01"]
